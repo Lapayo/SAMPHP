@@ -55,6 +55,8 @@ class Event
 	}
 }
 
+
+/*
 trait ModelEventHandler
 {
 	public function on($name, $callback)
@@ -82,4 +84,5 @@ trait ModelEventHandler
 		return $this->eventPrefix.'.'.$this->id.'.'.$name;
 	}
 }
+*/
 ?>

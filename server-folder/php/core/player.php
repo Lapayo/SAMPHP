@@ -2,7 +2,7 @@
 
 class Player
 {
-	use ModelEventHandler;
+	use ModelEvent;
 	protected $eventPrefix = "Player";
 
 	protected static $instances = array();
