@@ -40,7 +40,7 @@ function OnPlayerConnect($playerid)
 
 Framework
 ===
-In the near feature there will be an framework for SAMPHP, making it even more easier to develop gamemodes with beautiful code.
+In the near feature there will be a framework for SAMPHP, making it even more easier to develop gamemodes with beautiful code.
 The code above might look a bit like the following:
 ```php
 Event::on('PlayerConnect', function($player)
@@ -50,6 +50,19 @@ Event::on('PlayerConnect', function($player)
     return true;
 });
 ```
+
+Getting started
+===
+Getting started with SAMPHP isnt hard, but actually only works on linux x86 machines.
+At first you need the SAMPHP plugin for the server.
+You can compile SAMPHP yourself using the build.sh or you can later download a binary release.
+
+Additionally you will need the php5 shared library. You can install it using the install_libphp5.sh script. You have to run it as root.
+
+Now simply copy the SAMPHP binary to the plugins folder of you SA:MP server, add "plugins=samphp" to your server configuration and create a folder called "php".
+Inside this folder you create a gamemode.php file, which will contain your gamemode logic.
+
+That's it. If you start your server, SAMPHP will do the rest and load your PHP script. ;-)
 
 Thanks to
 ===
