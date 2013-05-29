@@ -63,7 +63,7 @@ class Event
 		return $result;
 	}
 
-	public static function until($eventId, $expected = true)
+	public static function untilDifferent($eventId, $expected = true)
 	{
 		$args = func_get_args();
 		unset($args[0]);

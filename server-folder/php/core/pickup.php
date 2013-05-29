@@ -5,7 +5,7 @@ class Pickup
 
 	protected static $instances = array();
 
-	protected $pickupid;
+	protected $id;
 	protected $modelid;
 	protected $type;
 	protected $x;
@@ -18,29 +18,45 @@ class Pickup
 		if(isset(static::$instances[$id]))
 			return static::$instances[$id];
 
-		return false;
+		return null;
 	}
 
-	protected function recreate()
+	public static function create($id, $model, $type, $x, $y, $z, $virtualworld = 0)
 	{
-		DestroyPickup($this->pickupid);
-		$this->pickupid = CreatePickup($this->model, $this->type, $this->x, $this->y, $this->z, $this->virtualworld);			
+		$id = CreatePickup($model, $type, $x, $y, $z, $virtualworld);
+
+		return static::$instances[$instance->id] = new static($id, $model, $type, $x, $y, $z, $virtualworld);
 	}
 
-	function __construct($model, $type, $x, $y, $z, $virtualworld)
+	public function recreate()
 	{
-		$this->pickupid = CreatePickup($model, $type, $x, $y, $z, $virtualworld);
-		static::$instances[$this->pickupid] = new static($id);
+		$this->destroy();
+
+		$this->id = CreatePickup($this->model, $this->type, $this->x, $this->y, $this->z, $this->virtualworld);
+
+		static::$instances[$this->id] = $this;	
+	}
+
+	protected function __construct($id, $model, $type, $x, $y, $z, $virtualworld)
+	{
+		$this->id = $id;
+		$this->model = $model;
+		$this->type = $type;
+		$this->x = $x;
+		$this->y = $y;
+		$this->z = $z;
+		$this->virtualworld = $virtualworld;
+
 	}
 
 	public function getId()
 	{
-		return $this->pickupid;
+		return $this->id;
 	}
 
 	public function getModelId()
 	{
-		return $this->modelid;
+		return $this->model;
 	}
 
 	public function getType()
@@ -50,7 +66,7 @@ class Pickup
 
 	public function getPos()
 	{
-		return array('x' => $this->x, 'y' => $this->y, 'z' => $this->z);
+		return (object) array('x' => $this->x, 'y' => $this->y, 'z' => $this->z);
 	}
 
 	public function getVirtualworld()
@@ -63,28 +79,36 @@ class Pickup
 		$this->x = $x;
 		$this->y = $y;
 		$this->z = $z;
+
 		$this->recreate();
 	}	
 
-	public function setModelId($modelid)
+	public function setModelId($model)
 	{
-		$this->modelid = $modelid;
+		$this->model = $model;
+
 		$this->recreate();
 	}
 
 	public function setType($type)
 	{
 		$this->type = $type;
+
+		$this->recreate();
 	}
 
 	public function setVirtualworld($virtualworld)
 	{
 		$this->virtualworld = $virtualworld;
+
+		$this->recreate();
 	}
 
-	function __destruct()
+	public function destroy()
 	{
-		DestroyPickup($this->pickupid);
-		unset(static::$instances[$this->pickupid]);
+		DestroyPickup($this->id);
+		unset(static::$instances[$this->id]);
+
+		$this->id = INVALID_PICKUP_ID;
 	}
 }

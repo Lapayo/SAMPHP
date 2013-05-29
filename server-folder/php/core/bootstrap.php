@@ -4,6 +4,7 @@ require_once 'modelevent.php';
 require_once 'event.php';
 
 require_once 'commandtext.php';
+require_once 'rconcommand.php';
 
 require_once 'player.php';
 require_once 'vehicle.php';

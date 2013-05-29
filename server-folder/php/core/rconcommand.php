@@ -1,6 +1,6 @@
 <?php
 
-class CommandText
+class RconCommand
 {
 	protected static $commands;
 
@@ -8,12 +8,11 @@ class CommandText
 	{
 		foreach((array) $commands as $command)
 		{
-			$command = '/'.ltrim($command, '/');
 			static::$commands[$command] = $callback;
 		}
 	}
 
-	public static function handleCommand($player, $commandStr)
+	public static function handleCommand($commandStr)
 	{
 		$splittedParams = explode(' ', $commandStr);
 
@@ -25,10 +24,10 @@ class CommandText
 
 		$params = implode(' ', $splittedParams);
 
-		call_user_func(static::$commands[$command], $player, $params, $splittedParams);
+		call_user_func(static::$commands[$command], $params, $splittedParams);
 
 		return true;
 	}
 }
 
-Event::on('PlayerCommandText', array('CommandText', 'handleCommand'));
+Event::on('RconCommand', array('RconCommand', 'handleCommand'));
