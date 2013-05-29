@@ -6,10 +6,13 @@ class Player
 
 	protected static $instances = array();
 
-	protected $id;
+	public $id;
 
 	public static function find($id, $disableChecks = false)
 	{
+		if($id instanceof Player)
+			return $id;
+
 		if(isset(static::$instances[$id]))
 			return static::$instances[$id];
 
