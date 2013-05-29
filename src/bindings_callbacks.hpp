@@ -6,7 +6,12 @@ PLUGIN_EXPORT bool PLUGIN_CALL OnGameModeInit()
 
 PLUGIN_EXPORT bool PLUGIN_CALL OnGameModeExit()
 {
-  return samphp::instance->call_bool("OnGameModeExit");
+  bool result = samphp::instance->call_bool("OnGameModeExit");
+
+  // Reload PHP:
+  samphp::reload();
+
+  return result;
 }
 
 PLUGIN_EXPORT bool PLUGIN_CALL OnFilterScriptInit()

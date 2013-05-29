@@ -17,6 +17,13 @@ public:
 
     static samphp* instance;
     static samphp* init();
+    static samphp* reload();
+
+    bool load(std::string filename);
+
+protected:
+	std::string loadedFile;
+
 };
 
 void samphp_output_handler(const char *str);

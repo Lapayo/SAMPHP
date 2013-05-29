@@ -10,6 +10,15 @@ samphp::samphp(bool typeError)
 {
 
 }
+
+samphp* samphp::reload()
+{
+    std::string loadedFile = samphp::instance->loadedFile;
+    delete samphp::instance;
+
+    samphp::init()->load(loadedFile);
+}
+
 samphp* samphp::init()
 {
     samphp* instance = new samphp(true);
@@ -25,6 +34,13 @@ samphp* samphp::init()
     instance->set_error_function(samphp_output_handler);
 
     return instance;
+}
+
+bool samphp::load(std::string file)
+{
+    this->loadedFile = file;
+
+    return php_stl::load(file.c_str());
 }
 
 void samphp_output_handler(const char *str)

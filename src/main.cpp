@@ -8,7 +8,6 @@
 
 static ThisPlugin samphp_plugin;
 
-samphp *phpContext;
 
 PLUGIN_EXPORT unsigned int PLUGIN_CALL Supports()
 {
@@ -17,11 +16,11 @@ PLUGIN_EXPORT unsigned int PLUGIN_CALL Supports()
 
 PLUGIN_EXPORT bool PLUGIN_CALL Load(void **ppData)
 {
-  phpContext = samphp::init();
+  samphp::init();
 
   bool result = samphp_plugin.Load(ppData) >= 0;
   
-  phpContext->load("php/gamemode.php");
+  samphp::instance->load("php/gamemode.php");
 
 
   return result;
@@ -29,7 +28,7 @@ PLUGIN_EXPORT bool PLUGIN_CALL Load(void **ppData)
 
 PLUGIN_EXPORT void PLUGIN_CALL Unload()
 {
-  delete phpContext;
+  delete samphp::instance;
   samphp_plugin.Unload();
 }
 

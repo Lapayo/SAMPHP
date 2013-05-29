@@ -32,42 +32,42 @@ function OnPlayerClickMap($playerid, $fx, $fy, $fz)
 
 function OnPlayerClickPlayer($playerid, $clickedplayerid, $source)
 {
-	return Event::fire("PlayerClickPlayer", Player::find($playerid, true), $clickedplayerid, $source);
+	return Event::until("PlayerClickPlayer", true, Player::find($playerid, true), $clickedplayerid, $source);
 }
 
 function OnPlayerClickPlayerTextDraw($playerid, $playertextid)
 {
-	return Event::fire("PlayerClickPlayerTextDraw", Player::find($playerid, true), $playertextid);
+	return Event::until("PlayerClickPlayerTextDraw", false, Player::find($playerid, true), $playertextid);
 }
 
 function OnPlayerClickTextDraw($playerid, $clickedid)
 {
-	return Event::fire("PlayerClickTextDraw", Player::find($playerid, true), $clickedid);
+	return Event::until("PlayerClickTextDraw", false, Player::find($playerid, true), $clickedid);
 }
 
 function OnPlayerCommandText($playerid, $cmdtext)
 {
-	return Event::fire("PlayerCommandText", Player::find($playerid, true), $cmdtext);
+	return Event::until("PlayerCommandText", false, Player::find($playerid, true), $cmdtext);
 }
 
 function OnPlayerConnect($playerid)
 {
-	return Event::fire("PlayerConnect", Player::find($playerid, true));
+	return Event::until("PlayerConnect", true, Player::find($playerid, true));
 }
 
 function OnPlayerDeath($playerid, $killerid, $reason)
 {
-	return Event::fire("PlayerDeath", Player::find($playerid, true), $killerid, $reason);
+	return Event::until("PlayerDeath", true, Player::find($playerid, true), $killerid, $reason);
 }
 
 function OnPlayerDisconnect($playerid, $reason)
 {
-	return Event::fire("PlayerDisconnect", Player::find($playerid, true), $reason);
+	return Event::until("PlayerDisconnect", true, Player::find($playerid, true), $reason);
 }
 
 function OnPlayerEditAttachedObject($playerid, $response, $index, $modelid, $boneid, $fOffsetX, $fOffsetY, $fOffsetZ, $fRotX, $fRotY, $fRotZ, $fScaleX, $fScaleY, $fScaleZ)
 {
-	return Event::fire("PlayerEditAttachedObject", Player::find($playerid, true), $response, $index, $modelid, $boneid, $fOffsetX, $fOffsetY, $fOffsetZ, $fRotX, $fRotY, $fRotZ, $fScaleX, $fScaleY, $fScaleZ);
+	return Event::until("PlayerEditAttachedObject", true, Player::find($playerid, true), $response, $index, $modelid, $boneid, $fOffsetX, $fOffsetY, $fOffsetZ, $fRotX, $fRotY, $fRotZ, $fScaleX, $fScaleY, $fScaleZ);
 }
 
 function OnPlayerEditObject($playerid,	$playerobject,	$objectid,	$response,	$fX,	$fY,	$fZ,	$fRotX,	$fRotY,	$fRotZ)
@@ -142,12 +142,12 @@ function OnPlayerPrivmsg($playerid, $recieverid, $text)
 
 function OnPlayerRequestClass($playerid, $classid)
 {
-	return Event::fire("PlayerRequestClass", Player::find($playerid, true), $classid);
+	return Event::until("PlayerRequestClass", true, Player::find($playerid, true), $classid);
 }
 
 function OnPlayerRequestSpawn($playerid)
 {
-	return Event::fire("PlayerRequestSpawn", Player::find($playerid, true));
+	return Event::until("PlayerRequestSpawn", true, Player::find($playerid, true));
 }
 
 function OnPlayerSelectObject($playerid, $type, $objectid, $modelid, $fX, $fY, $fZ)
@@ -162,7 +162,7 @@ function OnPlayerSelectedMenuRow($playerid, $row)
 
 function OnPlayerSpawn($playerid)
 {
-	return Event::fire("PlayerSpawn", Player::find($playerid, true));
+	return Event::fireDefault("PlayerSpawn", true, Player::find($playerid, true));
 }
 
 function OnPlayerStateChange($playerid, $newstate, $oldstate)
@@ -192,7 +192,7 @@ function OnPlayerTeamPrivmsg($playerid, $text)
 
 function OnPlayerText($playerid, $text)
 {
-	return Event::fire("PlayerText", Player::find($playerid, true), $text);
+	return Event::until("PlayerText", true, Player::find($playerid, true), $text);
 }
 
 function OnPlayerUpdate($playerid)

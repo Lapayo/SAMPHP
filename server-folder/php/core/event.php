@@ -18,6 +18,18 @@ class Event
 		if(is_callable($eventFunction))
 			static::$events['after'][$eventId][] = $eventFunction;
 	}
+
+	public static function fireDefault($eventId, $default = true)
+	{
+		$args = func_get_args();
+		unset($args[1]);
+
+		$result = call_user_func_array(array('Event', 'fire'), $args);
+
+		if(!is_null($result)) return $result;
+
+		return $default;
+	}
 	
 	public static function fire($eventId)
 	{
@@ -30,14 +42,22 @@ class Event
 		{
 			foreach(static::$events['on'][$eventId] as $callback)
 			{
-				call_user_func_array($callback, $args);
+				$res = call_user_func_array($callback, $args);
+				
+				if(!is_null($res))
+					$result = $res;
 			}			
 		}
 
 		if(isset(static::$events['after'][$eventId]))
 		{
 			foreach(static::$events['after'][$eventId] as $callback)
-				call_user_func_array($callback, $args);			
+			{
+				$res = call_user_func_array($callback, $args);
+				
+				if(!is_null($res))
+					$result = $res;
+			}	
 		}
 
 		return $result;
@@ -47,6 +67,7 @@ class Event
 	{
 		$args = func_get_args();
 		unset($args[0]);
+		unset($args[1]);
 
 		if(isset(static::$events['on'][$eventId]))
 		{
@@ -54,7 +75,7 @@ class Event
 			{
 				$res = call_user_func_array($callback, $args);
 				
-				if($res !== $expected)
+				if(!is_null($res) && $res !== $expected)
 					return $res;
 			}			
 		}
