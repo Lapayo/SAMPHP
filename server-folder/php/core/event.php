@@ -24,10 +24,14 @@ class Event
 		$args = func_get_args();
 		unset($args[0]);
 		
+		$result = null;
+
 		if(isset(static::$events['on'][$eventId]))
 		{
 			foreach(static::$events['on'][$eventId] as $callback)
-				call_user_func_array($callback, $args);			
+			{
+				call_user_func_array($callback, $args);
+			}			
 		}
 
 		if(isset(static::$events['after'][$eventId]))
@@ -35,6 +39,38 @@ class Event
 			foreach(static::$events['after'][$eventId] as $callback)
 				call_user_func_array($callback, $args);			
 		}
+
+		return $result;
+	}
+
+	public static function until($eventId, $expected = true)
+	{
+		$args = func_get_args();
+		unset($args[0]);
+
+		if(isset(static::$events['on'][$eventId]))
+		{
+			foreach(static::$events['on'][$eventId] as $callback)
+			{
+				$res = call_user_func_array($callback, $args);
+				
+				if($res !== $expected)
+					return $res;
+			}			
+		}
+
+		if(isset(static::$events['after'][$eventId]))
+		{
+			foreach(static::$events['after'][$eventId] as $callback)
+			{
+				$res = call_user_func_array($callback, $args);
+				
+				if(!is_null($res) && $res !== $expected)
+					return $res;
+			}				
+		}
+
+		return $expected;
 	}
 
 	public static function cancelWithPrefix($prefix)

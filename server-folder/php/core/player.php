@@ -34,7 +34,33 @@ class Player
 	{
 		return Kick($this->id);
 	}
+
+	public function sendClientMessage($color, $message)
+	{
+		return SendClientMessage($this->id, $color, $message);
+	}
 }
+
+$callbackNames = array(
+	'Player' =>
+		array(
+			'ClickMap', 'Spawn', 
+		),
+);
+
+foreach($callbackNames as $prefix => $cbs)
+{
+	foreach($cbs as $callbackName)
+	{
+		Event::on($prefix.$callbackName, function($player) use($callbackName) {
+			$args = func_get_args();
+			array_unshift($args, $callbackName);
+				
+			call_user_func_array(array($player, 'fire'), $args);
+		});
+	}
+}
+
 
 /*
 Usage:
