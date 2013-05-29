@@ -22,12 +22,18 @@ class Vehicle
 		return static::$instances[$id] = new static($id);
 	}
 
-	public static function create($modelId, $x, $y, $z, $angle, $color1, $color2, $respawnDelay = 0)
+	public static function create($modelId, $x, $y, $z, $angle, $color1 = null, $color2 = null, $respawnDelay = -1)
 	{
 		//Check for trains:
+		if(is_null($color1))
+			$color1 = rand(0, 255);
+
+		if(is_null($color2))
+			$color2 = rand(0, 255);
+
 		if($modelId == 537 || $modelId == 538)
 		{
-			$id = AddStaticVehicleEx($modelId, $x, $y, $z, $angle, $color1, $color2, $respawnDelay)
+			$id = AddStaticVehicleEx($modelId, $x, $y, $z, $angle, $color1, $color2, $respawnDelay);
 		}else{
 			$id = CreateVehicle($modelId, $x, $y, $z, $angle, $color1, $color2, $respawnDelay);
 		}
@@ -75,11 +81,6 @@ class Vehicle
 	public function setZAngle($angle)
 	{
 		return SetVehicleZAngle($this->id, $angle);
-	}
-
-	public function getRotationQuat()
-	{
-		return (object) GetRotationQuat($this->id);
 	}
 
 	public function getRotationQuat()

@@ -32,6 +32,36 @@ class Player
 		return GetPlayerName($this->id);
 	}
 
+	public function isStreamedIn($forPlayer)
+	{
+		return IsPlayerStreamedIn($this->id, Player::find($forPlayer)->id);
+	}
+
+	public function getPos()
+	{
+		return (object) GetPlayerPos($this->id);
+	}
+
+	public function setPos($x, $y, $z)
+	{
+		return SetPlayerPos($this->id, $x, $y, $z);
+	}
+
+	public function getFacingAngle()
+	{
+		return GetPlayerFacingAngle($this->id);
+	}
+
+	public function setZAngle($angle)
+	{
+		return SetPlayerZAngle($this->id, $angle);
+	}
+
+	public function putInVehicle($vehicle, $seat = 0)
+	{
+		return PutPlayerInVehicle($this->id, Vehicle::find($vehicle)->id, $seat);
+	}
+
 	public function kick()
 	{
 		return Kick($this->id);

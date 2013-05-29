@@ -12,10 +12,15 @@ Event::on('PlayerConnect', function($player) {
 	});
 });
 
-Event::on("PlayerCommandText", function($player, $cmd) {
-	if($cmd == "/rr")
-	{
-		GameModeExit();
-		return true;
-	}
+CommandText::register('/rr', function($player, $params) {
+	GameModeExit();
+});
+
+CommandText::register(array('/vehicle', '/v', '/veh'), function($player, $params) {
+	$pos = $player->getPos();
+	$facing = $player->getFacingAngle();
+
+	$vehicle = Vehicle::create($params, $pos->x, $pos->y, $pos->z, $facing);
+
+	$player->putInVehicle($vehicle);
 });
