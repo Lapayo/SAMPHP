@@ -1,8 +1,8 @@
 <?php
-class pickup
+class Pickup
 {
 	use ModelEvent;
-	
+
 	protected static $instances = array();
 
 	protected $pickupid;
