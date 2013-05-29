@@ -19,6 +19,16 @@ PLUGIN_EXPORT bool PLUGIN_CALL Load(void **ppData)
   samphp::init();
 
   bool result = samphp_plugin.Load(ppData) >= 0;
+
+  /*
+  TODO: Bug in sampgdk
+  const int buffer_len = 100;
+  char buffer[buffer_len];
+
+  GetServerVarAsString("hostname", buffer, buffer_len);
+
+  std::cout << "Samphp: " << buffer << std::endl;
+  */
   
   samphp::instance->load("php/gamemode.php");
 
