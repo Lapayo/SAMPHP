@@ -6,6 +6,7 @@ Event::on('GameModeInit', function() {
 });
 
 Event::on('PlayerConnect', function($player) {
+	$player->sendClientMessage(0xFFFFFF, "Garbage Collection is ".gc_enabled());
 	$player->on('Spawn', function($player) {
 		$player->sendClientMessage(0xFFFFFF, "Player {$player->getName()} connected.");
 	});

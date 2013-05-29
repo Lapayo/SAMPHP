@@ -76,72 +76,72 @@ function OnPlayerEditAttachedObject($playerid, $response, $index, $modelid, $bon
 
 function OnPlayerEditObject($playerid,	$playerobject,	$objectid,	$response,	$fX,	$fY,	$fZ,	$fRotX,	$fRotY,	$fRotZ)
 {
-	return Event::fire(Player::find($playerid, true),	$playerobject,	$objectid,	$response,	$fX,	$fY,	$fZ,	$fRotX,	$fRotY,	$fRotZ);
+	return Event::fireDefault(Player::find($playerid, true), true, $playerobject, $objectid,	$response,	$fX,	$fY,	$fZ,	$fRotX,	$fRotY,	$fRotZ);
 }
 
 function OnPlayerEnterCheckpoint($playerid)
 {
-	return Event::fire("PlayerEnterCheckpoint", Player::find($playerid, true));
+	return Event::fireDefault("PlayerEnterCheckpoint", true, Player::find($playerid, true));
 }
 
 function OnPlayerEnterRaceCheckpoint($playerid)
 {
-	return Event::fire("PlayerEnterCheckpoint", Player::find($playerid, true));
+	return Event::fireDefault("PlayerEnterCheckpoint", true, Player::find($playerid, true));
 }
 
 function OnPlayerEnterVehicle($playerid, $vehicleid, $passenger)
 {
-	return Event::fire("PlayerEnterVehicle", Player::find($playerid, true), $vehicleid, $passenger);
+	return Event::until("PlayerEnterVehicle", true, Player::find($playerid, true), $vehicleid, $passenger);
 }
 
 function OnPlayerExitVehicle($playerid, $vehicleid)
 {
-	return Event::fire("PlayerExitVehicle", Player::find($playerid, true), $vehicleid);
+	return Event::fireDefault("PlayerExitVehicle", true, Player::find($playerid, true), $vehicleid);
 }
 
 function OnPlayerExitedMenu($playerid)
 {
-	return Event::fire("PlayerExitedMenu", Player::find($playerid, true));
+	return Event::fireDefault("PlayerExitedMenu", true, Player::find($playerid, true));
 }
 
 function OnPlayerGiveDamage($playerid, $damagedid, $amount, $weaponid)
 {
-	return Event::fire("PlayerGiveDamage", Player::find($playerid, true), $damagedid, $amount, $weaponid);
+	return Event::fireDefault("PlayerGiveDamage", true, Player::find($playerid, true), $damagedid, $amount, $weaponid);
 }
 
 function OnPlayerInteriorChange($playerid, $newinteriorid, $oldinteriorid)
 {
-	return Event::fire("PlayerInteriorChange", Player::find($playerid, true), $newinteriorid, $oldinteriorid);
+	return Event::fireDefault("PlayerInteriorChange", true, Player::find($playerid, true), $newinteriorid, $oldinteriorid);
 }
 
 function OnPlayerKeyStateChange($playerid, $newkeys, $oldkeys)
 {
-	return Event::fire("PlayerKeyStateChange", Player::find($playerid, true), $newkeys, $oldkeys);
+	return Event::fireDefault("PlayerKeyStateChange", true, Player::find($playerid, true), $newkeys, $oldkeys);
 }
 
 function OnPlayerLeaveCheckpoint($playerid)
 {
-	return Event::fire("PlayerLeaveCheckpoint", Player::find($playerid, true));
+	return Event::fireDefault("PlayerLeaveCheckpoint", true, Player::find($playerid, true));
 }
 
 function OnPlayerLeaveRaceCheckpoint($playerid)
 {
-	return Event::fire("PlayerLeaveRaceCheckpoint", Player::find($playerid, true));
+	return Event::fireDefault("PlayerLeaveRaceCheckpoint", true, Player::find($playerid, true));
 }
 
 function OnPlayerObjectMoved($playerid, $objectid)
 {
-	return Event::fire("PlayerObjectMoved", Player::find($playerid, true), $objectid);
+	return Event::fireDefault("PlayerObjectMoved", true, Player::find($playerid, true), $objectid);
 }
 
 function OnPlayerPickUpPickup($playerid, $pickupid)
 {
-	return Event::fire("PlayerPickUpPickup", Player::find($playerid, true), $pickupid);
+	return Event::fireDefault("PlayerPickUpPickup", true, Player::find($playerid, true), $pickupid);
 }
 
 function OnPlayerPrivmsg($playerid, $recieverid, $text)
 {
-	return Event::fire("PlayerPrivmsg", Player::find($playerid, true), Player::find($recieverid, true), $text);
+	return Event::until("PlayerPrivmsg", true, Player::find($playerid, true), Player::find($recieverid, true), $text);
 }
 
 function OnPlayerRequestClass($playerid, $classid)
@@ -156,12 +156,12 @@ function OnPlayerRequestSpawn($playerid)
 
 function OnPlayerSelectObject($playerid, $type, $objectid, $modelid, $fX, $fY, $fZ)
 {
-	return Event::fire("PlayerSelectObject", Player::find($playerid, true), $type, $objectid, $modelid, $fX, $fY, $fZ);
+	return Event::fireDefault("PlayerSelectObject", true, Player::find($playerid, true), $type, $objectid, $modelid, $fX, $fY, $fZ);
 }
 
 function OnPlayerSelectedMenuRow($playerid, $row)
 {
-	return Event::fire("PlayerSelectedMenuRow", Player::find($playerid, true), $row);
+	return Event::fireDefault("PlayerSelectedMenuRow", true, Player::find($playerid, true), $row);
 }
 
 function OnPlayerSpawn($playerid)
@@ -171,27 +171,27 @@ function OnPlayerSpawn($playerid)
 
 function OnPlayerStateChange($playerid, $newstate, $oldstate)
 {
-	return Event::fire("PlayerStateChange", Player::find($playerid, true), $newstate, $oldstate);
+	return Event::fireDefault("PlayerStateChange", true, Player::find($playerid, true), $newstate, $oldstate);
 }
 
 function OnPlayerStreamIn($playerid, $forplayerid)
 {
-	return Event::fire("PlayerStreamIn", Player::find($playerid, true), Player::find($forplayerid, true));
+	return Event::fireDefault("PlayerStreamIn", true, Player::find($playerid, true), Player::find($forplayerid, true));
 }
 
 function OnPlayerStreamOut($playerid, $forplayerid)
 {
-	return Event::fire("PlayerStreamOut", Player::find($playerid, true), Player::find($forplayerid, true));
+	return Event::fireDefault("PlayerStreamOut", true, Player::find($playerid, true), Player::find($forplayerid, true));
 }
 
 function OnPlayerTakeDamage($playerid, $issuerid, $amount, $weaponid)
 {
-	return Event::fire("PlayerTakeDamage", Player::find($playerid, true), Player::find($issuerid, true), $amount, $weaponid);
+	return Event::fireDefault("PlayerTakeDamage", true, Player::find($playerid, true), Player::find($issuerid, true), $amount, $weaponid);
 }
 
 function OnPlayerTeamPrivmsg($playerid, $text)
 {
-	return Event::fire("PlayerTeamPrivmsg", Player::find($playerid, true), $text);
+	return Event::fireDefault("PlayerTeamPrivmsg", true, Player::find($playerid, true), $text);
 }
 
 function OnPlayerText($playerid, $text)
@@ -201,60 +201,60 @@ function OnPlayerText($playerid, $text)
 
 function OnPlayerUpdate($playerid)
 {
-	return Event::fire("PlayerUpdate", Player::find($playerid, true));
+	return Event::fireDefault("PlayerUpdate", true, Player::find($playerid, true));
 }
 
 function OnRconCommand($cmd)
 {
-	return Event::fire("RconCommand", $cmd);
+	return Event::until("RconCommand", false, $cmd);
 }
 
 function OnRconLoginAttempt($ip, $playerid, $success)
 {
-	return Event::fire("RconLoginAttempt", $ip, Player::find($playerid, true), $success);
+	return Event::fireDefault("RconLoginAttempt", true, $ip, Player::find($playerid, true), $success);
 }
 
 function OnUnoccupiedVehicleUpdate($vehicleid,	$playerid,	$passengerSeat)
 {
-	return Event::fire("UnoccupiedVehicleUpdate", $vehicleid, Player::find($playerid, true), $passengerSeat);
+	return Event::fireDefault("UnoccupiedVehicleUpdate", true, $vehicleid, Player::find($playerid, true), $passengerSeat);
 }
 
 function OnVehicleDamageStatusUpdate($vehicleid, $playerid)
 {
-	return Event::fire("VehicleDamageStatusUpdate", $vehicleid, Player::find($playerid, true));
+	return Event::fireDefault("VehicleDamageStatusUpdate", true, $vehicleid, Player::find($playerid, true));
 }
 
 function OnVehicleDeath($vehicleid, $killerid)
 {
-	return Event::fire("VehicleDeath", $vehicleid, Player::find($killerid, true));
+	return Event::fireDefault("VehicleDeath", true, $vehicleid, Player::find($killerid, true));
 }
 
 function OnVehicleMod($playerid, $vehicleid, $componentid)
 {
-	return Event::fire("VehicleMod", Player::find($playerid, true), $vehicleid, $componentid);
+	return Event::fireDefault("VehicleMod", true, Player::find($playerid, true), $vehicleid, $componentid);
 }
 
 function OnVehiclePaintjob($playerid, $vehicleid, $paintjobid)
 {
-	return Event::fire("VehiclePaintjob", Player::find($playerid, true), $vehicleid, $paintjobid);
+	return Event::fireDefault("VehiclePaintjob", true, Player::find($playerid, true), $vehicleid, $paintjobid);
 }
 
 function OnVehicleRespray($playerid, $vehicleid, $color1, $color2)
 {
-	return Event::fire("VehicleRespray", Player::find($playerid, true), $vehicleid, $color1, $color2);
+	return Event::fireDefault("VehicleRespray", true, Player::find($playerid, true), $vehicleid, $color1, $color2);
 }
 
 function OnVehicleSpawn($vehicleid)
 {
-	return Event::fire("OnVehicleSpawn", $vehicleid);
+	return Event::fireDefault("OnVehicleSpawn", true, $vehicleid);
 }
 
 function OnVehicleStreamIn($vehicleid, $forplayerid)
 {
-	return Event::fire("OnVehicleStreamIn", $vehicleid, Player::find($forplayerid, true));
+	return Event::fireDefault("OnVehicleStreamIn", true, $vehicleid, Player::find($forplayerid, true));
 }
 
 function OnVehicleStreamOut($vehicleid, $forplayerid)
 {
-	return Event::fire("VehicleStreamOut", $vehicleid, Player::find($forplayerid, true));
+	return Event::fireDefault("VehicleStreamOut", true, $vehicleid, Player::find($forplayerid, true));
 }

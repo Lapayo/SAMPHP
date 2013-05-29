@@ -42,7 +42,14 @@ class Vehicle
 
 	public function destroy()
 	{
-		return DestroyVehicle($this->id);
+		$result = DestroyVehicle($this->id);
+
+		// Make Vehicle object invalid
+		unset(static::$instances[$this->id]);
+		$this->id = INVALID_VEHICLE_ID;
+
+
+		return $result;
 	}
 
 	public function isStreamedIn($forPlayer)
