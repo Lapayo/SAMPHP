@@ -55,7 +55,7 @@ Getting started
 ===
 Getting started with SAMPHP isnt hard, but actually only works on linux x86 machines.
 At first you need the SAMPHP plugin for the server.
-You can compile SAMPHP yourself using the build.sh or you can later download a binary release.
+You can compile SAMPHP yourself using the build.sh (You will have to install php-embed (see below) and SAMPGDK (see https://github.com/Zeex/sampgdk#installation) or you can later download a binary release.
 
 Additionally you will need the php5 shared library. You can install it using the install_libphp5.sh script. You have to run it as root.
 

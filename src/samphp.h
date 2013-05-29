@@ -8,7 +8,7 @@
 #include <sampgdk/core.h>
 #include <sampgdk/plugin.h>
 //#include <sapi/embed/php_embed.h>
-#include <../phpembed/php_stl.h>
+#include <php_stl.h>
 
 class samphp : public php_stl 
 {

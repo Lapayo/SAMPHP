@@ -1,6 +1,5 @@
-#bash
-g++ -shared -o debug -I /usr/local/include/php -I /usr/local/include/php/Zend -I /usr/local/include/php/TSRM -I /usr/local/include/php/main -I /usr/local/include/php/sapi/embed -I ./src -w src/*.cpp phpembed/src/*.cpp -lsampgdk -lrt -lphp5
+set -e
 
-#debug helper: Move directly to samp server
-cp debug ../samp03/plugins/debug
+g++ -shared -o samphp -I ./phpembed/src -I /usr/local/include/php -I /usr/local/include/php/Zend -I /usr/local/include/php/TSRM -I /usr/local/include/php/main -I /usr/local/include/php/sapi/embed -I ./src -w src/*.cpp phpembed/src/*.cpp -lsampgdk -lrt -lphp5
+
 
