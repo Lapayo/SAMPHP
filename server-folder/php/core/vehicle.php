@@ -1,6 +1,6 @@
 <?php
 
-class Player
+class Vehicle
 {
 	use ModelEvent;
 
@@ -63,11 +63,3 @@ foreach($callbackNames as $extern => $intern)
 		call_user_func_array(array($player, 'fire'), $args);
 	});
 }
-
-
-/*
-Usage:
-Player::find(123)->on('Spawn', function($player) {
-	$player->kick();
-});
-*/

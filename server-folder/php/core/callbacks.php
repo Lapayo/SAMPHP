@@ -1,4 +1,8 @@
 <?php
+$callbackList = file_get_contents(__DIR__."/callbacks.txt");
+$callbackList = array_map(function($line) {
+	return trim($line);
+}, explode("\n", $callbackList));
 
 function OnDialogResponse($playerid, $dialogid, $response, $listitem, $inputtext)
 {
@@ -254,4 +258,3 @@ function OnVehicleStreamOut($vehicleid, $forplayerid)
 {
 	return Event::fire("VehicleStreamOut", $vehicleid, Player::find($forplayerid, true));
 }
-?>
