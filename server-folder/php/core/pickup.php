@@ -88,4 +88,3 @@ class Pickup
 		unset(static::$instances[$this->pickupid]);
 	}
 }
-?>
