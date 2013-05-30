@@ -18,7 +18,7 @@ class Pickup
 		if(isset(static::$instances[$id]))
 			return static::$instances[$id];
 
-		return null;
+		return static::$instances[$id] = new static($id);
 	}
 
 	public static function create($model, $type, $x, $y, $z, $virtualworld = 0)
@@ -37,7 +37,7 @@ class Pickup
 		static::$instances[$this->id] = $this;	
 	}
 
-	protected function __construct($id, $model, $type, $x, $y, $z, $virtualworld)
+	protected function __construct($id, $model = null, $type = null, $x = null, $y = null, $z = null, $virtualworld = null)
 	{
 		$this->id = $id;
 		$this->model = $model;

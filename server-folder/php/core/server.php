@@ -1,8 +1,11 @@
 <?php
-/*
-Not really helpful :D
 class Server
 {
+	public static function getVar($varname)
+	{
+		return GetServerVar($varname);
+	}
+
 	public static function setGameModeText($text)
 	{
 		return SetGameModeText($text);
@@ -40,4 +43,3 @@ class Server
 		return GameModeExit();
 	}
 }
-*/

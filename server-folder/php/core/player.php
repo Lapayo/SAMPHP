@@ -522,14 +522,116 @@ class Player
 		return AllowPlayerTeleport($this->id, $allow);
 	}
 
+	public function isAdmin()
+	{
+		return IsPlayerAdmin($this->id);
+	}
+
 	public function kick()
 	{
 		return Kick($this->id);
 	}
 
+	public function ban($reason = null)
+	{
+		if(isset($reason))
+		{
+			return BanEx($this->id, $reason);
+		}
+
+		return Ban($this->id);
+	}
+
+	public function getVersion()
+	{
+		return GetPlayerVersion($this->id);
+	}
+
+	public function getNetworkStats()
+	{
+		return GetPlayerNetworkStats($this->id);
+	}
+
 	public function sendClientMessage($color, $message)
 	{
 		return SendClientMessage($this->id, $color, $message);
+	}
+
+	public function isConnected()
+	{
+		return IsPlayerConnected($this->id);
+	}
+
+	public function isInVehicle($vehicle = null)
+	{
+		if(!isset($vehicle)) return $this->isInAnyVehicle();
+
+		return IsPlayerInVehicle($this->id, $vehicle->id);
+	}
+
+	public function isInAnyVehicle()
+	{
+		return IsPlayerInAnyVehicle($this->id);
+	}
+
+	public function isInCheckpoint()
+	{
+		return IsPlayerInCheckpoint($this->id);
+	}
+
+	public function isInRaceCheckpoint()
+	{
+		return IsPlayerInRaceCheckpoint($this->id);
+	}
+
+	public function isNPC()
+	{
+		return IsPlayerNPC($this->id);
+	}
+
+	public function setVirtualWorld($world)
+	{
+		return SetPlayerVirtualWorld($this->id, $world);
+	}
+
+	public function getVirtualWorld()
+	{
+		return GetPlayerVirtualWorld($this->id);
+	}
+
+	public function toggleSpectating($toggle)
+	{
+		return TogglePlayerSpectating($this->id, $toggle);
+	}
+
+	public function spectatePlayer($targetPlayer, $mode = SPECTATE_MODE_NORMAL)
+	{
+		return PlayerSpectatePlayer($this->id, $targetPlayer->id, $mode);
+	}
+
+	public function spectateVehicle($targetVehicle, $mode = SPECTATE_MODE_NORMAL)
+	{
+		return PlayerSpectatePlayer($this->id, $targetVehicle->id, $mode);
+	}
+
+	public function startRecording($type, $name)
+	{
+		return StopRecordingPlayerData($this->id, $type, $name);
+	}
+
+	public function stopRecording($type, $name)
+	{
+		return StopRecordingPlayerData($this->id);
+	}
+
+	public function selectTextDraw($hoverColor)
+	{
+		return SelectTextDraw($this->id, $hoverColor);
+	}
+
+	public function cancelSelectTextDraw()
+	{
+		return CancelSelectTextDraw($this->id);
 	}
 	
 }

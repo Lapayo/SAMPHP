@@ -13,7 +13,7 @@ class Text3D
 		if(isset(static::$instances[$id]))
 			return static::$instances[$id];
 
-		return null;
+		return static::$instances[$id] = new static($id);
 	}
 
 	public static function create($text, $color, $x, $y, $z, $drawDistance = 100.0, $virtualworld = 0, $testLOS = false)

@@ -36,7 +36,7 @@ class GangZone
 		$this->id = INVALID_GANG_ZONE;
 	}
 
-	protected function __construct($id, $min_x, $min_y, $max_x, $max_y)
+	protected function __construct($id, $min_x = null, $min_y = null, $max_x = null, $max_y = null)
 	{
 		$this->id = $id;
 		$this->min_x = $min_x;
