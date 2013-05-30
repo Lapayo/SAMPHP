@@ -21,11 +21,11 @@ class Pickup
 		return null;
 	}
 
-	public static function create($id, $model, $type, $x, $y, $z, $virtualworld = 0)
+	public static function create($model, $type, $x, $y, $z, $virtualworld = 0)
 	{
 		$id = CreatePickup($model, $type, $x, $y, $z, $virtualworld);
 
-		return static::$instances[$instance->id] = new static($id, $model, $type, $x, $y, $z, $virtualworld);
+		return static::$instances[$id] = new static($id, $model, $type, $x, $y, $z, $virtualworld);
 	}
 
 	public function recreate()

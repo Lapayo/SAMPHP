@@ -27,6 +27,16 @@ class Player
 		$this->id = $id;
 	}
 
+	public function setSpawnInfo($team, $skin, $x, $y, $z, $rotation = 0.0, $weapon1 = 0, $weapon1_ammo = 0, $weapon2 = 0, $weapon2_ammo = 0, $weapon3 = 0, $weapon3_ammo = 0)
+	{
+		SetSpawnInfo($this->id, $team, $skin, $x, $y, $z, $rotation, $weapon1, $weapon1_ammo, $weapon2, $weapon2_ammo, $weapon3, $weapon3_ammo);
+	}
+
+	public function spawn()
+	{
+		SpawnPlayer($this->id);
+	}
+
 	public function setPos($x, $y, $z)
 	{
 		return SetPlayerPos($this->id, $x, $y, $z);
@@ -177,51 +187,339 @@ class Player
 		return ResetPlayerWeapons($this->id);
 	}
 
+	public function setArmedWeapon($weaponid)
+	{
+		return SetPlayerArmedWeapon($this->id, $weaponid);
+	}
 
-	/*
-// Player info
-x native SetPlayerArmedWeapon(playerid, weaponid);
-x native GetPlayerWeaponData(playerid, slot, &weapons, &ammo);
-x native GetPlayerMoney(playerid);
-x native GivePlayerMoney(playerid,money);
-x native ResetPlayerMoney(playerid);
-x native SetPlayerName(playerid, const name[]);
-x native GetPlayerState(playerid);
-x native GetPlayerIp(playerid, name[], len);
-x native GetPlayerPing(playerid);
-x native GetPlayerWeapon(playerid);
-x native GetPlayerKeys(playerid, &keys, &updown, &leftright);
-x native GetPlayerName(playerid, const name[], len);
-x native SetPlayerTime(playerid, hour, minute);
-x native GetPlayerTime(playerid, &hour, &minute);
-x native TogglePlayerClock(playerid, toggle);
-x native SetPlayerWeather(playerid, weather);
-x native ForceClassSelection(playerid);
-x native SetPlayerWantedLevel(playerid, level);
-x native GetPlayerWantedLevel(playerid);
-x native SetPlayerFightingStyle(playerid, style);
-x native GetPlayerFightingStyle(playerid);
-x native SetPlayerVelocity(playerid, Float:X, Float:Y, Float:Z);
-x native GetPlayerVelocity( playerid, &Float:X, &Float:Y, &Float:Z );
-x native PlayCrimeReportForPlayer(playerid, suspectid, crime);
-x native PlayAudioStreamForPlayer(playerid, url[], Float:posX = 0.0, Float:posY = 0.0, Float:posZ = 0.0, Float:distance = 50.0, usepos = 0);
-x native StopAudioStreamForPlayer(playerid);
-x native SetPlayerShopName(playerid, shopname[]);
-x native SetPlayerSkillLevel(playerid, skill, level);
-x native GetPlayerSurfingVehicleID(playerid);
-x native GetPlayerSurfingObjectID(playerid);
-x native RemoveBuildingForPlayer(playerid, modelid, Float:fX, Float:fY, Float:fZ, Float:fRadius);
+	public function getWeaponData($slot)
+	{
+		return (object) GetPlayerWeaponData($this->id, $slot);
+	}
 
-x native SetPlayerAttachedObject(playerid, index, modelid, bone, Float:fOffsetX = 0.0, Float:fOffsetY = 0.0, Float:fOffsetZ = 0.0, Float:fRotX = 0.0, Float:fRotY = 0.0, Float:fRotZ = 0.0, Float:fScaleX = 1.0, Float:fScaleY = 1.0, Float:fScaleZ = 1.0, materialcolor1 = 0, materialcolor2 = 0);
-x native RemovePlayerAttachedObject(playerid, index);
-x native IsPlayerAttachedObjectSlotUsed(playerid, index);
-x native EditAttachedObject(playerid, index);
+	public function getMoney()
+	{
+		return GetPlayerMoney($this->id);
+	}
 
-	*/
+	public function getMoney($amount)
+	{
+		return GetPlayerMoney($this->id, $amount);
+	}
+
+	public function resetMoney()
+	{
+		return ResetPlayerMoney($this->id);
+	}
+
+	public function setName($name)
+	{
+		return SetPlayerName($this->id, $name);
+	}
+
+	public function getName()
+	{
+		return GetPlayerName($this->id);
+	}
+
+	public function getState()
+	{
+		return GetPlayerState($this->id);
+	}
+
+	public function getIp()
+	{
+		return GetPlayerIp($this->id);
+	}
+
+	public function getPing()
+	{
+		return GetPlayerPing($this->id);
+	}
+
+	public function getWeapon()
+	{
+		return GetPlayerWeapon($this->id);
+	}
+
+	public function getKeys()
+	{
+		return (object) GetPlayerKeys($this->id);
+	}
+
+	public function setTime($hour, $minute)
+	{
+		return SetPlayerTime($this->id, $hour, $minute);
+	}
+
+	public function getTime()
+	{
+		return GetPlayerTime($this->id);
+	}
+
+	public function toggleClock($toggle)
+	{
+		return TogglePlayerClock($this->id, $toggle);
+	}
+
+	public function setWeather($weather)
+	{
+		return SetPlayerWeather($this->id, $weather);
+	}
+
+	public function forceClassSelection()
+	{
+		return ForceClassSelection($this->id);
+	}
+
+	public function setWantedLevel($level)
+	{
+		return SetPlayerWantedLevel($this->id, $level);
+	}
+
+	public function getWantedLevel()
+	{
+		return GetPlayerWantedLevel($this->id);
+	}
+
+	public function increaseWantedLevel()
+	{
+		$level = $this->getWantedLevel() + 1;
+		$this->setWantedLevel($level);
+
+		return $level;
+	}
+
+	public function setFightingStyle($style)
+	{
+		return SetPlayerFightingStyle($this->id, $style);
+	}
+
+	public function getFightingStyle()
+	{
+		return GetPlayerFightingStyle($this->id);
+	}
+
+	public function setVelocity($x, $y, $z)
+	{
+		return SetPlayerVelocity($this->id, $x, $y, $z);
+	}
+
+	public function getVelocity()
+	{
+		return (object) GetPlayerVelocity($this->id);
+	}
+
+	public function playCrimeReportForPlayer($forPlayer, $crime)
+	{
+		return PlayCrimeReportForPlayer($this->id, Player::find($forPlayer)->id, $crime);
+	}
+
+	public function playAudioStream($url, $x = 0.0, $y = 0.0, $z = 0.0, $distance = 50.0, $usePos = false)
+	{
+		return PlayAudioStreamForPlayer($this->id, $x, $y, $z, $distance, $usePos);
+	}
+
+	public function stopAudioStream()
+	{
+		return StopAudioStreamForPlayer($this->id);
+	}
+
+	public function setShopName($name)
+	{
+		return StopAudioStreamForPlayer($this->id, $name);
+	}
+
+	public function setSkillLevel($skill, $level)
+	{
+		return SetPlayerSkillLevel($this->id, $skill, $level);
+	}
+
+	public function getSurfingVehicle()
+	{
+		return Vehicle::find($this->getSurfingVehicleId());
+	}
+
+	public function getSurfingVehicleId()
+	{
+		return GetPlayerSurfingVehicleID($this->id);
+	}
+
+	public function getSurfingObjectId()
+	{
+		return GetPlayerSurfingObjectID($this->id);
+	}
+
+	public function removeBuilding($modelid, $x = null, $y = null, $z = null, $radius = 50.0)
+	{
+		if(!isset($x))	// $x unset, get player position and use this
+		{
+			$playerPos = $this->getPos();
+			$x = $playerPos->x;
+			$y = $playerPos->y;
+			$z = $playerPos->z;
+		}
+
+		return RemoveBuildingForPlayer($this->id, $modelid, $x, $y, $z, $radius);
+	}
+
+	public function setAttachedObject($index, $modelid, $bone, $fOffsetX = 0.0, $fOffsetY = 0.0, $fOffsetZ = 0.0, 
+		$fRotX = 0.0, $fRotY = 0.0, $fRotZ = 0.0, $fScaleX = 1.0, Float:fScaleY = 1.0, $fScaleZ = 1.0, $materialcolor1 = 0, $materialcolor2 = 0)
+	{
+		return SetPlayerAttachedObject($this->id, $index, $modelid, $bone, $fOffsetX, $fOffsetY, $fOffsetZ, $fRotX, $fRotY, $fRotZ, $fScaleX, $fScaleY, $fScaleZ, $materialcolor1 $materialcolor2);
+	}
+	
+	public function removeAttachedObject($index)
+	{
+		return RemovePlayerAttachedObject($this->id, $index);
+	}
+	
+	public function isAttachedObjectSlotUsed($index)
+	{
+		return IsPlayerAttachedObjectSlotUsed($this->id, $index);
+	}
+	
+	public function editAttachedObject($index)
+	{
+		return EditAttachedObject($this->id, $index);
+	}
+
+	public function setChatBubble($text, $color, $drawDistance = 50.0, $expireTime = 10.0)
+	{
+		return SetPlayerChatBubble($this->id, $text, $color, $drawDistance, $expireTime);
+	}
 
 	public function putInVehicle($vehicle, $seat = 0)
 	{
 		return PutPlayerInVehicle($this->id, Vehicle::find($vehicle)->id, $seat);
+	}
+
+	public function removeFromVehicle()
+	{
+		return RemovePlayerFromVehicle($this->id);
+	}
+
+	public function getVehicleId()
+	{
+		return GetPlayerVehicleID($this->id);
+	}
+
+	public function getVehicle()
+	{
+		return Vehicle::find($this->getVehicleId());
+	}
+
+	public function getVehicleSeat()
+	{
+		return GetPlayerVehicleSeat($this->id);
+	}
+
+	public function toggleControllable($controllable)
+	{
+		return TogglePlayerControllable($this->id, $controllable);
+	}
+
+	public function freeze($controllable)
+	{
+		return $this->toggleControllable(false);
+	}
+
+	public function unfreeze($controllable)
+	{
+		return $this->toggleControllable(true);
+	}
+
+	public function playSound($sound, $x = null, $y = null, $z = null)
+	{
+		if(!isset($x))	// $x unset, get player position and use this
+		{
+			$playerPos = $this->getPos();
+			$x = $playerPos->x;
+			$y = $playerPos->y;
+			$z = $playerPos->z;
+		}
+
+		return PlayerPlaySound($this->id, $sound, $x , $y, $z);
+	}
+
+	public function applyAnimation($lib, $name, $fD, $loop, $lockX, $lockY, $freeze, $time, $forceSync = false)
+	{
+		return ApplyAnimation($this->id, $lib, $name, $fD, $loop, $lockX, $lockY, $freeze, $time, $forceSync);
+	}
+
+	public function clearAnimations($forceSync = false)
+	{
+		return ClearAnimations($this->id, $forceSync);
+	}
+
+	public function getAnimationIndex()
+	{
+		return GetPlayerAnimationIndex($this->id);
+	}
+
+	public function getAnimationName()
+	{
+		return (object) GetAnimationName($this->id);
+	}
+
+	public function setSpecialAction($action)
+	{
+		return SetPlayerSpecialAction($this->id, $action);
+	}
+
+	public function getSpecialAction()
+	{
+		return GetPlayerSpecialAction($this->id);
+	}
+
+	public function setCheckpoint($x, $y, $z, $size = 10.0, $onEnter = null, $onLeave = null)
+	{
+		return Checkpoint::createForPlayer($this, $x, $y, $z, $size, $onEnter, $onLeave);
+	}
+
+	public function disableCheckpoint()
+	{
+		return Checkpoint::destroyForPlayer($this);
+	}
+
+	public function setRaceCheckpoint($type, $x, $y, $z, $nextx, $nexty, $nextz, $size = 10.0, $onEnter = null, $onLeave = null)
+	{
+		return RaceCheckpoint::createForPlayer($this, $x, $y, $z, $size, $onEnter, $onLeave);
+	}
+
+	public function disableRaceCheckpoint()
+	{
+		return RaceCheckpoint::destroyForPlayer($this);
+	}
+
+	public function setWorldBounds($max_x, $max_y, $max_z, $min_x, $min_y, $min_z)
+	{
+		return SetPlayerWorldBounds($this->id, $max_x, $max_y, $max_z, $min_x, $min_y, $min_z);
+	}
+
+	public function setMarkerForPlayer($showPlayer, $color)
+	{
+		return SetPlayerMarkerForPlayer($this->id, Player::find($showPlayer)->id, $color);
+	}
+
+	public function showNameTagForPlayer($showPlayer, $show = true)
+	{
+		return ShowPlayerNameTagForPlayer($this->id, Player::find($showPlayer)->id, $show);
+	}
+
+	public function setMapIcon($iconid, $x, $y, $z, $type, $color, $style = MAPICON_LOCAL)
+	{
+		return SetPlayerMapIcon($this->id, $iconid, $x, $y, $z, $type, $color, $style);
+	}
+
+	public function removeMapIcon($iconid)
+	{
+		return RemovePlayerMapIcon($this->id, $iconid);
+	}
+
+	public function allowTeleport($allow = true)
+	{
+		return AllowPlayerTeleport($this->id, $allow);
 	}
 
 	public function kick()
@@ -233,12 +531,6 @@ x native EditAttachedObject(playerid, index);
 	{
 		return SendClientMessage($this->id, $color, $message);
 	}
-
-	public function getName()
-	{
-		return GetPlayerName($this->id);
-	}
-
 	
 }
 
