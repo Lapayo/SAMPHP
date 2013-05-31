@@ -1,7 +1,7 @@
 <?php
 class Menu
 {
-  use ModelEvent;
+  	use ModelEvent;
 
 	protected static $instances = array();
 
