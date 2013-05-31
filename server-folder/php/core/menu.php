@@ -14,7 +14,7 @@ class Menu
 	protected $colwidth;
 	protected $rows = array(array(),array());
 
-	public static function find($id, $disableChecks = false)
+	public static function find($id, $disableChecks)
 	{
 		if($id instanceof Menu)
 			return $id;
