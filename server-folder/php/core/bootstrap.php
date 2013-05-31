@@ -18,3 +18,5 @@ require_once 'racecheckpoint.php';
 
 require_once 'text3d.php';
 require_once 'playertext3d.php';
+
+require_once 'menu.php';
