@@ -8,6 +8,8 @@ trait ModelEvent
 	{
 		if(is_callable($callback))
 			$this->events['on'][$name][] = $callback;
+
+		return $this;
 	}
 	
 	public function fire($name /*, ... */)

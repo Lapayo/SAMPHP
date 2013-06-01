@@ -17,9 +17,9 @@ public:
 
     static samphp* instance;
     static samphp* init();
-    static samphp* reload();
+    static samphp* unload();
 
-    bool load(std::string filename);
+    bool loadGamemode();
 
 protected:
 	std::string loadedFile;

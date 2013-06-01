@@ -106,7 +106,7 @@ function OnPlayerExitedMenu($playerid)
 
 function OnPlayerGiveDamage($playerid, $damagedid, $amount, $weaponid)
 {
-	return Event::fireDefault("PlayerGiveDamage", true, Player::find($playerid, true), $damagedid, $amount, $weaponid);
+	return Event::fireDefault("PlayerGiveDamage", true, Player::find($playerid, true), Player::find($damagedid, true), $amount, $weaponid);
 }
 
 function OnPlayerInteriorChange($playerid, $newinteriorid, $oldinteriorid)

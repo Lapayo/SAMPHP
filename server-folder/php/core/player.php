@@ -202,9 +202,9 @@ class Player
 		return GetPlayerMoney($this->id);
 	}
 
-	public function getMoney($amount)
+	public function giveMoney($amount)
 	{
-		return GetPlayerMoney($this->id, $amount);
+		return GivePlayerMoney($this->id, $amount);
 	}
 
 	public function resetMoney()
@@ -364,9 +364,9 @@ class Player
 	}
 
 	public function setAttachedObject($index, $modelid, $bone, $fOffsetX = 0.0, $fOffsetY = 0.0, $fOffsetZ = 0.0, 
-		$fRotX = 0.0, $fRotY = 0.0, $fRotZ = 0.0, $fScaleX = 1.0, Float:fScaleY = 1.0, $fScaleZ = 1.0, $materialcolor1 = 0, $materialcolor2 = 0)
+		$fRotX = 0.0, $fRotY = 0.0, $fRotZ = 0.0, $fScaleX = 1.0, $fScaleY = 1.0, $fScaleZ = 1.0, $materialcolor1 = 0, $materialcolor2 = 0)
 	{
-		return SetPlayerAttachedObject($this->id, $index, $modelid, $bone, $fOffsetX, $fOffsetY, $fOffsetZ, $fRotX, $fRotY, $fRotZ, $fScaleX, $fScaleY, $fScaleZ, $materialcolor1 $materialcolor2);
+		return SetPlayerAttachedObject($this->id, $index, $modelid, $bone, $fOffsetX, $fOffsetY, $fOffsetZ, $fRotX, $fRotY, $fRotZ, $fScaleX, $fScaleY, $fScaleZ, $materialcolor1, $materialcolor2);
 	}
 	
 	public function removeAttachedObject($index)

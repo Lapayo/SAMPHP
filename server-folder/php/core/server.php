@@ -42,4 +42,9 @@ class Server
 	{
 		return GameModeExit();
 	}
+
+	public static function sendClientMessageToAll($color, $message)
+	{
+		return SendClientMessageToAll($color, $message);
+	}
 }

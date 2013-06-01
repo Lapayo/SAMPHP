@@ -29,6 +29,16 @@ class Checkpoint
 		}
 	}
 
+	public static function findForPlayer($player)
+	{
+		if(isset(static::$instances[$player->id]))
+		{
+			return static::$instances[$player->id];
+		}
+
+		return null;
+	}
+
 	public static function handleEnter($player)
 	{
 		if(isset(static::$instances[$player->id]))
@@ -93,6 +103,14 @@ class Checkpoint
 		if(!isset($size)) $size = $this->size;
 
 		SetPlayerCheckpoint($this->player->id, $x, $y, $z, $size);
+	}
+
+	public function isPlayerInRange($range = 50.0, $player = null)
+	{
+		if(!isset($player))
+			$player = $this->player;
+
+		return $player->getDistanceFromPoint($this->x, $this->y, $this->z) <= $range;
 	}
 }
 

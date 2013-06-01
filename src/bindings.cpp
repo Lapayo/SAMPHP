@@ -128,6 +128,7 @@ static zend_function_entry php_samphp_functions[] = {
 	PHP_FE(DestroyMenu, NULL)
 	PHP_FE(AddMenuItem, NULL)
 	PHP_FE(SetMenuColumnHeader, NULL)
+	PHP_FE(ShowMenuForPlayer, NULL)
 	PHP_FE(HideMenuForPlayer, NULL)
 	PHP_FE(IsValidMenu, NULL)
 	PHP_FE(DisableMenu, NULL)
