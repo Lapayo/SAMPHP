@@ -5,7 +5,7 @@ rm -rf $SRCDIR
 
 PHP5="php-5.4.15"
 
-PHPFEATURES="--enable-embed=static --disable-cli --disable-cgi \
+PHPFEATURES="--enable-embed --disable-cli --disable-cgi \
 "
 
 mkdir -p ${SRCDIR}
