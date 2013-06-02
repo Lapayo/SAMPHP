@@ -55,14 +55,19 @@ Getting started
 ===
 Getting started with SAMPHP isnt hard, but actually only works on linux x86 machines.
 At first you need the SAMPHP plugin for the server.
-You can compile SAMPHP yourself using the build.sh (You will have to install php-embed (see below) and SAMPGDK (see https://github.com/Zeex/sampgdk#installation) or you can later download a binary release.
+You can download it here:
+www.sney.net/files/samphp.zip
 
-Additionally you will need the php5 shared library. You can install it using the install_libphp5.sh script. You have to run it as root.
-
-Now simply copy the SAMPHP binary to the plugins folder of you SA:MP server, add "plugins=samphp" to your server configuration and create a folder called "php".
+Simply copy the SAMPHP binary to the plugins folder of you SA:MP server, add "plugins=samphp" to your server configuration and create a folder called "php".
 Inside this folder you create a gamemode.php file, which will contain your gamemode logic.
 
 That's it. If you start your server, SAMPHP will do the rest and load your PHP script. ;-)
+
+Compile from source:
+You can compile SAMPHP yourself using the build.sh (You will have to install php-embed (see below) and SAMPGDK (see https://github.com/Zeex/sampgdk#installation).
+
+Additionally you will need the php5-embed library. You can compile and install it using the install_libphp5.sh script. You have to run it as root.
+
 
 Thanks to
 ===
