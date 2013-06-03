@@ -102,3 +102,15 @@ CommandText::register('/dialog2', function($player, $params) {
 	Dialog::named('spawnvehicle')->showPlayer($player);
 });
 
+
+$objects = array(); 
+Event::on('PlayerEnterVehicle', function($player, $vehicle) use($objects) {
+	$objects[$player->id] = CreatePlayerObject($player->id, 19300, 0.0000, -1282.9984, 10.1493, 0.0000, -1, -1, 100);
+	AttachPlayerObjectToVehicle($player->id, $objects[$player->id], $vehicle->id, -0.6, -0.3, 0.490000, 0.000000, 0.000000, 0.000000);
+	AttachCameraToPlayerObject($player->id, $objects[$player->id]);
+});
+
+Event::on('PlayerExitVehicle', function($player, $vehicle) use($objects) {
+	SetCameraBehindPlayer($player->id);
+	DestroyPlayerObject($player->id, $objects[$player->id]);
+});
