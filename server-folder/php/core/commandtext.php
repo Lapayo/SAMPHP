@@ -8,7 +8,7 @@ class CommandText
 	{
 		foreach((array) $commands as $command)
 		{
-			$command = '/'.ltrim($command, '/');
+			$command = strtolower('/'.ltrim($command, '/'));
 			static::$commands[$command] = $callback;
 		}
 	}
@@ -17,7 +17,7 @@ class CommandText
 	{
 		$splittedParams = explode(' ', $commandStr);
 
-		$command = $splittedParams[0];
+		$command = strtolower($splittedParams[0]);
 
 		if(!isset(static::$commands[$command])) return false;
 

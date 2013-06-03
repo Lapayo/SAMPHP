@@ -45,3 +45,13 @@ CommandText::register(array('/vehicle', '/v', '/veh'), function($player, $params
 CommandText::register('/buy', function($player, $params) use($spawnVehicleMenu) {
 	$spawnVehicleMenu->showForPlayer($player);
 });
+
+CommandText::register('/goto', function($player, $params) {
+	$destPlayer = Player::find($params);
+
+	$interior = $destPlayer->getInterior();
+	$pos = $destPlayer->getPos();
+
+	$player->setInterior($interior);
+	$player->setPos($pos->x, $pos->y, $pos->z);
+});
