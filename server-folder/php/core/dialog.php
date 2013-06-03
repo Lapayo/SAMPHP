@@ -41,7 +41,7 @@ class Dialog
 		$this->button = array(1 => $button1, 0 => $button2);
 	}
 
-	public function addListItem($itemtext,$value=null)
+	public function addListItem($itemtext, $value=null)
 	{
 		if($this->style == DIALOG_STYLE_LIST)
 			$this->info[] = array('item' => $itemtext, 'value' => $value);
