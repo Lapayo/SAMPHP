@@ -54,7 +54,7 @@ Dialog::createList("Spawn Vehicle", "Okay", "Oh no")
 
 		$player->putInVehicle($vehicle);
 	})
-	->as('spawnvehicle');
+	->name('spawnvehicle');
 
 Event::on('GameModeInit', function() {
 	echo "I got loaded!";

@@ -10,7 +10,7 @@ class Dialog
 	public $info;
 	protected $buttons = array();
 
-	protected static const $internalId = 32000;
+	const internalId = 32000;
 
 	public static function create($style, $caption, $button1, $button2 = null)
 	{
@@ -32,7 +32,7 @@ class Dialog
 		return isset(static::$named[$name]) ? static::$named[$name] : null;
 	}
 
-	public function as($name)
+	public function name($name)
 	{
 		static::$named[$name] = $this;
 
@@ -87,14 +87,14 @@ class Dialog
 
 		static::$instances[$player->id] = $this;
 
-		ShowPlayerDialog($player->id, static::$internalId, $this->style, $this->caption, $info, $this->button[1], $this->button[0]);
+		ShowPlayerDialog($player->id, static::internalId, $this->style, $this->caption, $info, $this->button[1], $this->button[0]);
 
 		return $this;
 	}
 
 	public static function handleResponse($player, $dialogid, $response, $listitem, $inputtext)
 	{
-		if($dialogid !== static::$internalId) return false;
+		if($dialogid !== static::internalId) return false;
 
 		$dialog = static::findForPlayer($player);
 
