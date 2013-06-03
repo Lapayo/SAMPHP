@@ -17,6 +17,27 @@ $spawnVehicleMenu = Menu::create("Spawn Vehicle", 200, 100, 150, 50)
 
 		$player->putInVehicle($vehicle);
 	});
+$testDialog = Dialog::create(DIALOG_STYLE_LIST, 'title', 'okay', 'cancel')
+	->addListItem('Infernus', 411)
+	->addListItem('FBI Truck', 528)
+	->addListItem('Bike', 509)
+	->addListItem('BMX', 481)
+	->addListItem('Mountain Bike', 510)
+	->addListItem('Firetruck', 407)
+	->addListItem('Firetruck with Ladder', 544)
+	->addListItem('SWAT', 601)
+	->addListItem('Tank (Rhino)', 432)
+	->on('Response', function($player, $dialog, $inputtext, $button, $value){
+		if($button)
+		{
+			$pos = $player->getPos();
+			$facing = $player->getFacingAngle();
+	
+			$vehicle = Vehicle::create($value, $pos->x, $pos->y, $pos->z, $facing);
+	
+			$player->putInVehicle($vehicle);						
+		}
+	});
 
 Event::on('GameModeInit', function() {
 	echo "I got loaded!";
@@ -55,3 +76,8 @@ CommandText::register('/goto', function($player, $params) {
 	$player->setInterior($interior);
 	$player->setPos($pos->x, $pos->y, $pos->z);
 });
+
+CommandText::register('/dialog', function($player, $params) use($testDialog){
+	$testDialog->showPlayer($player);
+});
+
