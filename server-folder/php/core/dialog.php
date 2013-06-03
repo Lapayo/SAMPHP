@@ -4,6 +4,7 @@ class Dialog
 	use ModelEvent;
 
 	protected static $instances = array();
+	protected static $named = array();
 	protected $style;
 	public $caption;
 	public $info;
@@ -16,9 +17,26 @@ class Dialog
 		return new static($style, $caption, $button1, $button2);
 	}
 
+	public static function createList($caption, $button1, $button2 = null)
+	{
+		return static::create(DIALOG_STYLE_LIST, $caption, $button1, $button2);
+	}
+
 	public static function findForPlayer($player)
 	{
 		return isset(static::$instances[$player->id]) ? static::$instances[$player->id] : null;
+	}
+
+	public static function named($name)
+	{
+		return isset(static::$named[$name]) ? static::$named[$name] : null;
+	}
+
+	public function as($name)
+	{
+		static::$named[$name] = $this;
+
+		return $this;
 	}
 
 	protected function __construct($style, $caption, $button1, $button2)
@@ -33,6 +51,11 @@ class Dialog
 		if($this->style == DIALOG_STYLE_LIST)
 			$this->info[] = array('item' => $itemtext, 'value' => $value);
 		return $this;
+	}
+
+	public function addRow($text, $value = null)
+	{
+		return $this->addListItem($text, $value);
 	}
 
 	public function setInfo($info)
@@ -85,8 +108,18 @@ class Dialog
 			$text = $dialog->info[$listitem]['item'];
 
 			$dialog->fire('Response', $player, $dialog, $response, $value, $text);
+
+			if($response)
+				$dialog->fire('Success', $player, $dialog, $value, $text);
+			else
+				$dialog->fire('Cancel', $player, $dialog, $value, $text);
 		}else{
 			$dialog->fire('Response', $player, $dialog, $response, $inputtext);
+
+			if($response)
+				$dialog->fire('Success', $player, $dialog, $inputtext);
+			else
+				$dialog->fire('Cancel', $player, $dialog, $inputtext);
 		}
 
 

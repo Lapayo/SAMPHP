@@ -17,6 +17,7 @@ $spawnVehicleMenu = Menu::create("Spawn Vehicle", 200, 100, 150, 50)
 
 		$player->putInVehicle($vehicle);
 	});
+
 $testDialog = Dialog::create(DIALOG_STYLE_LIST, 'title', 'okay', 'cancel')
 	->addListItem('Infernus', 411)
 	->addListItem('FBI Truck', 528)
@@ -27,7 +28,7 @@ $testDialog = Dialog::create(DIALOG_STYLE_LIST, 'title', 'okay', 'cancel')
 	->addListItem('Firetruck with Ladder', 544)
 	->addListItem('SWAT', 601)
 	->addListItem('Tank (Rhino)', 432)
-	->on('Response', function($player, $dialog, $inputtext, $button, $value){
+	->on('Response', function($player, $dialog, $button, $value){
 		if($button)
 		{
 			$pos = $player->getPos();
@@ -38,6 +39,22 @@ $testDialog = Dialog::create(DIALOG_STYLE_LIST, 'title', 'okay', 'cancel')
 			$player->putInVehicle($vehicle);						
 		}
 	});
+
+Dialog::createList("Spawn Vehicle", "Okay", "Oh no")
+	->addRow("Stallion", 439)
+	->addRow("Pizzaboy", 448)
+	->addRow("Turismo", 451)
+	->addRow("Flatbed", 455)
+	->addRow("Yankee", 456)
+	->on("Success", function($player, $dialog, $id) {
+		$pos = $player->getPos();
+		$facing = $player->getFacingAngle();
+
+		$vehicle = Vehicle::create($id, $pos->x, $pos->y, $pos->z, $facing);
+
+		$player->putInVehicle($vehicle);
+	})
+	->as('spawnvehicle');
 
 Event::on('GameModeInit', function() {
 	echo "I got loaded!";
@@ -79,5 +96,9 @@ CommandText::register('/goto', function($player, $params) {
 
 CommandText::register('/dialog', function($player, $params) use($testDialog){
 	$testDialog->showPlayer($player);
+});
+
+CommandText::register('/dialog2', function($player, $params) {
+	Dialog::named('spawnvehicle')->showPlayer($player);
 });
 

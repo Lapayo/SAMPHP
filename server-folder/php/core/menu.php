@@ -163,6 +163,7 @@ class Menu
 		}
 
 		$menu->fire('PlayerSelectedRow', $player, $value1, $value2);
+		$menu->fire('Success', $player, $value1, $value2);
 	}
 
 	public static function handleExited($player)
