@@ -106,7 +106,7 @@ class Dialog
 			if($dialog->info[$listitem]['value'] !== null)
 				$value = $dialog->info[$listitem]['value'];
 		else
-			$value = $listitem = null;
+			$value = null;
 		$dialog->setIdToNull();
 		$dialog->fire('Response', $player, $dialog, $inputtext, $dialog->button[$response], $value);
 	}
