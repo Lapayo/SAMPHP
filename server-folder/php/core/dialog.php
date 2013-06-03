@@ -86,7 +86,7 @@ class Dialog
 		return $this;
 	}
 
-	private function setIdToNull()
+	protected function setIdToNull()
 	{
 		$this->id = null;
 		$this->player = null;
