@@ -47,4 +47,14 @@ class Server
 	{
 		return SendClientMessageToAll($color, $message);
 	}
+
+	public static function gameTextForAll($message, $time, $style)
+	{
+		return GameTextForAll($message, $time, $style);
+	}
+
+	public static function gameTextForPlayer($player, $message, $time, $style)
+	{
+		return GameTextForAll($player->id, $message, $time, $style);
+	}
 }

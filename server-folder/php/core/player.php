@@ -1,4 +1,5 @@
 <?php
+require 'playercamera.php';
 
 class Player
 {
@@ -7,6 +8,8 @@ class Player
 	protected static $instances = array();
 
 	public $id;
+
+	public $camera = null;
 
 	public static function find($id, $disableChecks = false)
 	{
@@ -25,6 +28,8 @@ class Player
 	protected function __construct($id)
 	{
 		$this->id = $id;
+
+		$this->camera = PlayerCamera::findForPlayer($this);
 	}
 
 	public function setSpawnInfo($team, $skin, $x, $y, $z, $rotation = 0.0, $weapon1 = 0, $weapon1_ammo = 0, $weapon2 = 0, $weapon2_ammo = 0, $weapon3 = 0, $weapon3_ammo = 0)
@@ -555,6 +560,31 @@ class Player
 	public function sendClientMessage($color, $message)
 	{
 		return SendClientMessage($this->id, $color, $message);
+	}
+
+	public function sendMessageToPlayer($receiver, $message)
+	{
+		return SendPlayerMessageToPlayer($receiver->id, $this->id, $color, $message);
+	}
+
+	public function sendMessageFromPlayer($sender, $message)
+	{
+		return SendPlayerMessageToPlayer($this->id, $sender->id, $color, $message);
+	}
+
+	public function sendDiedMessage($killer, $weapon)
+	{
+		return SendDeathMessage($killer->id, $this->id, $weapon);
+	}
+
+	public function sendKilledMessage($killee, $weapon)
+	{
+		return SendDeathMessage($this->id, $killee->id, $weapon);
+	}
+
+	public function gameText($message, $time, $style)
+	{
+		return GameTextForAll($this->id, $message, $time, $style);
 	}
 
 	public function isConnected()
