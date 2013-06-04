@@ -148,12 +148,12 @@ class Menu
 		return IsValidMenu($this->id);
 	}
 
-	public function disableMenu()
+	public function disable()
 	{
 		return DisableMenu($this->id);
 	}
 
-	public function disableMenuRow($row)
+	public function disableRow($row)
 	{
 		return DisableMenuRow($this->id, $row);
 	}
