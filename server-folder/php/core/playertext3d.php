@@ -4,15 +4,15 @@ class PlayerText3D
 	protected static $instances = array();
 
 	protected $id;
-	protected $player;
+	protected $playerId;
 
-	public static function find($id)
+	public static function find($player, $textid)
 	{
 		if($id instanceof PlayerText3D)
 			return $id;
 
-		if(isset(static::$instances[$id]))
-			return static::$instances[$id];
+		if(isset(static::$instances[$player->id][$id]))
+			return static::$instances[$player->id][$id];
 
 		return null;
 	}
@@ -22,30 +22,30 @@ class PlayerText3D
 	{
 		$id = CreatePlayer3DTextLabel($player->id, $text, $color, $x, $y, $z, $drawDistance, $attachedplayer, $attachedvehicle, $virtualworld, $testLOS);
 
-		return static::$instances[$id] = new static($player, $id);
+		return static::$instances[$player->id][$id] = new static($player->id, $id);
 	}
 
 	public function destroy()
 	{
-		DeletePlayer3DTextLabel($this->player->id, $this->id);
-		unset(static::$instances[$this->id]);
+		DeletePlayer3DTextLabel($this->playerId, $this->id);
+		unset(static::$instances[$this->playerId][$this->id]);
 
 		$this->id = INVALID_3DTEXT_ID;
 	}
 
-	protected function __construct($player, $id)
+	protected function __construct($playerid, $id)
 	{
 		$this->id = $id;
-		$this->player = $player;
+		$this->playerId = $playerid;
 	}
 
 	public function setText($color, $text)
 	{
-		return UpdatePlayer3DTextLabelText($this->player->id, $this->id, $color, $text);
+		return UpdatePlayer3DTextLabelText($this->playerId, $this->id, $color, $text);
 	}
 
 	public function updateText($color, $text)
 	{
-		return UpdatePlayer3DTextLabelText($this->player->id, $this->id, $color, $text);
+		return UpdatePlayer3DTextLabelText($this->playerId, $this->id, $color, $text);
 	}
 }

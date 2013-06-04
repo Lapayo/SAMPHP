@@ -6,7 +6,7 @@ class Pickup
 	protected static $instances = array();
 
 	protected $id;
-	protected $modelid;
+	protected $model;
 	protected $type;
 	protected $x;
 	protected $y;
@@ -19,6 +19,11 @@ class Pickup
 			return static::$instances[$id];
 
 		return static::$instances[$id] = new static($id);
+	}
+
+	public static function createStatic($model, $type, $x, $y, $z, $virtualworld = 0)
+	{
+		return AddStaticPickup($model, $type, $x, $y, $z, $virtualworld);
 	}
 
 	public static function create($model, $type, $x, $y, $z, $virtualworld = 0)

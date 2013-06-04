@@ -143,6 +143,21 @@ class Menu
 		return $this;
 	}
 
+	public function isValid()
+	{
+		return IsValidMenu($this->id);
+	}
+
+	public function disableMenu()
+	{
+		return DisableMenu($this->id);
+	}
+
+	public function disableMenuRow($row)
+	{
+		return DisableMenuRow($this->id, $row);
+	}
+
 	public static function handleSelectedRow($player, $row)
 	{
 		$menu = static::findForPlayer($player);

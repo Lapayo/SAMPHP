@@ -663,6 +663,11 @@ class Player
 	{
 		return CancelSelectTextDraw($this->id);
 	}
+
+	public function enableStuntBonus($enable = true)
+	{
+		return EnableStuntBonusForPlayer($this->id, $enable);
+	}
 	
 }
 

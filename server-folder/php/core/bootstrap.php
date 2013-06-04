@@ -22,3 +22,5 @@ require_once 'playertext3d.php';
 require_once 'menu.php';
 require_once 'dialog.php';
 require_once 'server.php';
+require_once 'playerobject.php';
+require_once 'object.php';
