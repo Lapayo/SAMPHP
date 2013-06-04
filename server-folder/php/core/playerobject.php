@@ -9,10 +9,10 @@ class PlayerObject
 
 	public static function findForPlayer($player, $objectid)
 	{
-		if(isset(static::$instances[$player->id][$id]))
-			return static::$instances[$player->id][$id];
+		if(isset(static::$instances[$player->id][$objectid]))
+			return static::$instances[$player->id][$objectid];
 
-		return static::$instances[$player->id][$id] = new static($player->id, $id);
+		return static::$instances[$player->id][$objectid] = new static($player->id, $objectid);
 	}
 
 	public static function create($player, $model, $x, $y, $z, $rX = 0.0, $rY = 0.0, $rZ = 0.0, $drawDistance = 0.0)

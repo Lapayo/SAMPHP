@@ -24,3 +24,5 @@ require_once 'dialog.php';
 require_once 'server.php';
 require_once 'playerobject.php';
 require_once 'object.php';
+require_once 'playertextdraw.php';
+require_once 'textdraw.php';

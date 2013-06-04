@@ -30,7 +30,7 @@ class Object
 		$this->id = INVALID_OBJECT_ID;
 	}
 
-	protected function __construct($playerid, objectid, $model = null)
+	protected function __construct($id, $model = null)
 	{
 		$this->id = $id;
 		$this->model = $model;
