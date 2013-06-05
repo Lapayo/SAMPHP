@@ -22,6 +22,23 @@ class Vehicle
 		return static::$instances[$id] = new static($id);
 	}
 
+	public static function createStatic($modelId, $x, $y, $z, $angle, $color1 = null, $color2 = null, $respawnDelay = null)
+	{
+		//Check for trains:
+		if(is_null($color1))
+			$color1 = rand(0, 255);
+
+		if(is_null($color2))
+			$color2 = rand(0, 255);
+
+		if(isset($respawnDelay))
+			$id = AddStaticVehicleEx($modelId, $x, $y, $z, $angle, $color1, $color2, $respawnDelay);
+		else
+			$id = AddStaticVehicle($modelId, $x, $y, $z, $angle, $color1, $color2);
+
+		return static::find($id, true);
+	}
+
 	public static function create($modelId, $x, $y, $z, $angle, $color1 = null, $color2 = null, $respawnDelay = -1)
 	{
 		//Check for trains:
@@ -234,6 +251,40 @@ class Vehicle
 	public function setVirtualWorld($world)
 	{
 		return SetVehicleVirtualWorld($this->id, $world);
+	}
+
+
+
+	public static function function loadStaticVehiclesFromFile($filename, $respawnDelay = 30*60)
+	{
+		$spawnedVehicles = 0;
+
+		if(is_array($filename))
+		{
+			foreach($filename as $file)
+			{
+				$spawnedVehicles += LoadStaticVehiclesFromFile($file);
+			}
+
+			return $spawnedVehicles;
+		}
+
+		$content = file_get_contents($filename);
+
+		foreach(explode("\n", $content) as $line)
+		{
+			$line = trim($line);
+
+			$split = explode(';', $line);
+
+			$spawn = explode(',', trim($split[0]));
+
+			static::createStatic($spawn[0], $spawn[1], $spawn[2], $spawn[3], $spawn[4], $spawn[5], $spawn[6], $respawnDelay);	// 30 min respawn delay
+
+			$spawnedVehicles++;
+		}
+
+		return $spawnedVehicles;
 	}
 }
 

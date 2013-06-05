@@ -1,10 +1,9 @@
 <?php
 class Dialog
 {
-	use ModelEvent;
+	use ModelEvent, NamedInstance;
 
 	protected static $instances = array();
-	protected static $named = array();
 	protected $style;
 	public $caption;
 	public $info;
@@ -25,18 +24,6 @@ class Dialog
 	public static function findForPlayer($player)
 	{
 		return isset(static::$instances[$player->id]) ? static::$instances[$player->id] : null;
-	}
-
-	public static function named($name)
-	{
-		return isset(static::$named[$name]) ? static::$named[$name] : null;
-	}
-
-	public function name($name)
-	{
-		static::$named[$name] = $this;
-
-		return $this;
 	}
 
 	protected function __construct($style, $caption, $button1, $button2)

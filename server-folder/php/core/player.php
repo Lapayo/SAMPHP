@@ -3,7 +3,7 @@ require 'playercamera.php';
 
 class Player
 {
-	use ModelEvent;
+	use ModelEvent, Storage;
 
 	protected static $instances = array();
 
@@ -11,7 +11,7 @@ class Player
 
 	public $camera = null;
 
-	public static function find($id, $disableChecks = false)
+	public static function find($id)
 	{
 		if($id instanceof Player)
 			return $id;
@@ -19,7 +19,7 @@ class Player
 		if(isset(static::$instances[$id]))
 			return static::$instances[$id];
 
-		if(!$disableChecks && !IsPlayerConnected($id))
+		if($id >= INVALID_PLAYER_ID)
 			return null;
 
 		return static::$instances[$id] = new static($id);
@@ -28,6 +28,8 @@ class Player
 	protected function __construct($id)
 	{
 		$this->id = $id;
+
+		$this->storage = new Storage;
 
 		$this->camera = PlayerCamera::findForPlayer($this);
 	}
@@ -434,16 +436,8 @@ class Player
 		return $this->toggleControllable(true);
 	}
 
-	public function playSound($sound, $x = null, $y = null, $z = null)
+	public function playSound($sound, $x = 0.0, $y = 0.0, $z = 0.0)
 	{
-		if(!isset($x))	// $x unset, get player position and use this
-		{
-			$playerPos = $this->getPos();
-			$x = $playerPos->x;
-			$y = $playerPos->y;
-			$z = $playerPos->z;
-		}
-
 		return PlayerPlaySound($this->id, $sound, $x , $y, $z);
 	}
 
@@ -668,9 +662,15 @@ class Player
 	{
 		return EnableStuntBonusForPlayer($this->id, $enable);
 	}
+
+	public static function handleDisconnect($player)
+	{
+		unset(static::$instances[$player->id]);
+	}
 	
 }
 
+Event::after('PlayerDisconnect', array('Player', 'handleDisconnect'));
 
 $callbackNames = array();
 
@@ -694,6 +694,8 @@ foreach($callbackNames as $extern => $intern)
 		call_user_func_array(array($player, 'fire'), $args);
 	});
 }
+
+
 
 
 /*

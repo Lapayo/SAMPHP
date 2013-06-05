@@ -1,6 +1,8 @@
 <?php
-class PlayerText
+class TextDraw
 {
+	use NamedInstance;
+
 	protected static $instances = array();
 
 	protected $id;
