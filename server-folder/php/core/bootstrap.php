@@ -1,7 +1,7 @@
 <?php
 //DIRS
 define('CORE_DIR', dirname(__FILE__).'/');
-define('PHP_DIR', CORE_DIR..'../');
+define('PHP_DIR', CORE_DIR.'../');
 define('SAMP_DIR', CORE_DIR.'../../');
 define('SAMP_FILES_DIR', CORE_DIR.'../../scriptfiles/');
 
