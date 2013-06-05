@@ -132,14 +132,14 @@ function ClassSel_HandleCitySelection($player)
     
     if($player->citySelection == -1)
     {
-		ClassSel_SwitchToNextCity(playerid);
+		ClassSel_SwitchToNextCity($player);
 		return;
 	}
 
 	// only allow new selection every ~500 ms
 	if((GetTickCount() - $player->lastCitySelectionTick) < 500) return;
 	
-	if($keys->Keys & KEY_FIRE)
+	if($keys->keys & KEY_FIRE)
 	{
 		$player->hasCitySelected = true;
 		$player->toggleSpectating(false);

@@ -29,8 +29,6 @@ class Player
 	{
 		$this->id = $id;
 
-		$this->storage = new Storage;
-
 		$this->camera = PlayerCamera::findForPlayer($this);
 	}
 
@@ -578,7 +576,7 @@ class Player
 
 	public function gameText($message, $time, $style)
 	{
-		return GameTextForAll($this->id, $message, $time, $style);
+		return GameTextForPlayer($this->id, $message, $time, $style);
 	}
 
 	public function isConnected()
