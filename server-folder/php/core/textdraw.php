@@ -17,7 +17,7 @@ class TextDraw
 
 	public static function create($x, $y, $text)
 	{
-		$id = CreateTextDraw($x, $y, $text);
+		$id = TextDrawCreate($x, $y, $text);
 
 		return static::$instances[$id] = new static($id);
 	}
@@ -36,103 +36,143 @@ class TextDraw
 		$this->id = $id;
 	}
 
-	public static function setLetterSize($x, $y)
+	public function setLetterSize($x, $y)
 	{
-		return TextDrawLetterSize($this->id, $x, $y);
+		TextDrawLetterSize($this->id, $x, $y);
+
+		return $this;
 	}
 
-	public static function setTextSize($x, $y)
+	public function setTextSize($x, $y)
 	{
-		return TextDrawTextSize($this->id, $x, $y);
+		TextDrawTextSize($this->id, $x, $y);
+
+		return $this;
 	}
 
-	public static function setAlignment($alignment)
+	public function setAlignment($alignment)
 	{
-		return TextDrawAlignment($this->id, $alignment);
+		TextDrawAlignment($this->id, $alignment);
+
+		return $this;
 	}
 
-	public static function setColor($color)
+	public function setColor($color)
 	{
-		return TextDrawColor($this->id, $color);
+		TextDrawColor($this->id, $color);
+
+		return $this;
 	}
 
-	public static function useBox($use = true)
+	public function useBox($use = true)
 	{
-		return TextDrawUseBox($this->id, $use);
+		TextDrawUseBox($this->id, $use);
+
+		return $this;
 	}
 
-	public static function setBoxColor($color)
+	public function setBoxColor($color)
 	{
-		return TextDrawBoxColor($this->id, $color);
+		TextDrawBoxColor($this->id, $color);
+
+		return $this;
 	}
 
-	public static function setShadow($size)
+	public function setShadow($size)
 	{
-		return TextDrawSetShadow($this->id, $size);
+		TextDrawSetShadow($this->id, $size);
+
+		return $this;
 	}
 
-	public static function setOutline($size)
+	public function setOutline($size)
 	{
-		return TextDrawSetOutline($this->id, $size);
+		TextDrawSetOutline($this->id, $size);
+
+		return $this;
 	}
 
-	public static function setBackgroundColor($color)
+	public function setBackgroundColor($color)
 	{
-		return TextDrawBackgroundColor($this->id, $color);
+		TextDrawBackgroundColor($this->id, $color);
+
+		return $this;
 	}
 
-	public static function setFont($font)
+	public function setFont($font)
 	{
-		return TextDrawFont($this->id, $font);
+		TextDrawFont($this->id, $font);
+
+		return $this;
 	}
 
-	public static function setProportional($set = true)
+	public function setProportional($set = true)
 	{
-		return TextDrawSetProportional($this->id, $set);
+		TextDrawSetProportional($this->id, $set);
+
+		return $this;
 	}
 
-	public static function setSelectable($set = true)
+	public function setSelectable($set = true)
 	{
-		return TextDrawSetSelectable($this->id, $set);
+		TextDrawSetSelectable($this->id, $set);
+
+		return $this;
 	}
 
-	public static function hideForAll()
+	public function hideForAll()
 	{
-		return TextDrawHideForAll($this->id);
+		TextDrawHideForAll($this->id);
+
+		return $this;
 	}
 
-	public static function showForAll()
+	public function showForAll()
 	{
-		return TextDrawShowForAll($this->id);
+		TextDrawShowForAll($this->id);
+
+		return $this;
 	}
 
-	public static function hideForPlayer($player)
+	public function hideForPlayer($player)
 	{
-		return TextDrawHideForPlayer($player->id, $this->id);
+		TextDrawHideForPlayer($player->id, $this->id);
+
+		return $this;
 	}
 
-	public static function showForPlayer($player)
+	public function showForPlayer($player)
 	{
-		return TextDrawShowForPlayer($player->id, $this->id);
+		TextDrawShowForPlayer($player->id, $this->id);
+
+		return $this;
 	}
 
-	public static function setString($string)
+	public function setString($string)
 	{
-		return TextDrawSetString($this->id, $string);
+		TextDrawSetString($this->id, $string);
+
+		return $this;
 	}
 
-	public static function setPreviewModel($modelIndex)
+	public function setPreviewModel($modelIndex)
 	{
-		return TextDrawSetPreviewModel($this->id, $modelIndex);
+		TextDrawSetPreviewModel($this->id, $modelIndex);
+
+		return $this;
 	}
 
-	public static function setPreviewRot($x, $y, $z, $zoom = 1.0)
+	public function setPreviewRot($x, $y, $z, $zoom = 1.0)
 	{
-		return TextDrawSetPreviewRot($this->id, $x, $y, $z, $zoom);
+		TextDrawSetPreviewRot($this->id, $x, $y, $z, $zoom);
+
+		return $this;
 	}
 
-	public static function setPreviewVehCol($color1, $color2)
+	public function setPreviewVehCol($color1, $color2)
 	{
-		return TextDrawSetPreviewVehCol($this->id, $color1, $color2);
+		TextDrawSetPreviewVehCol($this->id, $color1, $color2);
+
+		return $this;
 	}
 }

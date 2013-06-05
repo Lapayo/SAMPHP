@@ -1,5 +1,4 @@
 <?php
-require '../core/bootstrap.php';
 
 require 'spawns.php';
 
@@ -15,14 +14,14 @@ define('CITY_LAS_VENTURAS', '2');
 
 function CreateCityTextDraw($text)
 {
-	TextDraw::create(10.0, 380.0, $text);
-	$textdraw->useBox(false);
-	$textdraw->setLetterSize(1.25, 3.0);
-	$textdraw->setFont(0);
-	$textdraw->setShadow(false);
-	$textdraw->setOutline(true);
-	$textdraw->setColor(0xEEEEEEFF);
-	$textdraw->setBackgroundColor(0x000000FF);
+	return TextDraw::create(10.0, 380.0, $text)
+		->useBox(false)
+		->setLetterSize(1.25, 3.0)
+		->setFont(0)
+		->setShadow(false)
+		->setOutline(true)
+		->setColor(0xEEEEEEFF)
+		->setBackgroundColor(0x000000FF);
 }
 
 CreateCityTextDraw("Los Santos")->name("LosSantos");
@@ -35,12 +34,12 @@ TextDraw::create(10.0, 415.0,
 	->useBox(true)
 	->setBoxColor(0x222222BB)
 	->setLetterSize(0.3, 1.0)
-	->setSize(400, 40)
+	->setTextSize(400, 40)
 	->setFont(2)
 	->setShadow(false)
 	->setOutline(true)
-	->setBackgroundColor(0x000000FF) ;
-	->setColor(0xFFFFFFFF) ;
+	->setBackgroundColor(0x000000FF)
+	->setColor(0xFFFFFFFF);
 
 
 // Class Selection
@@ -244,7 +243,7 @@ Event::on('GameModeInit', function() {
 	Server::showPlayerMarkers();
 	Server::showNameTags();
 	Server::setNameTagDrawDistance(40.0);
-	Server::enableStuntBonusForAll(false);
+	Server::enableStuntBonus(false);
 	Server::disableInteriorEnterExits();
 	Server::setWeather(2);
 	
@@ -254,9 +253,11 @@ Event::on('GameModeInit', function() {
 	foreach($classes as $class)
 		Server::addPlayerClass($class[0], $class[1], $class[2], $class[3], $class[4], $class[5], $class[6], $class[7], $class[8], $class[9], $class[10]);
 
-	$spawnedVehicles = Vehicle::loadStaticVehiclesFromFile(["../../vehicles/trains.txt", "../../vehicles/pilots.txt", "../../vehicles/lv_law.txt", "../../vehicles/lv_airport.txt", "../../vehicles/lv_gen.txt",
-		"../../vehicles/sf_law.txt", "../../vehicles/sf_airport.txt", "../../vehicles/sf_gen.txt", "../../vehicles/ls_law.txt", "../../vehicles/ls_airport.txt", "../../vehicles/ls_gen_inner.txt", "../../vehicles/ls_gen_outer.txt"
-		"../../vehicles/whetstone.txt", "../../vehicles/bone.txt", "../../vehicles/flint.txt", "../../vehicles/tierra.txt", "../../vehicles/red_county.txt"]);
+	$spawnedVehicles = Vehicle::loadStaticVehiclesFromFile(["vehicles/trains.txt", "vehicles/pilots.txt", "vehicles/lv_law.txt",
+		"vehicles/lv_airport.txt", "vehicles/lv_gen.txt", "vehicles/sf_law.txt", "vehicles/sf_airport.txt",
+		"vehicles/sf_gen.txt", "vehicles/ls_law.txt", "vehicles/ls_airport.txt", "vehicles/ls_gen_inner.txt",
+		"vehicles/ls_gen_outer.txt", "vehicles/whetstone.txt", "vehicles/bone.txt", "vehicles/flint.txt",
+		"vehicles/tierra.txt", "vehicles/red_county.txt"]);
 
 	echo "Total vehicles from files: {$spawnedVehicles}";
 });

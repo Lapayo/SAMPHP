@@ -254,8 +254,7 @@ class Vehicle
 	}
 
 
-
-	public static function function loadStaticVehiclesFromFile($filename, $respawnDelay = 30*60)
+	public static function loadStaticVehiclesFromFile($filename, $respawnDelay = 1800)
 	{
 		$spawnedVehicles = 0;
 
@@ -263,11 +262,13 @@ class Vehicle
 		{
 			foreach($filename as $file)
 			{
-				$spawnedVehicles += LoadStaticVehiclesFromFile($file);
+				$spawnedVehicles += static::loadStaticVehiclesFromFile($file);
 			}
 
 			return $spawnedVehicles;
 		}
+
+		$filename = find_path($filename);
 
 		$content = file_get_contents($filename);
 
@@ -279,7 +280,7 @@ class Vehicle
 
 			$spawn = explode(',', trim($split[0]));
 
-			static::createStatic($spawn[0], $spawn[1], $spawn[2], $spawn[3], $spawn[4], $spawn[5], $spawn[6], $respawnDelay);	// 30 min respawn delay
+			static::createStatic((int) $spawn[0], (float) $spawn[1], (float) $spawn[2], (float) $spawn[3], (float) $spawn[4], (int) $spawn[5], (int) $spawn[6], $respawnDelay);	// 30 min respawn delay
 
 			$spawnedVehicles++;
 		}

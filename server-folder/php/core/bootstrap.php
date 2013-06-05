@@ -1,6 +1,14 @@
 <?php
+//DIRS
+define('CORE_DIR', dirname(__FILE__).'/');
+define('PHP_DIR', CORE_DIR.'../');
+define('SAMP_DIR', CORE_DIR.'../../');
+
+set_include_path(get_include_path() . PATH_SEPARATOR . PHP_DIR . PATH_SEPARATOR . CORE_DIR);
+
 require_once 'callbacks.php';
 require_once 'modelevent.php';
+require_once 'namedinstance.php';
 require_once 'event.php';
 require_once 'storage.php';
 
