@@ -1,5 +1,4 @@
 <?php
-
 require 'spawns.php';
 
 define('COLOR_WHITE', '0xFFFFFFFF');
