@@ -38,6 +38,9 @@ echo ###################
 echo Compile PHP
 echo ###################
 cd ${SRCDIR}/${PHP5}
+export CXXFLAGS="-m32"
+export LDFLAGS="-m32"
+export CPPFLAGS="-m32"
 ./configure ${PHPFEATURES}
 make
 make install
