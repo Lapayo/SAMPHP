@@ -177,7 +177,7 @@ Event::on('PlayerSpawn', function($player) {
 	if($player->isNPC()) return;
 
 	$player->setInterior(0);
-	$player->togglePlayerClock(false);
+	$player->toggleClock(false);
 	$player->resetMoney();
 	$player->giveMoney(30000);
 
@@ -192,7 +192,7 @@ Event::on('PlayerSpawn', function($player) {
 	$spawn = $spawns[$rand];
 
 	$player->setPos($spawn[0], $spawn[1], $spawn[2]);
-	$player->setFacingAngle($spawns[3]);
+	$player->setFacingAngle($spawn[3]);
 
 	$skills = [WEAPONSKILL_PISTOL, WEAPONSKILL_PISTOL_SILENCED, WEAPONSKILL_DESERT_EAGLE, WEAPONSKILL_SHOTGUN, WEAPONSKILL_SAWNOFF_SHOTGUN,
 		WEAPONSKILL_SPAS12_SHOTGUN, WEAPONSKILL_MICRO_UZI, WEAPONSKILL_MP5, WEAPONSKILL_AK47, WEAPONSKILL_M4, WEAPONSKILL_SNIPERRIFLE];

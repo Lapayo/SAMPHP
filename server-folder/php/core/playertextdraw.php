@@ -39,91 +39,127 @@ class PlayerTextDraw
 
 	public static function setLetterSize($x, $y)
 	{
-		return PlayerTextDrawLetterSize($this->playerId, $this->textId, $x, $y);
+		PlayerTextDrawLetterSize($this->playerId, $this->textId, $x, $y);
+
+		return $this;
 	}
 
 	public static function setTextSize($x, $y)
 	{
-		return PlayerTextDrawTextSize($this->playerId, $this->textId, $x, $y);
+		PlayerTextDrawTextSize($this->playerId, $this->textId, $x, $y);
+
+		return $this;
 	}
 
 	public static function setAlignment($alignment)
 	{
-		return PlayerTextDrawAlignment($this->playerId, $this->textId, $alignment);
+		PlayerTextDrawAlignment($this->playerId, $this->textId, $alignment);
+
+		return $this;
 	}
 
 	public static function setColor($color)
 	{
-		return PlayerTextDrawColor($this->playerId, $this->textId, $color);
+		PlayerTextDrawColor($this->playerId, $this->textId, $color);
+
+		return $this;
 	}
 
 	public static function useBox($use = true)
 	{
-		return PlayerTextDrawUseBox($this->playerId, $this->textId, $use);
+		PlayerTextDrawUseBox($this->playerId, $this->textId, $use);
+
+		return $this;
 	}
 
 	public static function setBoxColor($color)
 	{
-		return PlayerTextDrawBoxColor($this->playerId, $this->textId, $color);
+		PlayerTextDrawBoxColor($this->playerId, $this->textId, $color);
+
+		return $this;
 	}
 
 	public static function setShadow($size)
 	{
-		return PlayerTextDrawSetShadow($this->playerId, $this->textId, $size);
+		PlayerTextDrawSetShadow($this->playerId, $this->textId, $size);
+
+		return $this;
 	}
 
 	public static function setOutline($size)
 	{
-		return PlayerTextDrawSetOutline($this->playerId, $this->textId, $size);
+		PlayerTextDrawSetOutline($this->playerId, $this->textId, $size);
+
+		return $this;
 	}
 
 	public static function setBackgroundColor($color)
 	{
-		return PlayerTextDrawBackgroundColor($this->playerId, $this->textId, $color);
+		PlayerTextDrawBackgroundColor($this->playerId, $this->textId, $color);
+
+		return $this;
 	}
 
 	public static function setFont($font)
 	{
-		return PlayerTextDrawFont($this->playerId, $this->textId, $font);
+		PlayerTextDrawFont($this->playerId, $this->textId, $font);
+
+		return $this;
 	}
 
 	public static function setProportional($set = true)
 	{
-		return PlayerTextDrawSetProportional($this->playerId, $this->textId, $set);
+		PlayerTextDrawSetProportional($this->playerId, $this->textId, $set);
+
+		return $this;
 	}
 
 	public static function setSelectable($set = true)
 	{
-		return PlayerTextDrawSetSelectable($this->playerId, $this->textId, $set);
+		PlayerTextDrawSetSelectable($this->playerId, $this->textId, $set);
+
+		return $this;
 	}
 
 	public static function hide()
 	{
-		return PlayerTextDrawHide($this->playerId, $this->textId);
+		PlayerTextDrawHide($this->playerId, $this->textId);
+
+		return $this;
 	}
 
 	public static function show()
 	{
-		return PlayerTextDrawShow($this->playerId, $this->textId);
+		PlayerTextDrawShow($this->playerId, $this->textId);
+
+		return $this;
 	}
 
 	public static function setString($string)
 	{
-		return PlayerTextDrawSetString($this->playerId, $this->textId, $string);
+		PlayerTextDrawSetString($this->playerId, $this->textId, $string);
+
+		return $this;
 	}
 
 	public static function setPreviewModel($modelIndex)
 	{
-		return PlayerTextDrawSetPreviewModel($this->playerId, $this->textId, $modelIndex);
+		PlayerTextDrawSetPreviewModel($this->playerId, $this->textId, $modelIndex);
+
+		return $this;
 	}
 
 	public static function setPreviewRot($x, $y, $z, $zoom = 1.0)
 	{
-		return PlayerTextDrawSetPreviewRot($this->playerId, $this->textId, $x, $y, $z, $zoom);
+		PlayerTextDrawSetPreviewRot($this->playerId, $this->textId, $x, $y, $z, $zoom);
+
+		return $this;
 	}
 
 	public static function setPreviewVehCol($color1, $color2)
 	{
-		return PlayerTextDrawSetPreviewVehCol($this->playerId, $this->textId, $color1, $color2);
+		PlayerTextDrawSetPreviewVehCol($this->playerId, $this->textId, $color1, $color2);
+
+		return $this;
 	}
 }
