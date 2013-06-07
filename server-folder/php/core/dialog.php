@@ -47,7 +47,7 @@ class Dialog
 
 	public function setInfo($info)
 	{
-		if($style != DIALOG_STYLE_LIST)
+		if($this->style != DIALOG_STYLE_LIST)
 			$this->info = $info;
 		return $this;
 	}
