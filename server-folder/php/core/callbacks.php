@@ -36,17 +36,17 @@ function OnPlayerClickMap($playerid, $fx, $fy, $fz)
 
 function OnPlayerClickPlayer($playerid, $clickedplayerid, $source)
 {
-	return Event::untilDifferent("PlayerClickPlayer", true, Player::find($playerid, true), $clickedplayerid, $source);
+	return Event::untilDifferent("PlayerClickPlayer", true, Player::find($playerid, true), Player::find($clickedplayerid, true), $source);
 }
 
 function OnPlayerClickPlayerTextDraw($playerid, $playertextid)
 {
-	return Event::untilDifferent("PlayerClickPlayerTextDraw", false, Player::find($playerid, true), $playertextid);
+	return Event::untilDifferent("PlayerClickPlayerTextDraw", false, Player::find($playerid, true), PlayerTextDraw::findForPlayer(Player::find($playerid, true), $playertextid));
 }
 
 function OnPlayerClickTextDraw($playerid, $clickedid)
 {
-	return Event::untilDifferent("PlayerClickTextDraw", false, Player::find($playerid, true), $clickedid);
+	return Event::untilDifferent("PlayerClickTextDraw", false, Player::find($playerid, true), TextDraw::find($clickedid));
 }
 
 function OnPlayerCommandText($playerid, $cmdtext)
@@ -61,7 +61,7 @@ function OnPlayerConnect($playerid)
 
 function OnPlayerDeath($playerid, $killerid, $reason)
 {
-	return Event::untilDifferent("PlayerDeath", true, Player::find($playerid, true), $killerid, $reason);
+	return Event::untilDifferent("PlayerDeath", true, Player::find($playerid, true), Player::find($killerid, true), $reason);
 }
 
 function OnPlayerDisconnect($playerid, $reason)
@@ -131,12 +131,12 @@ function OnPlayerLeaveRaceCheckpoint($playerid)
 
 function OnPlayerObjectMoved($playerid, $objectid)
 {
-	return Event::fireDefault("PlayerObjectMoved", true, Player::find($playerid, true), $objectid);
+	return Event::fireDefault("PlayerObjectMoved", true, Player::find($playerid, true), Object::find($objectid));
 }
 
 function OnPlayerPickUpPickup($playerid, $pickupid)
 {
-	return Event::fireDefault("PlayerPickUpPickup", true, Player::find($playerid, true), $pickupid);
+	return Event::fireDefault("PlayerPickUpPickup", true, Player::find($playerid, true), Pickup::find($pickupid));
 }
 
 function OnPlayerPrivmsg($playerid, $recieverid, $text)
@@ -156,7 +156,7 @@ function OnPlayerRequestSpawn($playerid)
 
 function OnPlayerSelectObject($playerid, $type, $objectid, $modelid, $fX, $fY, $fZ)
 {
-	return Event::fireDefault("PlayerSelectObject", true, Player::find($playerid, true), $type, $objectid, $modelid, $fX, $fY, $fZ);
+	return Event::fireDefault("PlayerSelectObject", true, Player::find($playerid, true), $type, Object::find($objectid), $modelid, $fX, $fY, $fZ);
 }
 
 function OnPlayerSelectedMenuRow($playerid, $row)
