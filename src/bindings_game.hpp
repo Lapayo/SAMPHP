@@ -86,7 +86,7 @@ PHP_FUNCTION(AddStaticVehicleEx)
 PHP_FUNCTION(AddStaticPickup)
 {
 	int modelId, type, virtualWorld = 0;
-	double x, y, z, angle;
+	double x, y, z;
 
 	if(zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC,
                         "llddd|l", &modelId, &type, &x, &y, &z, &virtualWorld) == FAILURE)
@@ -575,7 +575,7 @@ PHP_FUNCTION(GetPlayerVersion)
     int buffer_len = 200; 
     
     if(zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC,
-                        "l") == FAILURE)
+                        "l", &playerid) == FAILURE)
     {
         RETURN_NULL();
     }

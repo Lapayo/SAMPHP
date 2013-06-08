@@ -133,7 +133,7 @@ static void SAMPGDK_CALL executeTimedCallback(int timerId, void *voidParams)
 	TimerParams *params = (TimerParams *) voidParams;
 
 	zval retval;
-    zval* callbackParams[] = {  };
+    zval* callbackParams[] = { NULL };
 	call_user_function(CG(function_table), NULL, params->callable, &retval, 0, callbackParams TSRMLS_CC);
 	
 }

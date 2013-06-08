@@ -31,7 +31,7 @@ PHP_FUNCTION(DebugFunction)
         RETURN_NULL();
     }
 
-	zval*** params;
+	zval*** params = NULL;
     zval *retval;
 
     if (ZEND_FCI_INITIALIZED(fci))
