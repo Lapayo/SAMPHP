@@ -25,6 +25,11 @@ class Player
 		return static::$instances[$id] = new static($id);
 	}
 
+	public static function all()
+	{
+		return static::$instances;
+	}
+
 	protected function __construct($id)
 	{
 		$this->id = $id;
@@ -322,7 +327,7 @@ class Player
 
 	public function playAudioStream($url, $x = 0.0, $y = 0.0, $z = 0.0, $distance = 50.0, $usePos = false)
 	{
-		return PlayAudioStreamForPlayer($this->id, $x, $y, $z, $distance, $usePos);
+		return PlayAudioStreamForPlayer($this->id, $url, $x, $y, $z, $distance, $usePos);
 	}
 
 	public function stopAudioStream()

@@ -8,6 +8,7 @@
 
 // Functions:
 // Server settings:
+#include "bindings_samphp.hpp"
 #include "bindings_util.hpp"
 #include "bindings_game.hpp"
 #include "bindings_vehicles.hpp"
@@ -15,48 +16,10 @@
 #include "bindings_objects.hpp"
 
 
-
-
-// Player functions:
-
-
-PHP_FUNCTION(DebugFunction)
-{
-	zend_fcall_info fci = empty_fcall_info;
-	zend_fcall_info_cache fci_cache = empty_fcall_info_cache;
-
-	if(zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC,
-                         "f", &fci, &fci_cache) == FAILURE)
-	{
-        RETURN_NULL();
-    }
-
-	zval*** params = NULL;
-    zval *retval;
-
-    if (ZEND_FCI_INITIALIZED(fci))
-    {
-		fci.retval_ptr_ptr = &retval;
-		fci.param_count = 0;
-		fci.params = params;
-		fci.no_separation = 0;
-
-		if (zend_call_function(&fci, &fci_cache TSRMLS_CC) != SUCCESS)
-		{
-			zval_dtor(return_value);
-			efree(params);
-			RETURN_NULL();
-		}
-
-
-	}
-
-}
-
 // Export functions to module
-
 static zend_function_entry php_samphp_functions[] = {
-	// Debug
+	// samphp functions
+    PHP_FE(testings, NULL)
     PHP_FE(DebugFunction, NULL)
 
     // Util

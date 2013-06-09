@@ -22,6 +22,11 @@ class Vehicle
 		return static::$instances[$id] = new static($id);
 	}
 
+	public static function all()
+	{
+		return static::$instances;
+	}
+
 	public static function createStatic($modelId, $x, $y, $z, $angle, $color1 = null, $color2 = null, $respawnDelay = null)
 	{
 		//Check for trains:

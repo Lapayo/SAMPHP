@@ -1,4 +1,7 @@
 <?php
+$var = "hi";
+die(testings($var, $var));
+
 require 'core/bootstrap.php';
 require 'grandlarc/gamemode.php';
 
