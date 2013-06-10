@@ -169,6 +169,82 @@
 				Name="VCPostBuildEventTool"
 			/>
 		</Configuration>
+		<Configuration
+			Name="Debug n Run|Win32"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="2"
+			CharacterSet="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="&quot;C:\Program Files (x86)\sampgdk-static 3.4\include&quot;;&quot;D:\php-sdk\php54dev\vc9\x86\php-5.4.15-src&quot;;&quot;D:\php-sdk\php54dev\vc9\x86\php-5.4.15-src\sapi\embed&quot;;&quot;D:\php-sdk\php54dev\vc9\x86\php-5.4.15-src\Zend&quot;;&quot;D:\php-sdk\php54dev\vc9\x86\php-5.4.15-src\win32&quot;;&quot;D:\php-sdk\php54dev\vc9\x86\php-5.4.15-src\TSRM&quot;;&quot;D:\php-sdk\php54dev\vc9\x86\php-5.4.15-src\sapi&quot;;&quot;D:\php-sdk\php54dev\vc9\x86\php-5.4.15-src\main&quot;;&quot;$(ProjectDir)..\..\..\phpembed\src&quot;"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;ZEND_WIN32_FORCE_INLINE;ZEND_DEBUG=0;ZEND_WIN32;PHP_WIN32;_USE_32BIT_TIME_T"
+				MinimalRebuild="true"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="3"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				DebugInformationFormat="4"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="sampgdk3.lib php5embed.lib"
+				LinkIncremental="2"
+				AdditionalLibraryDirectories="&quot;C:\Program Files (x86)\sampgdk 3.4\lib&quot;;&quot;D:\php-sdk\php54dev\vc9\x86\php-5.4.15-src\Release&quot;;$(NOINHERIT)"
+				ModuleDefinitionFile="samphp.def"
+				GenerateDebugInformation="true"
+				SubSystem="2"
+				TargetMachine="1"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				CommandLine="cmd /c copy &quot;$(TargetPath)&quot; &quot;$(ProjectDir)\..\..\server-folder\plugins\$(TargetFileName)&quot;"
+			/>
+		</Configuration>
 	</Configurations>
 	<References>
 	</References>
@@ -200,6 +276,10 @@
 			</File>
 			<File
 				RelativePath="..\..\src\bindings_player.hpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\bindings_samphp.hpp"
 				>
 			</File>
 			<File

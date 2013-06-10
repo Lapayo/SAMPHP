@@ -169,11 +169,14 @@ zval *samphp::call(char *fn, char *argspec, va_list ap TSRMLS_DC)
 				rrv = rv;
 			}
 		}
+
+		delete params;
 	} zend_catch {
 		error_wrap(0, "preparing function %s\n", fn);
 		status = FAIL;
 	} zend_end_try() {
 	}
+
 
 	return rrv;
 }

@@ -5,10 +5,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "samphp", "samphp.vcproj", "
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug n Run|Win32 = Debug n Run|Win32
 		Debug|Win32 = Debug|Win32
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B650C8FD-0A0E-445F-8024-F32AE84555FE}.Debug n Run|Win32.ActiveCfg = Debug n Run|Win32
+		{B650C8FD-0A0E-445F-8024-F32AE84555FE}.Debug n Run|Win32.Build.0 = Debug n Run|Win32
 		{B650C8FD-0A0E-445F-8024-F32AE84555FE}.Debug|Win32.ActiveCfg = Debug|Win32
 		{B650C8FD-0A0E-445F-8024-F32AE84555FE}.Debug|Win32.Build.0 = Debug|Win32
 		{B650C8FD-0A0E-445F-8024-F32AE84555FE}.Release|Win32.ActiveCfg = Release|Win32
