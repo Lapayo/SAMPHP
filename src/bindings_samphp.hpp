@@ -1,21 +1,74 @@
-PHP_FUNCTION(testings)
+PHP_FUNCTION(CallAMXNative)
 {
 	int argc = ZEND_NUM_ARGS();
     zval **args;
 
     args = (zval **)safe_emalloc(argc, sizeof(zval *), 0);
     
-    if(argc < 1 ||
-        zend_get_parameters_array(argc, 1, args) == FAILURE)
+    if(argc < 2 ||
+        zend_get_parameters_array(argc, argc, args) == FAILURE)
     {
         efree(args);
         WRONG_PARAM_COUNT;
     }
+	
+	convert_to_string(args[0]);
+	convert_to_string(args[1]);
 
-    for(int i = 0; i < argc; i++)
-    {
-        std::cout << args[i]->type << std::endl;;
-    }
+	const char *function_name = Z_STRVAL_P(args[0]);
+	const char *function_return = Z_STRVAL_P(args[1]);
+	
+	std::cout << "calling function " << function_name << " with return type " << function_return << std::endl;
+
+
+	if(argc > 2)
+	{
+		convert_to_string(args[2]);
+		if(Z_STRLEN_P(args[2]) > 0)
+		{
+			const char *parameter_descriptors = Z_STRVAL_P(args[2]);
+			
+			int pd_i = 0;
+			for(int p_i = 3; p_i < argc; p_i++)
+			{
+				zval *val = args[p_i];
+			
+				switch(parameter_descriptors[pd_i])
+				{
+				case 's':
+					convert_to_string(val);
+					std::cout << "Pushing string: " << Z_STRVAL_P(val) << std::endl;
+					break;
+				case 'b':
+				case 'i':
+				case 'l':
+					convert_to_long(val);
+					std::cout << "Pushing Integer: " << Z_LVAL_P(val) << std::endl;
+					break;
+				case 'd':
+				case 'f':
+					convert_to_double(val);
+					std::cout << "Pushing float: " << static_cast<float>(Z_DVAL_P(val)) << std::endl;
+					break;
+				case 'u':	// String reference object
+				case 'v':	//Float reference
+					std::cout << "Pushing reference" << std::endl;
+					break;
+				default:
+					efree(args);
+
+					std::cerr << "UNKNOWN DESCRIPTOR: " << parameter_descriptors[pd_i] << std::endl;
+
+					RETURN_BOOL(false);
+					break;
+				}
+
+				pd_i++;
+			}
+		}
+	}
+
+   
     efree(args);
 }
 

@@ -15,11 +15,16 @@
 #include "bindings_player.hpp"
 #include "bindings_objects.hpp"
 
+ZEND_BEGIN_ARG_INFO(AllButFirstThreeArgsByReference, true)
+	ZEND_ARG_PASS_INFO(false)
+	ZEND_ARG_PASS_INFO(false)
+	ZEND_ARG_PASS_INFO(false)
+ZEND_END_ARG_INFO()
 
 // Export functions to module
 static zend_function_entry php_samphp_functions[] = {
 	// samphp functions
-    PHP_FE(testings, NULL)
+    PHP_FE(CallAMXNative, AllButFirstThreeArgsByReference)
     PHP_FE(DebugFunction, NULL)
 
     // Util

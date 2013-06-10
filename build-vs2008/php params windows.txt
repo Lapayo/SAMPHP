@@ -1,0 +1,1 @@
+--disable-all --disable-cli --disable-cgi --enable-embed=shared --disable-zts --with-sqlite3 --enable-pdo --with-pdo-mysql --with-pdo-sqlite --with-mysqli
