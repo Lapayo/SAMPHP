@@ -1,6 +1,21 @@
 <?php
 require 'core/bootstrap.php';
 
+try {
+	$db = new PDO('sqlite:memory');
+	//$db = new PDO('mysql:host=127.0.0.1;dbname=test', 'root', '');
+	foreach ($db->query('SELECT * from FOO') as $row)
+	{
+		print_r($row);
+	}
+}catch (PDOException $e)
+{
+	echo "Error!: ".$e->getMessage();
+}
+
+
+
+
 $spawnVehicleMenu = Menu::create("Spawn Vehicle", 200, 100, 150, 50)
 	->addRow("Stallion", 439, "$500")
 	->addRow("Pizzaboy", 448, "$500", 500)

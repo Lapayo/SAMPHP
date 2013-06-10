@@ -217,4 +217,4 @@ pip-log.txt
 samphp-release-windows*
 
 Debug n Run/
-server-folder/[filterscripts|include|plugins|php5.dll|sampgdk3.dll|announce|samp-|server]*
+server-folder/[filterscripts*|include*|plugins*|php5.dll*|sampgdk3.dll*|announce*|samp-*|server*]
