@@ -25,6 +25,7 @@ ZEND_END_ARG_INFO()
 static zend_function_entry php_samphp_functions[] = {
 	// samphp functions
     PHP_FE(CallAMXNative, AllButFirstThreeArgsByReference)
+    PHP_FE(AMXNativeExists, NULL)
     PHP_FE(DebugFunction, NULL)
 
     // Util

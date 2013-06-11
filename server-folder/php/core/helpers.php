@@ -19,10 +19,10 @@ function find_path($path)
  * "string"					(=> "s")
  * "float"/"double"			(=> "d")
  * 
- * TO BE ADDED:
  * "ref_string", adds a reference for the string and a integer for the buffer size to the parameters of the function  (like you did with new val[100];) (=> u,l)
  * "ref_string_fixed:size", example "ref_string_len:100" like ref_string with fixed buffer size (100 byte in this example)	(=> u,l = size)
  * "ref_float"/"ref_double"	(=> v)
+ * "ref_int" (=> w)
  */
 function RegisterAMXNative($function, $returntype = null /*, ... */)
 {
@@ -78,6 +78,12 @@ function RegisterAMXNative($function, $returntype = null /*, ... */)
 				{
 					$descriptors .= "v";
 					$values[] = null;
+				}elseif(StartsWith($arg, "ref_int"))
+				{
+					$descriptors .= "w";
+					$values[] = null;
+				}else{
+					throw new Exception("Unknow type specifier: ".$arg);
 				}
 				break;
 		}
@@ -98,7 +104,7 @@ function RegisterAMXNative($function, $returntype = null /*, ... */)
 			case "l": case "s": case "d":
 				$ps[] = '$arg'.$i;
 				break;
-			case "u": case "v":
+			case "u": case "v": case "w":
 				$ps[] = '&$arg'.$i;
 				break;
 		}
@@ -111,10 +117,14 @@ function RegisterAMXNative($function, $returntype = null /*, ... */)
 	for($i = 0; $i < strlen($descriptors); $i++)
 	{
 		$v = $values[$i];
+		$d = $descriptors[$i];
 
 		if(is_null($v)) continue;
 
-		$code .= '$arg'.$i.' = "'.$v.'";'."\n";
+		if($d == "l" || $d == "d")
+			$code .= '$arg'.$i.' = '.$v.';'."\n";
+		else
+			$code .= '$arg'.$i.' = "'.$v.'";'."\n";
 	}
 
 	// create callamxnative call
