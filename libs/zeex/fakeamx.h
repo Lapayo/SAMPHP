@@ -15,9 +15,10 @@
 #ifndef SAMPGDK_FAKEAMX_H
 #define SAMPGDK_FAKEAMX_H
 
+#include <cstddef>
+
 #include <sampgdk/sdk/amx/amx.h>
 
-#include <cstddef>
 #include <vector>
 
 class FakeAmx {

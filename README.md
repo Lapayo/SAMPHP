@@ -40,8 +40,8 @@ function OnPlayerConnect($playerid)
 
 Framework
 ===
-In the near feature there will be a framework for SAMPHP, making it even more easier to develop gamemodes with beautiful code.
-The code above might look a bit like the following:
+We also created a very cool framework for SAMPHP, making it even more easier to write short and beautiful code.
+The code above might look like the following:
 ```php
 Event::on('PlayerConnect', function($player)
 {

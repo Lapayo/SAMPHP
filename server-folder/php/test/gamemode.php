@@ -1,6 +1,30 @@
 <?php
 require 'core/bootstrap.php';
 
+//RegisterAMXNative(['GetWeaponName', 'WeaponName'], "null", "long", "ref_string_fixed:100");
+// WeaponName(2, $name);
+RegisterAMXNative(['GetWeaponName', 'WeaponName'], "null", "long", "ref_string");
+// WeaponName(2, $name, 50);
+RegisterAMXNative(['GetPlayerPos', 'PlayerPos'], "null", "int", "ref_float", "ref_float", "ref_float");
+RegisterAMXNative(['SendClientMessage', 'SendMsg'], "null", "int", "int", "string");
+RegisterAMXNative(['DisableInteriorEnterExits', 'DIEE']);
+DIEE();
+
+
+var_dump(AMXNativeExists("notExisting"));
+var_dump(AMXNativeExists("SendClientMessage"));
+
+CommandText::register('/testing', function($player) {
+	$x = 0.0;
+	$y = 0.0;
+	$z = 0;
+	PlayerPos($player->id, $x, $y, $z);
+
+	SendMsg($player->id, 0xFFFFFFFF, "x: ".$x." y: ".$y." z: ".$z);
+});
+
+
+/* PDO
 try {
 	$db = new PDO('sqlite:memory');
 	//$db = new PDO('mysql:host=127.0.0.1;dbname=test', 'root', '');
@@ -12,7 +36,7 @@ try {
 {
 	echo "Error!: ".$e->getMessage();
 }
-
+*/
 
 
 

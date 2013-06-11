@@ -1,5 +1,5 @@
-#include <callnative.hpp>
 #include <fakeamx.h>
+#include <cstring>
 
 AMX_NATIVE FindNative(const char *name);
 
