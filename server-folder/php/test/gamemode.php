@@ -1,18 +1,22 @@
 <?php
 require 'core/bootstrap.php';
 
+// RegisterAMXNativeFromInclude("streamer.inc");
+
+// CreateDynamicCircle(0.1, 0.2, 1);
+
+RegisterAMXNative(['GetWeaponName', 'WeaponName'], "null", ["int" => 2], ["ref_string" => "TEST"]);
+
 //RegisterAMXNative(['GetWeaponName', 'WeaponName'], "null", "long", "ref_string_fixed:100");
 // WeaponName(2, $name);
-RegisterAMXNative(['GetWeaponName', 'WeaponName'], "null", "long", "ref_string");
-// WeaponName(2, $name, 50);
+RegisterAMXNative(['GetWeaponName', 'WeaponName2'], "null", "int", "ref_string");
+// WeaponName2(2, $name, 50);
 RegisterAMXNative(['GetPlayerPos', 'PlayerPos'], "null", "int", "ref_float", "ref_float", "ref_float");
 RegisterAMXNative(['SendClientMessage', 'SendMsg'], "null", "int", "int", "string");
 RegisterAMXNative(['DisableInteriorEnterExits', 'DIEE']);
-DIEE();
 
-
-var_dump(AMXNativeExists("notExisting"));
 var_dump(AMXNativeExists("SendClientMessage"));
+var_dump(AMXNativeExists("notExisting"));
 
 CommandText::register('/testing', function($player) {
 	$x = 0.0;
