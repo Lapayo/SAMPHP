@@ -1,8 +1,7 @@
 ./build.sh
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-BUILDDIR=$DIR/build
+BUILDDIR=./build
 
 #debug helper: Move directly to samp server
-cp $BUILDDIR/samphp $DIR/server-folder/plugins/samphp
+cp $BUILDDIR/samphp ./server-folder/plugins/samphp
 
