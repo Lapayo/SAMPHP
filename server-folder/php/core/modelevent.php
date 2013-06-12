@@ -28,10 +28,13 @@ trait ModelEvent
 	{
 		if(isset($this->events['on'][$name]))
 			unset($this->events['on'][$name]);
+
+		return $this;
 	}
 
 	public function cancelAll()
 	{
 		$this->events['on'] = array();
+		return $this;
 	}
 }
