@@ -136,7 +136,12 @@ zval *samphp::call(char *fn, char *argspec, va_list ap TSRMLS_DC)
 		ZVAL_STRING(function_name, fn, 0);
 
 		// parse the parameter list
-		zval **params = new zval* [strlen(argspec)];
+		zval **params = NULL;
+		int len = strlen(argspec);
+
+		if(len > 0)
+			params = new zval* [strlen(argspec)];
+
 		zend_uint count;
 		if (parse_args(params, &count, argspec, ap) != SUCCESS)
 		{
