@@ -180,7 +180,7 @@ function RegisterAMXNative($function, $returntype = null /*, ... */)
 
 function StringToToken($str)
 {
-	switch($arg)
+	switch($str)
 	{
 		case "long": case "int": case "integer": case "bool":
 			return "l";
