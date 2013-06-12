@@ -24,9 +24,12 @@ CommandText::register('/testing', function($player) {
 	$z = 0;
 	PlayerPos($player->id, $x, $y, $z);
 
-	SendMsg($player->id, 0xFFFFFFFF, "x: ".$x." y: ".$y." z: ".$z);
+	SendMsg($player->id, 0xFFFFFFFF, mb_detect_encoding("öäü")." x: ".$x." y: ".$y." z: ".$z);
 });
-
+Event::on('PlayerText', function($player, $text) {
+	$player->sendClientMessage(0xFFFFFF, mb_detect_encoding($text)." ".$text."ä");
+	echo $text;
+});
 
 /* PDO
 try {
