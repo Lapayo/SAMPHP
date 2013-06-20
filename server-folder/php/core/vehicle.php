@@ -285,9 +285,11 @@ class Vehicle
 
 			$spawn = explode(',', trim($split[0]));
 
-			static::createStatic((int) $spawn[0], (float) $spawn[1], (float) $spawn[2], (float) $spawn[3], (float) $spawn[4], (int) $spawn[5], (int) $spawn[6], $respawnDelay);	// 30 min respawn delay
-
-			$spawnedVehicles++;
+			if(count($spawn) == 7)
+			{
+				static::createStatic((int) $spawn[0], (float) $spawn[1], (float) $spawn[2], (float) $spawn[3], (float) $spawn[4], (int) $spawn[5], (int) $spawn[6], $respawnDelay);	// 30 min respawn delay
+				$spawnedVehicles++;
+			}
 		}
 
 		return $spawnedVehicles;
