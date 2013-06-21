@@ -312,7 +312,14 @@ foreach($callbackList as $callback)
 
 foreach($callbackNames as $extern => $intern)
 {
-	Event::on($extern, function($vehicle) use($intern) {
+	Event::on($extern, function($arg1, $arg2 = null) use($intern) {
+		if($arg1 instanceof Vehicle)
+			$vehicle = $arg1;
+		elseif($arg2 instanceof Vehicle)
+			$vehicle = $arg2;
+		else
+			return false;
+			
 		$args = func_get_args();
 		array_unshift($args, $intern);
 				
