@@ -18,7 +18,7 @@ class PlayerTextDraw
 	{
 		$id = CreatePlayerTextDraw($player->id, $x, $y, $text);
 
-		return static::$instances[$id] = new static($player->id, $id, $model);
+		return static::$instances[$id] = new static($player->id, $id);
 	}
 
 	public function destroy()
