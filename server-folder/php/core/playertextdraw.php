@@ -34,7 +34,7 @@ class PlayerTextDraw
 	protected function __construct($playerid, $textid)
 	{
 		$this->playerId = $playerid;
-		$this->textId = $drawid;
+		$this->textId = $textid;
 	}
 
 	public function setLetterSize($x, $y)
