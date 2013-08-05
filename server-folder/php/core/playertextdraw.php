@@ -51,7 +51,7 @@ class PlayerTextDraw
 		return $this;
 	}
 
-	public static function setAlignment($alignment)
+	public function setAlignment($alignment)
 	{
 		PlayerTextDrawAlignment($this->playerId, $this->textId, $alignment);
 
