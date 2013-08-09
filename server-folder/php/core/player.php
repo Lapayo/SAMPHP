@@ -429,12 +429,12 @@ class Player
 		return TogglePlayerControllable($this->id, $controllable);
 	}
 
-	public function freeze($controllable)
+	public function freeze()
 	{
 		return $this->toggleControllable(false);
 	}
 
-	public function unfreeze($controllable)
+	public function unfreeze()
 	{
 		return $this->toggleControllable(true);
 	}
