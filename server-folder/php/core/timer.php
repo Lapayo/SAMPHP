@@ -1,5 +1,5 @@
 <?php
-class PlayerText
+class Timer
 {
 	protected static $instances = array();
 
