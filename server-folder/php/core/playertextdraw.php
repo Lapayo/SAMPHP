@@ -6,19 +6,26 @@ class PlayerTextDraw
 	protected $playerId;
 	protected $textId;
 
-	public static function findForPlayer($player, $text)
+	public static function findForPlayer($player, $textId)
 	{
-		if(isset(static::$instances[$player->id][$id]))
-			return static::$instances[$player->id][$id];
+        if(!isset(static::$instances[$player->id])){
+            static::$instances[$player->id] = array();
+        }
 
-		return static::$instances[$player->id][$id] = new static($player->id, $id);
+		if(isset(static::$instances[$player->id][$textId]))
+			return static::$instances[$player->id][$textId];
+
+		return static::$instances[$player->id][$textId] = new static($player->id, $textId);
 	}
 
 	public static function create($player, $x, $y, $text)
 	{
-		$id = CreatePlayerTextDraw($player->id, $x, $y, $text);
+        if(!isset(static::$instances[$player->id])){
+            static::$instances[$player->id] = array();
+        }
+		$textId = CreatePlayerTextDraw($player->id, $x, $y, $text);
 
-		return static::$instances[$id] = new static($player->id, $id);
+		return static::$instances[$player->id][$textId] = new static($player->id, $textId);
 	}
 
 	public function destroy()
@@ -31,10 +38,10 @@ class PlayerTextDraw
 		$this->textId = INVALID_TEXT_DRAW;
 	}
 
-	protected function __construct($playerid, $textid)
+	protected function __construct($playerid, $textId)
 	{
 		$this->playerId = $playerid;
-		$this->textId = $textid;
+		$this->textId = $textId;
 	}
 
 	public function setLetterSize($x, $y)

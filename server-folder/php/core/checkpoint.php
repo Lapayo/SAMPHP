@@ -63,8 +63,8 @@ class Checkpoint
 
 	public function destroy()
 	{
-		DisablePlayerCheckpoint($player->id);
-		unset(static::$instances[$player->id]);
+		DisablePlayerCheckpoint($this->player->id);
+		unset(static::$instances[$this->player->id]);
 	}
 
 	protected function __construct($player, $x, $y, $z, $size, $onEnter, $onLeave)

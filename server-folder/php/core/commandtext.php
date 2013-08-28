@@ -8,7 +8,7 @@ class CommandText
 	{
 		foreach((array) $commands as $command)
 		{
-			$command = strtolower('/'.ltrim($command, '/'));
+			$command = '/'.strtolower(ltrim($command, '/'));
 			static::$commands[$command] = $callback;
 		}
 	}
@@ -23,9 +23,7 @@ class CommandText
 
 		array_shift($splittedParams);
 
-		$params = implode(' ', $splittedParams);
-
-		call_user_func(static::$commands[$command], $player, $params, $splittedParams);
+		call_user_func(static::$commands[$command], $player, trim(substr($commandStr, strlen($command))), $splittedParams);
 
 		return true;
 	}

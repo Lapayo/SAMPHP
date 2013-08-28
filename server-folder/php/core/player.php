@@ -486,7 +486,7 @@ class Player
 
 	public function setRaceCheckpoint($type, $x, $y, $z, $nextx, $nexty, $nextz, $size = 10.0, $onEnter = null, $onLeave = null)
 	{
-		return RaceCheckpoint::createForPlayer($this, $x, $y, $z, $size, $onEnter, $onLeave);
+		return RaceCheckpoint::createForPlayer($this, $type, $x, $y, $z, $nextx, $nexty, $nextz, $size, $onEnter, $onLeave);
 	}
 
 	public function disableRaceCheckpoint()
@@ -559,12 +559,12 @@ class Player
 		return SendClientMessage($this->id, $color, $message);
 	}
 
-	public function sendMessageToPlayer($receiver, $message)
+	public function sendMessageToPlayer($receiver, $color, $message)
 	{
 		return SendPlayerMessageToPlayer($receiver->id, $this->id, $color, $message);
 	}
 
-	public function sendMessageFromPlayer($sender, $message)
+	public function sendMessageFromPlayer($sender, $color, $message)
 	{
 		return SendPlayerMessageToPlayer($this->id, $sender->id, $color, $message);
 	}
@@ -646,7 +646,7 @@ class Player
 		return StopRecordingPlayerData($this->id, $type, $name);
 	}
 
-	public function stopRecording($type, $name)
+	public function stopRecording()
 	{
 		return StopRecordingPlayerData($this->id);
 	}
