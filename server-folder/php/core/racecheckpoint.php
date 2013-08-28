@@ -58,8 +58,8 @@ class RaceCheckpoint
 
 	public function destroy()
 	{
-		DisablePlayerRaceCheckpoint($player->id);
-		unset(static::$instances[$player->id]);
+		DisablePlayerRaceCheckpoint($this->player->id);
+		unset(static::$instances[$this->player->id]);
 	}
 
 	protected function __construct($player, $type, $x, $y, $z, $nextx, $nexty, $nextz, $size, $onEnter, $onLeave)

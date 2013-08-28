@@ -26,7 +26,7 @@ function OnGameModeInit()
 
 function OnObjectMoved($objectid)
 {
-	return Event::untilDifferent("ObjectMoved");
+	return Event::untilDifferent("ObjectMoved", true, $objectid);
 }
 
 function OnPlayerClickMap($playerid, $fx, $fy, $fz)
@@ -74,9 +74,9 @@ function OnPlayerEditAttachedObject($playerid, $response, $index, $modelid, $bon
 	return Event::untilDifferent("PlayerEditAttachedObject", true, Player::find($playerid, true), $response, $index, $modelid, $boneid, $fOffsetX, $fOffsetY, $fOffsetZ, $fRotX, $fRotY, $fRotZ, $fScaleX, $fScaleY, $fScaleZ);
 }
 
-function OnPlayerEditObject($playerid,	$playerobject,	$objectid,	$response,	$fX,	$fY,	$fZ,	$fRotX,	$fRotY,	$fRotZ)
+function OnPlayerEditObject($playerid,	$playerobject,	$objectid,	$response,	$fX, $fY, $fZ,	$fRotX,	$fRotY,	$fRotZ)
 {
-	return Event::fireDefault(Player::find($playerid, true), true, $playerobject, $objectid,	$response,	$fX,	$fY,	$fZ,	$fRotX,	$fRotY,	$fRotZ);
+	return Event::fireDefault("PlayerEditObject", true, Player::find($playerid, true), $playerobject, $objectid, $response, $fX, $fY, $fZ, $fRotX, $fRotY, $fRotZ);
 }
 
 function OnPlayerEnterCheckpoint($playerid)

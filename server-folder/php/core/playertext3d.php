@@ -6,13 +6,13 @@ class PlayerText3D
 	protected $id;
 	protected $playerId;
 
-	public static function find($player, $textid)
+	public static function find($player, $textId)
 	{
-		if($id instanceof PlayerText3D)
-			return $id;
+		if($textId instanceof PlayerText3D)
+			return $textId;
 
-		if(isset(static::$instances[$player->id][$id]))
-			return static::$instances[$player->id][$id];
+		if(isset(static::$instances[$player->id][$textId]))
+			return static::$instances[$player->id][$textId];
 
 		return null;
 	}
@@ -21,7 +21,9 @@ class PlayerText3D
 		$attachedplayer = INVALID_PLAYER_ID, $attachedvehicle = INVALID_VEHICLE_ID, $virtualworld = 0, $testLOS = false)
 	{
 		$id = CreatePlayer3DTextLabel($player->id, $text, $color, $x, $y, $z, $drawDistance, $attachedplayer, $attachedvehicle, $virtualworld, $testLOS);
-
+        if(!isset(static::$instances[$player->id])){
+            static::$instances[$player->id] = array();
+        }
 		return static::$instances[$player->id][$id] = new static($player->id, $id);
 	}
 

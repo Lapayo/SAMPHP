@@ -2,14 +2,15 @@
 class PlayerCamera
 {
 	protected static $instances = array();
-	protected static $id = null;
+	protected $id = null;
 
 	public static function findForPlayer($player)
 	{
-		if(isset(static::$instances[$player->id]))
-			return static::$instances[$player->id];
-
-		return static::$instances[$player->id] = new static($player->id);
+		if(!isset(static::$instances[$player->id])){
+            static::$instances[$player->id] = new static($player->id);
+        }
+        
+        return static::$instances[$player->id];
 	}
 
 	protected function __construct($playerid)
