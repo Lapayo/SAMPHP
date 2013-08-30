@@ -35,7 +35,7 @@ class Server
 	
 	public static function showPlayerMarkers($mode = PLAYER_MARKERS_MODE_GLOBAL)
 	{
-		return ShowPlayerMarkers($show);
+		return ShowPlayerMarkers($mode);
 	}
 
 	public static function gameModeExit()
@@ -128,7 +128,7 @@ class Server
 		return LimitPlayerMarkerRadius($radius);
 	}
 
-	public function enableStuntBonus($enable = true)
+	public static function enableStuntBonus($enable = true)
 	{
 		return EnableStuntBonusForAll($enable);
 	}

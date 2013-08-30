@@ -155,7 +155,7 @@ class Vehicle
 		return RemoveVehicleComponent($this->id, $component);
 	}
 
-	public function changeColor($component, $color1, $color2)
+	public function changeColor($color1, $color2)
 	{
 		return ChangeVehicleColor($this->id, $color1, $color2);
 	}
@@ -205,7 +205,7 @@ class Vehicle
 
 	public function getModel()
 	{
-		return GetVehicleModel($this->id, $model);
+		return GetVehicleModel($this->id);
 	}
 
 	public function getComponentInSlot($slot)
@@ -279,18 +279,16 @@ class Vehicle
 
 		foreach(explode("\n", $content) as $line)
 		{
-			$line = trim($line);
+            if(empty($line)) continue;
 
-			$split = explode(';', $line);
+            $commentsStart = strpos($line, ';');
+			$spawn = explode(',', trim(($commentsStart === false) ? $line : substr($line, 0, $commentsStart)));
+            if(!isset($spawn[0])) continue;
 
-			$spawn = explode(',', trim($split[0]));
+			static::createStatic((int) $spawn[0], (float) $spawn[1], (float) $spawn[2], (float) $spawn[3], (float) $spawn[4], (int) $spawn[5], (int) $spawn[6], $respawnDelay);	// 30 min respawn delay
 
-			if(count($spawn) == 7)
-			{
-				static::createStatic((int) $spawn[0], (float) $spawn[1], (float) $spawn[2], (float) $spawn[3], (float) $spawn[4], (int) $spawn[5], (int) $spawn[6], $respawnDelay);	// 30 min respawn delay
 				$spawnedVehicles++;
 			}
-		}
 
 		return $spawnedVehicles;
 	}
