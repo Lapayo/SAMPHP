@@ -170,6 +170,6 @@ class Server
 
 	public static function gameTextForPlayer($player, $message, $time, $style)
 	{
-		return GameTextForAll($player->id, $message, $time, $style);
+		return GameTextForPlayer($player->id, $message, $time, $style);
 	}
 }
