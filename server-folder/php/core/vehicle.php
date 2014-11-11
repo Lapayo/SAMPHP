@@ -258,40 +258,6 @@ class Vehicle
 		return SetVehicleVirtualWorld($this->id, $world);
 	}
 
-
-	public static function loadStaticVehiclesFromFile($filename, $respawnDelay = 1800)
-	{
-		$spawnedVehicles = 0;
-
-		if(is_array($filename))
-		{
-			foreach($filename as $file)
-			{
-				$spawnedVehicles += static::loadStaticVehiclesFromFile($file);
-			}
-
-			return $spawnedVehicles;
-		}
-
-		$filename = find_path($filename);
-
-		$content = file_get_contents($filename);
-
-		foreach(explode("\n", $content) as $line)
-		{
-            if(empty($line)) continue;
-
-            $commentsStart = strpos($line, ';');
-			$spawn = explode(',', trim(($commentsStart === false) ? $line : substr($line, 0, $commentsStart)));
-            if(!isset($spawn[0])) continue;
-
-			static::createStatic((int) $spawn[0], (float) $spawn[1], (float) $spawn[2], (float) $spawn[3], (float) $spawn[4], (int) $spawn[5], (int) $spawn[6], $respawnDelay);	// 30 min respawn delay
-
-				$spawnedVehicles++;
-			}
-
-		return $spawnedVehicles;
-	}
 }
 
 
