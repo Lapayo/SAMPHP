@@ -214,9 +214,8 @@ function OnRconLoginAttempt($ip, $playerid, $success)
 	return Event::fireDefault("RconLoginAttempt", true, $ip, Player::find($playerid, true), $success);
 }
 
-function OnUnoccupiedVehicleUpdate($vehicleid,	$playerid,	$passengerSeat)
-{
-	return Event::fireDefault("UnoccupiedVehicleUpdate", true, Vehicle::find($vehicleid), Player::find($playerid, true), $passengerSeat);
+function OnUnoccupiedVehicleUpdate($vehicleid, $playerid, $passenger_seat, $newx, $newy, $newz, $velx, $vely, $velz) {
+	return Event::fireDefault("OnUnoccupiedVehicleUpdate", Vehicle::find($vehicleid), Player::find($playerid, true), $passenger_seat, $newx, $newy, $newz, $velx, $vely, $velz);
 }
 
 function OnVehicleDamageStatusUpdate($vehicleid, $playerid)
@@ -257,4 +256,13 @@ function OnVehicleStreamIn($vehicleid, $forplayerid)
 function OnVehicleStreamOut($vehicleid, $forplayerid)
 {
 	return Event::fireDefault("VehicleStreamOut", true, Vehicle::find($vehicleid), Player::find($forplayerid, true));
+}
+
+function OnIncomingConnection($playerid, $ipaddress, $port) 
+{
+	return Event::fireDefault("IncomingConnection", true, Player::find($playerid, true), $ipaddress, $port);
+}
+
+function OnTrailerUpdate($playerid, $vehicleid) {
+	return Event::fireDefault("TrailerUpdate", true, Player::find($playerid, true), Vehicle::find($vehicleid));
 }

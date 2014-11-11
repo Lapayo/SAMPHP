@@ -172,4 +172,12 @@ class Server
 	{
 		return GameTextForPlayer($player->id, $message, $time, $style);
 	}
+
+	public static function blockIpAddress($ipaddress, $timems) {
+		return BlockIpAddress($ipaddress, $timems);
+	}
+
+	public static function unBlockIpAddress($ipaddress) {
+		return UnBlockIpAddress($ipaddress);
+	}
 }

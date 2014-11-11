@@ -1,6 +1,6 @@
 <?php
 
-class CommandText
+class CMD
 {
 	protected static $commands;
 
@@ -29,4 +29,6 @@ class CommandText
 	}
 }
 
-Event::on('PlayerCommandText', array('CommandText', 'handleCommand'));
+class_alias('CMD', 'Command');
+
+Event::on('PlayerCommandText', array('CMD', 'handleCommand'));

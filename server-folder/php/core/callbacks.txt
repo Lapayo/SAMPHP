@@ -49,3 +49,6 @@ OnVehicleRespray
 OnVehicleSpawn
 OnVehicleStreamIn
 OnVehicleStreamOut
+OnIncomingConnection
+OnTrailerUpdate
+OnUnoccupiedVehicleUpdate
