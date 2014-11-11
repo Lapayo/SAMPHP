@@ -1,5 +1,5 @@
-#include "samphp.h"
 #include "bindings.h"
+#include "samphp.h"
 #include <string>
 #include <fstream>
 #include <sstream>
@@ -11,6 +11,8 @@ int php_set_ini_entry(char *entry, char *value, int stage)
 }
 
 samphp *samphp::instance = NULL;
+
+using sampgdk::logprintf;
 
 samphp::samphp(bool typeError)
 {
@@ -283,13 +285,13 @@ void samphp::internal_error(const char *str)
 
 int samphp_output_handler(const char *str, unsigned int str_length)
 {
-	ServerLog::Printf(str);
+	logprintf(str);
 	return str_length;
 }
 
 void samphp_error_handler(char *str)
 {
-	ServerLog::Printf(str);
+	logprintf(str);
 }
 
 

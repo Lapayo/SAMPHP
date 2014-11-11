@@ -9,7 +9,7 @@ PHP_FUNCTION(SetSpawnInfo)
         RETURN_NULL();
     }
 
-    SetSpawnInfo(playerid, team, skin, x, y, z, rotation, weapon1, weapon1_ammo, weapon2, weapon2_ammo, weapon3, weapon3_ammo);
+    sampgdk_SetSpawnInfo(playerid, team, skin, x, y, z, rotation, weapon1, weapon1_ammo, weapon2, weapon2_ammo, weapon3, weapon3_ammo);
 }
 
 PHP_FUNCTION(SpawnPlayer)
@@ -22,7 +22,7 @@ PHP_FUNCTION(SpawnPlayer)
         RETURN_NULL();
     }
 
-    SpawnPlayer(playerid);
+    sampgdk_SpawnPlayer(playerid);
 }
 
 PHP_FUNCTION(SetPlayerPos)
@@ -36,7 +36,7 @@ PHP_FUNCTION(SetPlayerPos)
         RETURN_NULL();
     }
 
-    SetPlayerPos(playerId, x, y, z);
+    sampgdk_SetPlayerPos(playerId, x, y, z);
 }
 
 PHP_FUNCTION(SetPlayerPosFindZ)
@@ -50,7 +50,7 @@ PHP_FUNCTION(SetPlayerPosFindZ)
         RETURN_NULL();
     }
 
-    SetPlayerPosFindZ(playerid, x, y, z);
+    sampgdk_SetPlayerPosFindZ(playerid, x, y, z);
 }
 
 PHP_FUNCTION(GetPlayerPos)
@@ -64,13 +64,14 @@ PHP_FUNCTION(GetPlayerPos)
         RETURN_NULL();
     }
 
-    GetPlayerPos(playerid, &x, &y, &z);
+    sampgdk_GetPlayerPos(playerid, &x, &y, &z);
 
     array_init(return_value);
     add_assoc_double(return_value, "x", x);
     add_assoc_double(return_value, "y", y);
     add_assoc_double(return_value, "z", z);
 }
+
 
 PHP_FUNCTION(SetPlayerFacingAngle)
 {
@@ -83,7 +84,7 @@ PHP_FUNCTION(SetPlayerFacingAngle)
         RETURN_NULL();
     }
 
-    SetPlayerFacingAngle(playerId, angle);
+    sampgdk_SetPlayerFacingAngle(playerId, angle);
 }
 
 PHP_FUNCTION(GetPlayerFacingAngle)
@@ -97,7 +98,7 @@ PHP_FUNCTION(GetPlayerFacingAngle)
         RETURN_NULL();
     }
 
-    GetPlayerFacingAngle(playerid, &ang);
+    sampgdk_GetPlayerFacingAngle(playerid, &ang);
 
     RETVAL_DOUBLE(ang);
 }
@@ -113,7 +114,7 @@ PHP_FUNCTION(IsPlayerInRangeOfPoint)
         RETURN_NULL();
     }
 
-    RETVAL_BOOL(IsPlayerInRangeOfPoint(playerid, range, x, y, z));
+    RETVAL_BOOL(sampgdk_IsPlayerInRangeOfPoint(playerid, range, x, y, z));
 }
 
 PHP_FUNCTION(GetPlayerDistanceFromPoint)
@@ -127,7 +128,7 @@ PHP_FUNCTION(GetPlayerDistanceFromPoint)
         RETURN_NULL();
     }
 
-    RETVAL_DOUBLE(GetPlayerDistanceFromPoint(playerid, X, Y, Z));
+    RETVAL_DOUBLE(sampgdk_GetPlayerDistanceFromPoint(playerid, X, Y, Z));
 }
 
 PHP_FUNCTION(IsPlayerStreamedIn)
@@ -140,7 +141,7 @@ PHP_FUNCTION(IsPlayerStreamedIn)
         RETURN_NULL();
     }
 
-    RETVAL_BOOL(IsPlayerStreamedIn(playerid, forplayerid));
+    RETVAL_BOOL(sampgdk_IsPlayerStreamedIn(playerid, forplayerid));
 }
 
 PHP_FUNCTION(SetPlayerInterior)
@@ -152,7 +153,7 @@ PHP_FUNCTION(SetPlayerInterior)
         RETURN_NULL();
     }
 
-    SetPlayerInterior(playerId, interiorId);
+    sampgdk_SetPlayerInterior(playerId, interiorId);
 }
 
 PHP_FUNCTION(GetPlayerInterior)
@@ -165,7 +166,7 @@ PHP_FUNCTION(GetPlayerInterior)
         RETURN_NULL();
     }
 
-    RETVAL_LONG(GetPlayerInterior(playerid));
+    RETVAL_LONG(sampgdk_GetPlayerInterior(playerid));
 }
 
 PHP_FUNCTION(SetPlayerHealth)
@@ -179,7 +180,7 @@ PHP_FUNCTION(SetPlayerHealth)
         RETURN_NULL();
     }
 
-    SetPlayerHealth(playerid, health);
+    sampgdk_SetPlayerHealth(playerid, health);
 }
 
 PHP_FUNCTION(GetPlayerHealth)
@@ -193,7 +194,7 @@ PHP_FUNCTION(GetPlayerHealth)
         RETURN_NULL();
     }
 
-    GetPlayerHealth(playerid, &health);
+    sampgdk_GetPlayerHealth(playerid, &health);
 
     RETVAL_DOUBLE(health);
 }
@@ -209,7 +210,7 @@ PHP_FUNCTION(SetPlayerArmour)
         RETURN_NULL();
     }
 
-    SetPlayerArmour(playerid, armour);
+    sampgdk_SetPlayerArmour(playerid, armour);
 }
 
 PHP_FUNCTION(GetPlayerArmour)
@@ -223,7 +224,7 @@ PHP_FUNCTION(GetPlayerArmour)
         RETURN_NULL();
     }
 
-    GetPlayerArmour(playerid, &armour);
+    sampgdk_GetPlayerArmour(playerid, &armour);
 
     RETVAL_DOUBLE(armour);
 }
@@ -238,7 +239,7 @@ PHP_FUNCTION(SetPlayerAmmo)
         RETURN_NULL();
     }
 
-    SetPlayerAmmo(playerid, weaponslot, ammo);
+    sampgdk_SetPlayerAmmo(playerid, weaponslot, ammo);
 }
 
 PHP_FUNCTION(GetPlayerAmmo)
@@ -251,7 +252,7 @@ PHP_FUNCTION(GetPlayerAmmo)
         RETURN_NULL();
     }
 
-    RETVAL_LONG(GetPlayerAmmo(playerid));
+    RETVAL_LONG(sampgdk_GetPlayerAmmo(playerid));
 }
 
 PHP_FUNCTION(GetPlayerWeaponState)
@@ -264,7 +265,7 @@ PHP_FUNCTION(GetPlayerWeaponState)
         RETURN_NULL();
     }
 
-    RETVAL_LONG(GetPlayerWeaponState(playerid));
+    RETVAL_LONG(sampgdk_GetPlayerWeaponState(playerid));
 }
 
 PHP_FUNCTION(GetPlayerTargetPlayer)
@@ -277,7 +278,7 @@ PHP_FUNCTION(GetPlayerTargetPlayer)
         RETURN_NULL();
     }
 
-    RETVAL_LONG(GetPlayerTargetPlayer(playerid));
+    RETVAL_LONG(sampgdk_GetPlayerTargetPlayer(playerid));
 }
 
 PHP_FUNCTION(SetPlayerTeam)
@@ -290,7 +291,7 @@ PHP_FUNCTION(SetPlayerTeam)
         RETURN_NULL();
     }
 
-    SetPlayerTeam(playerid, teamid);
+    sampgdk_SetPlayerTeam(playerid, teamid);
 }
 
 PHP_FUNCTION(GetPlayerTeam)
@@ -303,7 +304,7 @@ PHP_FUNCTION(GetPlayerTeam)
         RETURN_NULL();
     }
 
-    RETVAL_LONG(GetPlayerTeam(playerid));
+    RETVAL_LONG(sampgdk_GetPlayerTeam(playerid));
 }
 
 PHP_FUNCTION(SetPlayerScore)
@@ -316,7 +317,7 @@ PHP_FUNCTION(SetPlayerScore)
         RETURN_NULL();
     }
 
-    SetPlayerScore(playerId, score);
+    sampgdk_SetPlayerScore(playerId, score);
 }
 
 PHP_FUNCTION(GetPlayerScore)
@@ -329,7 +330,7 @@ PHP_FUNCTION(GetPlayerScore)
         RETURN_NULL();
     }
 
-    RETVAL_LONG(GetPlayerScore(playerId));
+    RETVAL_LONG(sampgdk_GetPlayerScore(playerId));
 }
 
 PHP_FUNCTION(GetPlayerDrunkLevel)
@@ -342,7 +343,7 @@ PHP_FUNCTION(GetPlayerDrunkLevel)
         RETURN_NULL();
     }
 
-    RETVAL_LONG(GetPlayerDrunkLevel(playerid));
+    RETVAL_LONG(sampgdk_GetPlayerDrunkLevel(playerid));
 }
 
 PHP_FUNCTION(SetPlayerDrunkLevel)
@@ -355,7 +356,7 @@ PHP_FUNCTION(SetPlayerDrunkLevel)
         RETURN_NULL();
     }
 
-    SetPlayerDrunkLevel(playerid, level);
+    sampgdk_SetPlayerDrunkLevel(playerid, level);
 }
 
 PHP_FUNCTION(SetPlayerColor)
@@ -368,7 +369,7 @@ PHP_FUNCTION(SetPlayerColor)
         RETURN_NULL();
     }
 
-    SetPlayerColor(playerid, color);
+    sampgdk_SetPlayerColor(playerid, color);
 }
 
 PHP_FUNCTION(GetPlayerColor)
@@ -381,7 +382,7 @@ PHP_FUNCTION(GetPlayerColor)
         RETURN_NULL();
     }
 
-    RETVAL_LONG(GetPlayerColor(playerid));
+    RETVAL_LONG(sampgdk_GetPlayerColor(playerid));
 }
 
 PHP_FUNCTION(SetPlayerSkin)
@@ -394,7 +395,7 @@ PHP_FUNCTION(SetPlayerSkin)
         RETURN_NULL();
     }
 
-    SetPlayerSkin(playerid, skinid);
+    sampgdk_SetPlayerSkin(playerid, skinid);
 }
 
 PHP_FUNCTION(GetPlayerSkin)
@@ -407,7 +408,7 @@ PHP_FUNCTION(GetPlayerSkin)
         RETURN_NULL();
     }
 
-    RETVAL_LONG(GetPlayerSkin(playerid));
+    RETVAL_LONG(sampgdk_GetPlayerSkin(playerid));
 }
 
 PHP_FUNCTION(GivePlayerWeapon)
@@ -420,7 +421,7 @@ PHP_FUNCTION(GivePlayerWeapon)
         RETURN_NULL();
     }
 
-    GivePlayerWeapon(playerid, weaponid, ammo);
+    sampgdk_GivePlayerWeapon(playerid, weaponid, ammo);
 }
 
 PHP_FUNCTION(ResetPlayerWeapons)
@@ -433,7 +434,7 @@ PHP_FUNCTION(ResetPlayerWeapons)
         RETURN_NULL();
     }
 
-    ResetPlayerWeapons(playerid);
+    sampgdk_ResetPlayerWeapons(playerid);
 }
 
 PHP_FUNCTION(SetPlayerArmedWeapon)
@@ -446,7 +447,7 @@ PHP_FUNCTION(SetPlayerArmedWeapon)
         RETURN_NULL();
     }
 
-    SetPlayerArmedWeapon(playerid, weaponid);
+    sampgdk_SetPlayerArmedWeapon(playerid, weaponid);
 }
 
 PHP_FUNCTION(GetPlayerWeaponData)
@@ -459,7 +460,7 @@ PHP_FUNCTION(GetPlayerWeaponData)
         RETURN_NULL();
     }
 
-    GetPlayerWeaponData(playerid, slot, &weapons, &ammo);
+    sampgdk_GetPlayerWeaponData(playerid, slot, &weapons, &ammo);
 
     array_init(return_value);
     add_assoc_long(return_value, "weapons", weapons);
@@ -476,7 +477,7 @@ PHP_FUNCTION(GetPlayerMoney)
         RETURN_NULL();
     }
 
-    RETVAL_LONG(GetPlayerMoney(playerId));
+    RETVAL_LONG(sampgdk_GetPlayerMoney(playerId));
 }
 
 PHP_FUNCTION(GivePlayerMoney)
@@ -489,7 +490,7 @@ PHP_FUNCTION(GivePlayerMoney)
         RETURN_NULL();
     }
 
-    GivePlayerMoney(playerId, amount);
+    sampgdk_GivePlayerMoney(playerId, amount);
 }
 
 PHP_FUNCTION(ResetPlayerMoney)
@@ -502,7 +503,7 @@ PHP_FUNCTION(ResetPlayerMoney)
         RETURN_NULL();
     }
 
-    ResetPlayerMoney(playerId);
+    sampgdk_ResetPlayerMoney(playerId);
 }
 
 PHP_FUNCTION(SetPlayerName)
@@ -516,7 +517,7 @@ PHP_FUNCTION(SetPlayerName)
         RETURN_NULL();
     }
 
-    SetPlayerName(playerid, name);
+    sampgdk_SetPlayerName(playerid, name);
 }
 
 PHP_FUNCTION(GetPlayerState)
@@ -529,7 +530,7 @@ PHP_FUNCTION(GetPlayerState)
         RETURN_NULL();
     }
 
-    RETVAL_LONG(GetPlayerState(playerid));
+    RETVAL_LONG(sampgdk_GetPlayerState(playerid));
 }
 
 PHP_FUNCTION(GetPlayerIp)
@@ -546,7 +547,7 @@ PHP_FUNCTION(GetPlayerIp)
     const int buffer_len = 50;
     char buffer[buffer_len];
 
-    GetPlayerIp(playerid, buffer, buffer_len);
+    sampgdk_GetPlayerIp(playerid, buffer, buffer_len);
 
     RETVAL_STRING(buffer, buffer_len);
 }
@@ -561,7 +562,7 @@ PHP_FUNCTION(GetPlayerPing)
         RETURN_NULL();
     }
 
-    RETVAL_LONG(GetPlayerPing(playerid));
+    RETVAL_LONG(sampgdk_GetPlayerPing(playerid));
 }
 
 PHP_FUNCTION(GetPlayerWeapon)
@@ -574,7 +575,7 @@ PHP_FUNCTION(GetPlayerWeapon)
         RETURN_NULL();
     }
 
-    RETVAL_LONG(GetPlayerWeapon(playerid));
+    RETVAL_LONG(sampgdk_GetPlayerWeapon(playerid));
 }
 
 PHP_FUNCTION(GetPlayerKeys)
@@ -587,7 +588,7 @@ PHP_FUNCTION(GetPlayerKeys)
         RETURN_NULL();
     }
 
-    GetPlayerKeys(playerid, &keys, &updown, &leftright);
+    sampgdk_GetPlayerKeys(playerid, &keys, &updown, &leftright);
 
     array_init(return_value);
     add_assoc_long(return_value, "keys", keys);
@@ -608,7 +609,7 @@ PHP_FUNCTION(GetPlayerName)
     const int buffer_len = 50;
     char buffer[buffer_len];
 
-    GetPlayerName(playerid, buffer, buffer_len);
+    sampgdk_GetPlayerName(playerid, buffer, buffer_len);
 
     RETVAL_STRING(buffer, buffer_len);
 }
@@ -623,7 +624,7 @@ PHP_FUNCTION(SetPlayerTime)
         RETURN_NULL();
     }
 
-    SetPlayerTime(playerid, hour, minute);
+    sampgdk_SetPlayerTime(playerid, hour, minute);
 }
 
 PHP_FUNCTION(GetPlayerTime)
@@ -636,7 +637,7 @@ PHP_FUNCTION(GetPlayerTime)
         RETURN_NULL();
     }
 
-    GetPlayerTime(playerid, &hour, &minute);
+    sampgdk_GetPlayerTime(playerid, &hour, &minute);
 
     array_init(return_value);
     add_assoc_long(return_value, "hour", hour);
@@ -653,7 +654,7 @@ PHP_FUNCTION(TogglePlayerClock)
         RETURN_NULL();
     }
 
-    TogglePlayerClock(playerId, toggle);
+    sampgdk_TogglePlayerClock(playerId, toggle);
 }
 
 PHP_FUNCTION(SetPlayerWeather)
@@ -666,7 +667,7 @@ PHP_FUNCTION(SetPlayerWeather)
         RETURN_NULL();
     }
 
-    SetPlayerWeather(playerid, weather);
+    sampgdk_SetPlayerWeather(playerid, weather);
 }
 
 PHP_FUNCTION(ForceClassSelection)
@@ -679,7 +680,7 @@ PHP_FUNCTION(ForceClassSelection)
         RETURN_NULL();
     }
 
-    ForceClassSelection(playerid);
+    sampgdk_ForceClassSelection(playerid);
 }
 
 PHP_FUNCTION(SetPlayerWantedLevel)
@@ -692,7 +693,7 @@ PHP_FUNCTION(SetPlayerWantedLevel)
         RETURN_NULL();
     }
 
-    SetPlayerWantedLevel(playerid, level);
+    sampgdk_SetPlayerWantedLevel(playerid, level);
 }
 
 PHP_FUNCTION(GetPlayerWantedLevel)
@@ -705,7 +706,7 @@ PHP_FUNCTION(GetPlayerWantedLevel)
         RETURN_NULL();
     }
 
-    RETVAL_LONG(GetPlayerWantedLevel(playerid));
+    RETVAL_LONG(sampgdk_GetPlayerWantedLevel(playerid));
 }
 
 PHP_FUNCTION(SetPlayerFightingStyle)
@@ -718,7 +719,7 @@ PHP_FUNCTION(SetPlayerFightingStyle)
         RETURN_NULL();
     }
 
-    SetPlayerFightingStyle(playerid, style);
+    sampgdk_SetPlayerFightingStyle(playerid, style);
 }
 
 PHP_FUNCTION(GetPlayerFightingStyle)
@@ -731,7 +732,7 @@ PHP_FUNCTION(GetPlayerFightingStyle)
         RETURN_NULL();
     }
 
-    RETVAL_LONG(GetPlayerFightingStyle(playerid));
+    RETVAL_LONG(sampgdk_GetPlayerFightingStyle(playerid));
 }
 
 PHP_FUNCTION(SetPlayerVelocity)
@@ -745,7 +746,7 @@ PHP_FUNCTION(SetPlayerVelocity)
         RETURN_NULL();
     }
 
-    SetPlayerVelocity(playerid, X, Y, Z);
+    sampgdk_SetPlayerVelocity(playerid, X, Y, Z);
 }
 
 PHP_FUNCTION(GetPlayerVelocity)
@@ -759,7 +760,7 @@ PHP_FUNCTION(GetPlayerVelocity)
         RETURN_NULL();
     }
 
-    GetPlayerVelocity(playerid, &x, &y, &z);
+    sampgdk_GetPlayerVelocity(playerid, &x, &y, &z);
 
     array_init(return_value);
     add_assoc_double(return_value, "x", x);
@@ -777,7 +778,7 @@ PHP_FUNCTION(PlayCrimeReportForPlayer)
         RETURN_NULL();
     }
 
-    PlayCrimeReportForPlayer(playerid, suspectid, crime);
+    sampgdk_PlayCrimeReportForPlayer(playerid, suspectid, crime);
 }
 
 PHP_FUNCTION(PlayAudioStreamForPlayer)
@@ -793,7 +794,7 @@ PHP_FUNCTION(PlayAudioStreamForPlayer)
         RETURN_NULL();
     }
 
-    PlayAudioStreamForPlayer(playerid, url, posX, posY, posZ, distance, usepos);
+    sampgdk_PlayAudioStreamForPlayer(playerid, url, posX, posY, posZ, distance, usepos);
 }
 
 
@@ -807,7 +808,7 @@ PHP_FUNCTION(StopAudioStreamForPlayer)
         RETURN_NULL();
     }
 
-    StopAudioStreamForPlayer(playerid);
+    sampgdk_StopAudioStreamForPlayer(playerid);
 }
 
 PHP_FUNCTION(SetPlayerShopName)
@@ -821,7 +822,7 @@ PHP_FUNCTION(SetPlayerShopName)
         RETURN_NULL();
     }
 
-    SetPlayerShopName(playerid, shopname);
+    sampgdk_SetPlayerShopName(playerid, shopname);
 }
 
 PHP_FUNCTION(SetPlayerSkillLevel)
@@ -834,7 +835,7 @@ PHP_FUNCTION(SetPlayerSkillLevel)
         RETURN_NULL();
     }
 
-    SetPlayerSkillLevel(playerid, skill, level);
+    sampgdk_SetPlayerSkillLevel(playerid, skill, level);
 }
 
 PHP_FUNCTION(GetPlayerSurfingVehicleID)
@@ -847,7 +848,7 @@ PHP_FUNCTION(GetPlayerSurfingVehicleID)
         RETURN_NULL();
     }
 
-    RETVAL_LONG(GetPlayerSurfingVehicleID(playerid));
+    RETVAL_LONG(sampgdk_GetPlayerSurfingVehicleID(playerid));
 }
 
 PHP_FUNCTION(GetPlayerSurfingObjectID)
@@ -860,7 +861,7 @@ PHP_FUNCTION(GetPlayerSurfingObjectID)
         RETURN_NULL();
     }
 
-    RETVAL_LONG(GetPlayerSurfingObjectID(playerid));
+    RETVAL_LONG(sampgdk_GetPlayerSurfingObjectID(playerid));
 }
 
 PHP_FUNCTION(RemoveBuildingForPlayer)
@@ -874,7 +875,7 @@ PHP_FUNCTION(RemoveBuildingForPlayer)
         RETURN_NULL();
     }
 
-    RemoveBuildingForPlayer(playerid, modelid, fX, fY, fZ, fRadius);
+    sampgdk_RemoveBuildingForPlayer(playerid, modelid, fX, fY, fZ, fRadius);
 }
 
 PHP_FUNCTION(SetPlayerAttachedObject)
@@ -888,7 +889,7 @@ PHP_FUNCTION(SetPlayerAttachedObject)
         RETURN_NULL();
     }
 
-    SetPlayerAttachedObject(playerid, index, modelid, bone, fOffsetX, fOffsetY, fOffsetZ, fRotX, fRotY, fRotZ, fScaleX, fScaleY, fScaleZ, materialcolor1, materialcolor2);
+    sampgdk_SetPlayerAttachedObject(playerid, index, modelid, bone, fOffsetX, fOffsetY, fOffsetZ, fRotX, fRotY, fRotZ, fScaleX, fScaleY, fScaleZ, materialcolor1, materialcolor2);
 }
 
 PHP_FUNCTION(RemovePlayerAttachedObject)
@@ -901,7 +902,7 @@ PHP_FUNCTION(RemovePlayerAttachedObject)
         RETURN_NULL();
     }
 
-    RemovePlayerAttachedObject(playerid, index);
+    sampgdk_RemovePlayerAttachedObject(playerid, index);
 }
 
 PHP_FUNCTION(IsPlayerAttachedObjectSlotUsed)
@@ -914,7 +915,7 @@ PHP_FUNCTION(IsPlayerAttachedObjectSlotUsed)
         RETURN_NULL();
     }
 
-    RETVAL_BOOL(IsPlayerAttachedObjectSlotUsed(playerid, index));
+    RETVAL_BOOL(sampgdk_IsPlayerAttachedObjectSlotUsed(playerid, index));
 }
 
 PHP_FUNCTION(EditAttachedObject)
@@ -927,7 +928,7 @@ PHP_FUNCTION(EditAttachedObject)
         RETURN_NULL();
     }
 
-    EditAttachedObject(playerid, index);
+    sampgdk_EditAttachedObject(playerid, index);
 }
 
 // Per-player TextDraws
@@ -943,7 +944,7 @@ PHP_FUNCTION(CreatePlayerTextDraw)
         RETURN_NULL();
     }
 
-    RETVAL_LONG(CreatePlayerTextDraw(playerid, x, y, text));
+    RETVAL_LONG(sampgdk_CreatePlayerTextDraw(playerid, x, y, text));
 }
 
 PHP_FUNCTION(PlayerTextDrawDestroy)
@@ -956,7 +957,7 @@ PHP_FUNCTION(PlayerTextDrawDestroy)
         RETURN_NULL();
     }
 
-    PlayerTextDrawDestroy(playerid, textid);
+    sampgdk_PlayerTextDrawDestroy(playerid, textid);
 }
 
 PHP_FUNCTION(PlayerTextDrawLetterSize)
@@ -970,7 +971,7 @@ PHP_FUNCTION(PlayerTextDrawLetterSize)
         RETURN_NULL();
     }
 
-    PlayerTextDrawLetterSize(playerid, textid, x, y);
+    sampgdk_PlayerTextDrawLetterSize(playerid, textid, x, y);
 }
 
 PHP_FUNCTION(PlayerTextDrawTextSize)
@@ -984,7 +985,7 @@ PHP_FUNCTION(PlayerTextDrawTextSize)
         RETURN_NULL();
     }
 
-    PlayerTextDrawTextSize(playerid, textid, x, y);
+    sampgdk_PlayerTextDrawTextSize(playerid, textid, x, y);
 }
 
 PHP_FUNCTION(PlayerTextDrawAlignment)
@@ -997,7 +998,7 @@ PHP_FUNCTION(PlayerTextDrawAlignment)
         RETURN_NULL();
     }
 
-    PlayerTextDrawAlignment(playerid, textid, alignment);
+    sampgdk_PlayerTextDrawAlignment(playerid, textid, alignment);
 }
 
 PHP_FUNCTION(PlayerTextDrawColor)
@@ -1010,7 +1011,7 @@ PHP_FUNCTION(PlayerTextDrawColor)
         RETURN_NULL();
     }
 
-    PlayerTextDrawColor(playerid, textid, color);
+    sampgdk_PlayerTextDrawColor(playerid, textid, color);
 }
 
 PHP_FUNCTION(PlayerTextDrawUseBox)
@@ -1023,7 +1024,7 @@ PHP_FUNCTION(PlayerTextDrawUseBox)
         RETURN_NULL();
     }
 
-    PlayerTextDrawUseBox(playerid, textid, use);
+    sampgdk_PlayerTextDrawUseBox(playerid, textid, use);
 }
 
 PHP_FUNCTION(PlayerTextDrawBoxColor)
@@ -1036,7 +1037,7 @@ PHP_FUNCTION(PlayerTextDrawBoxColor)
         RETURN_NULL();
     }
 
-    PlayerTextDrawBoxColor(playerid, textid, color);
+    sampgdk_PlayerTextDrawBoxColor(playerid, textid, color);
 }
 
 PHP_FUNCTION(PlayerTextDrawSetShadow)
@@ -1049,7 +1050,7 @@ PHP_FUNCTION(PlayerTextDrawSetShadow)
         RETURN_NULL();
     }
 
-    PlayerTextDrawSetShadow(playerid, textid, size);
+    sampgdk_PlayerTextDrawSetShadow(playerid, textid, size);
 }
 
 PHP_FUNCTION(PlayerTextDrawSetOutline)
@@ -1062,7 +1063,7 @@ PHP_FUNCTION(PlayerTextDrawSetOutline)
         RETURN_NULL();
     }
 
-    PlayerTextDrawSetOutline(playerid, textid, size);
+    sampgdk_PlayerTextDrawSetOutline(playerid, textid, size);
 }
 
 PHP_FUNCTION(PlayerTextDrawBackgroundColor)
@@ -1075,7 +1076,7 @@ PHP_FUNCTION(PlayerTextDrawBackgroundColor)
         RETURN_NULL();
     }
 
-    PlayerTextDrawBackgroundColor(playerid, textid, color);
+    sampgdk_PlayerTextDrawBackgroundColor(playerid, textid, color);
 }
 
 PHP_FUNCTION(PlayerTextDrawFont)
@@ -1088,7 +1089,7 @@ PHP_FUNCTION(PlayerTextDrawFont)
         RETURN_NULL();
     }
 
-    PlayerTextDrawFont(playerid, textid, font);
+    sampgdk_PlayerTextDrawFont(playerid, textid, font);
 }
 
 PHP_FUNCTION(PlayerTextDrawSetProportional)
@@ -1101,7 +1102,7 @@ PHP_FUNCTION(PlayerTextDrawSetProportional)
         RETURN_NULL();
     }
 
-    PlayerTextDrawSetProportional(playerid, textid, set);
+    sampgdk_PlayerTextDrawSetProportional(playerid, textid, set);
 }
 
 PHP_FUNCTION(PlayerTextDrawSetSelectable)
@@ -1114,7 +1115,7 @@ PHP_FUNCTION(PlayerTextDrawSetSelectable)
         RETURN_NULL();
     }
 
-    PlayerTextDrawSetSelectable(playerid, textid, set);
+    sampgdk_PlayerTextDrawSetSelectable(playerid, textid, set);
 }
 
 PHP_FUNCTION(PlayerTextDrawShow)
@@ -1127,7 +1128,7 @@ PHP_FUNCTION(PlayerTextDrawShow)
         RETURN_NULL();
     }
 
-    PlayerTextDrawShow(playerid, textid);
+    sampgdk_PlayerTextDrawShow(playerid, textid);
 }
 
 PHP_FUNCTION(PlayerTextDrawHide)
@@ -1140,7 +1141,7 @@ PHP_FUNCTION(PlayerTextDrawHide)
         RETURN_NULL();
     }
 
-    PlayerTextDrawHide(playerid, textid);
+    sampgdk_PlayerTextDrawHide(playerid, textid);
 }
 
 PHP_FUNCTION(PlayerTextDrawSetString)
@@ -1154,7 +1155,7 @@ PHP_FUNCTION(PlayerTextDrawSetString)
         RETURN_NULL();
     }
 
-    PlayerTextDrawSetString(playerid, textid, string);
+    sampgdk_PlayerTextDrawSetString(playerid, textid, string);
 }
 
 PHP_FUNCTION(PlayerTextDrawSetPreviewModel)
@@ -1167,7 +1168,7 @@ PHP_FUNCTION(PlayerTextDrawSetPreviewModel)
         RETURN_NULL();
     }
 
-    PlayerTextDrawSetPreviewModel(playerid, textid, modelindex);
+    sampgdk_PlayerTextDrawSetPreviewModel(playerid, textid, modelindex);
 }
 
 PHP_FUNCTION(PlayerTextDrawSetPreviewRot)
@@ -1181,7 +1182,7 @@ PHP_FUNCTION(PlayerTextDrawSetPreviewRot)
         RETURN_NULL();
     }
 
-    PlayerTextDrawSetPreviewRot(playerid, textid, fRotX, fRotY, fRotZ, fZoom);
+    sampgdk_PlayerTextDrawSetPreviewRot(playerid, textid, fRotX, fRotY, fRotZ, fZoom);
 }
 
 PHP_FUNCTION(PlayerTextDrawSetPreviewVehCol)
@@ -1194,7 +1195,7 @@ PHP_FUNCTION(PlayerTextDrawSetPreviewVehCol)
         RETURN_NULL();
     }
 
-    PlayerTextDrawSetPreviewVehCol(playerid, textid, color1, color2);
+    sampgdk_PlayerTextDrawSetPreviewVehCol(playerid, textid, color1, color2);
 }
 
 PHP_FUNCTION(SetPlayerChatBubble)
@@ -1209,7 +1210,7 @@ PHP_FUNCTION(SetPlayerChatBubble)
         RETURN_NULL();
     }
 
-    SetPlayerChatBubble(playerid, text, color, drawdistance, expiretime);
+    sampgdk_SetPlayerChatBubble(playerid, text, color, drawdistance, expiretime);
 }
 
 // Player controls
@@ -1223,7 +1224,7 @@ PHP_FUNCTION(PutPlayerInVehicle)
         RETURN_NULL();
     }
 
-    PutPlayerInVehicle(playerid, vehicleid, seatid);
+    sampgdk_PutPlayerInVehicle(playerid, vehicleid, seatid);
 }
 
 PHP_FUNCTION(GetPlayerVehicleID)
@@ -1236,7 +1237,7 @@ PHP_FUNCTION(GetPlayerVehicleID)
         RETURN_NULL();
     }
 
-    RETVAL_LONG(GetPlayerVehicleID(playerid));
+    RETVAL_LONG(sampgdk_GetPlayerVehicleID(playerid));
 }
 
 PHP_FUNCTION(GetPlayerVehicleSeat)
@@ -1249,7 +1250,7 @@ PHP_FUNCTION(GetPlayerVehicleSeat)
         RETURN_NULL();
     }
 
-    RETVAL_LONG(GetPlayerVehicleSeat(playerid));
+    RETVAL_LONG(sampgdk_GetPlayerVehicleSeat(playerid));
 }
 
 PHP_FUNCTION(RemovePlayerFromVehicle)
@@ -1262,7 +1263,7 @@ PHP_FUNCTION(RemovePlayerFromVehicle)
         RETURN_NULL();
     }
 
-    RemovePlayerFromVehicle(playerid);
+    sampgdk_RemovePlayerFromVehicle(playerid);
 }
 
 PHP_FUNCTION(TogglePlayerControllable)
@@ -1275,7 +1276,7 @@ PHP_FUNCTION(TogglePlayerControllable)
         RETURN_NULL();
     }
 
-    TogglePlayerControllable(playerid, toggle);
+    sampgdk_TogglePlayerControllable(playerid, toggle);
 }
 
 PHP_FUNCTION(PlayerPlaySound)
@@ -1289,7 +1290,7 @@ PHP_FUNCTION(PlayerPlaySound)
         RETURN_NULL();
     }
 
-    PlayerPlaySound(playerid, soundid, x, y, z);
+    sampgdk_PlayerPlaySound(playerid, soundid, x, y, z);
 }
 
 PHP_FUNCTION(ApplyAnimation)
@@ -1304,7 +1305,7 @@ PHP_FUNCTION(ApplyAnimation)
         RETURN_NULL();
     }
 
-    ApplyAnimation(playerid, animlib, animname, fDelta, loop, lockx, locky, freeze, time, forcesync);
+    sampgdk_ApplyAnimation(playerid, animlib, animname, fDelta, loop, lockx, locky, freeze, time, forcesync);
 }
 
 PHP_FUNCTION(ClearAnimations)
@@ -1317,7 +1318,7 @@ PHP_FUNCTION(ClearAnimations)
         RETURN_NULL();
     }
 
-    ClearAnimations(playerid, forcesync);
+    sampgdk_ClearAnimations(playerid, forcesync);
 }
 
 PHP_FUNCTION(GetPlayerAnimationIndex)
@@ -1330,7 +1331,7 @@ PHP_FUNCTION(GetPlayerAnimationIndex)
         RETURN_NULL();
     }
 
-    RETVAL_LONG(GetPlayerAnimationIndex(playerid));
+    RETVAL_LONG(sampgdk_GetPlayerAnimationIndex(playerid));
 }
 
 PHP_FUNCTION(GetAnimationName)
@@ -1348,7 +1349,7 @@ PHP_FUNCTION(GetAnimationName)
     const int buffer_name_len = 50;
     char buffer_name[buffer_lib_len];
 
-    GetAnimationName(index, buffer_lib, buffer_lib_len, buffer_name, buffer_name_len);
+    sampgdk_GetAnimationName(index, buffer_lib, buffer_lib_len, buffer_name, buffer_name_len);
 
     array_init(return_value);
     add_assoc_string(return_value, "lib", buffer_lib, buffer_lib_len);
@@ -1365,7 +1366,7 @@ PHP_FUNCTION(GetPlayerSpecialAction)
         RETURN_NULL();
     }
 
-    RETVAL_LONG(GetPlayerSpecialAction(playerid));
+    RETVAL_LONG(sampgdk_GetPlayerSpecialAction(playerid));
 }
 
 PHP_FUNCTION(SetPlayerSpecialAction)
@@ -1378,7 +1379,7 @@ PHP_FUNCTION(SetPlayerSpecialAction)
         RETURN_NULL();
     }
 
-    SetPlayerSpecialAction(playerid, actionid);
+    sampgdk_SetPlayerSpecialAction(playerid, actionid);
 }
 
 PHP_FUNCTION(SetPlayerCheckpoint)
@@ -1392,7 +1393,7 @@ PHP_FUNCTION(SetPlayerCheckpoint)
         RETURN_NULL();
     }
 
-    SetPlayerCheckpoint(playerid, x, y, z, size);
+    sampgdk_SetPlayerCheckpoint(playerid, x, y, z, size);
 }
 
 PHP_FUNCTION(DisablePlayerCheckpoint)
@@ -1405,7 +1406,7 @@ PHP_FUNCTION(DisablePlayerCheckpoint)
         RETURN_NULL();
     }
 
-    DisablePlayerCheckpoint(playerid);
+    sampgdk_DisablePlayerCheckpoint(playerid);
 }
 
 PHP_FUNCTION(SetPlayerRaceCheckpoint)
@@ -1419,7 +1420,7 @@ PHP_FUNCTION(SetPlayerRaceCheckpoint)
         RETURN_NULL();
     }
 
-    SetPlayerRaceCheckpoint(playerid, type, x, y, z, nextx, nexty, nextz, size);
+    sampgdk_SetPlayerRaceCheckpoint(playerid, type, x, y, z, nextx, nexty, nextz, size);
 }
 
 PHP_FUNCTION(DisablePlayerRaceCheckpoint)
@@ -1432,7 +1433,7 @@ PHP_FUNCTION(DisablePlayerRaceCheckpoint)
         RETURN_NULL();
     }
 
-    DisablePlayerRaceCheckpoint(playerid);
+    sampgdk_DisablePlayerRaceCheckpoint(playerid);
 }
 
 PHP_FUNCTION(SetPlayerWorldBounds)
@@ -1446,7 +1447,7 @@ PHP_FUNCTION(SetPlayerWorldBounds)
         RETURN_NULL();
     }
 
-    SetPlayerWorldBounds(playerid, x_max, x_min, y_max, y_min);
+    sampgdk_SetPlayerWorldBounds(playerid, x_max, x_min, y_max, y_min);
 }
 
 PHP_FUNCTION(SetPlayerMarkerForPlayer)
@@ -1459,7 +1460,7 @@ PHP_FUNCTION(SetPlayerMarkerForPlayer)
         RETURN_NULL();
     }
 
-    SetPlayerMarkerForPlayer(playerid, showplayerid, color);
+    sampgdk_SetPlayerMarkerForPlayer(playerid, showplayerid, color);
 }
 
 PHP_FUNCTION(ShowPlayerNameTagForPlayer)
@@ -1472,7 +1473,7 @@ PHP_FUNCTION(ShowPlayerNameTagForPlayer)
         RETURN_NULL();
     }
 
-    ShowPlayerNameTagForPlayer(playerid, showplayerid, show);
+    sampgdk_ShowPlayerNameTagForPlayer(playerid, showplayerid, show);
 }
 
 PHP_FUNCTION(SetPlayerMapIcon)
@@ -1486,7 +1487,7 @@ PHP_FUNCTION(SetPlayerMapIcon)
         RETURN_NULL();
     }
 
-    SetPlayerMapIcon(playerid, iconid, x, y, z, markertype, color, style);
+    sampgdk_SetPlayerMapIcon(playerid, iconid, x, y, z, markertype, color, style);
 }
 
 PHP_FUNCTION(RemovePlayerMapIcon)
@@ -1499,7 +1500,7 @@ PHP_FUNCTION(RemovePlayerMapIcon)
         RETURN_NULL();
     }
 
-    RemovePlayerMapIcon(playerid, iconid);
+    sampgdk_RemovePlayerMapIcon(playerid, iconid);
 }
 
 PHP_FUNCTION(AllowPlayerTeleport)
@@ -1512,7 +1513,7 @@ PHP_FUNCTION(AllowPlayerTeleport)
         RETURN_NULL();
     }
 
-    AllowPlayerTeleport(playerid, allow);
+    sampgdk_AllowPlayerTeleport(playerid, allow);
 }
 
 // Camera
@@ -1527,7 +1528,7 @@ PHP_FUNCTION(SetPlayerCameraPos)
         RETURN_NULL();
     }
 
-    SetPlayerCameraPos(playerId, x, y, z);
+    sampgdk_SetPlayerCameraPos(playerId, x, y, z);
 }
 
 PHP_FUNCTION(SetPlayerCameraLookAt)
@@ -1541,7 +1542,7 @@ PHP_FUNCTION(SetPlayerCameraLookAt)
         RETURN_NULL();
     }
 
-    SetPlayerCameraLookAt(playerId, x, y, z, style);
+    sampgdk_SetPlayerCameraLookAt(playerId, x, y, z, style);
 }
 
 PHP_FUNCTION(SetCameraBehindPlayer)
@@ -1554,7 +1555,7 @@ PHP_FUNCTION(SetCameraBehindPlayer)
         RETURN_NULL();
     }
 
-    SetCameraBehindPlayer(playerid);
+    sampgdk_SetCameraBehindPlayer(playerid);
 }
 
 PHP_FUNCTION(GetPlayerCameraPos)
@@ -1568,7 +1569,7 @@ PHP_FUNCTION(GetPlayerCameraPos)
         RETURN_NULL();
     }
 
-    GetPlayerCameraPos(playerid, &x, &y, &z);
+    sampgdk_GetPlayerCameraPos(playerid, &x, &y, &z);
 
     array_init(return_value);
     add_assoc_double(return_value, "x", x);
@@ -1587,7 +1588,7 @@ PHP_FUNCTION(GetPlayerCameraFrontVector)
         RETURN_NULL();
     }
 
-    GetPlayerCameraFrontVector(playerid, &x, &y, &z);
+    sampgdk_GetPlayerCameraFrontVector(playerid, &x, &y, &z);
 
     array_init(return_value);
     add_assoc_double(return_value, "x", x);
@@ -1605,7 +1606,7 @@ PHP_FUNCTION(GetPlayerCameraMode)
         RETURN_NULL();
     }
 
-    RETVAL_LONG(GetPlayerCameraMode(playerid));
+    RETVAL_LONG(sampgdk_GetPlayerCameraMode(playerid));
 }
 
 PHP_FUNCTION(AttachCameraToObject)
@@ -1618,7 +1619,7 @@ PHP_FUNCTION(AttachCameraToObject)
         RETURN_NULL();
     }
 
-    AttachCameraToObject(playerid, objectid);
+    sampgdk_AttachCameraToObject(playerid, objectid);
 }
 
 PHP_FUNCTION(AttachCameraToPlayerObject)
@@ -1631,7 +1632,7 @@ PHP_FUNCTION(AttachCameraToPlayerObject)
         RETURN_NULL();
     }
 
-    AttachCameraToPlayerObject(playerid, playerobjectid);
+    sampgdk_AttachCameraToPlayerObject(playerid, playerobjectid);
 }
 
 PHP_FUNCTION(InterpolateCameraPos)
@@ -1645,7 +1646,7 @@ PHP_FUNCTION(InterpolateCameraPos)
         RETURN_NULL();
     }
 
-    InterpolateCameraPos(playerid, FromX, FromY, FromZ, ToX, ToY, ToZ, time, cut);
+    sampgdk_InterpolateCameraPos(playerid, FromX, FromY, FromZ, ToX, ToY, ToZ, time, cut);
 }
 
 PHP_FUNCTION(InterpolateCameraLookAt)
@@ -1659,7 +1660,7 @@ PHP_FUNCTION(InterpolateCameraLookAt)
         RETURN_NULL();
     }
 
-    InterpolateCameraLookAt(playerid, FromX, FromY, FromZ, ToX, ToY, ToZ, time, cut);
+    sampgdk_InterpolateCameraLookAt(playerid, FromX, FromY, FromZ, ToX, ToY, ToZ, time, cut);
 }
 
 // Player conditionals
@@ -1673,7 +1674,7 @@ PHP_FUNCTION(IsPlayerConnected)
         RETURN_NULL();
     }
 
-    RETVAL_BOOL(IsPlayerConnected(playerid));
+    RETVAL_BOOL(sampgdk_IsPlayerConnected(playerid));
 }
 
 PHP_FUNCTION(IsPlayerInVehicle)
@@ -1686,7 +1687,7 @@ PHP_FUNCTION(IsPlayerInVehicle)
         RETURN_NULL();
     }
 
-    RETVAL_BOOL(IsPlayerInVehicle(playerid, vehicleid));
+    RETVAL_BOOL(sampgdk_IsPlayerInVehicle(playerid, vehicleid));
 }
 
 PHP_FUNCTION(IsPlayerInAnyVehicle)
@@ -1699,7 +1700,7 @@ PHP_FUNCTION(IsPlayerInAnyVehicle)
         RETURN_NULL();
     }
 
-    RETVAL_BOOL(IsPlayerInAnyVehicle(playerid));
+    RETVAL_BOOL(sampgdk_IsPlayerInAnyVehicle(playerid));
 }
 
 PHP_FUNCTION(IsPlayerInCheckpoint)
@@ -1712,7 +1713,7 @@ PHP_FUNCTION(IsPlayerInCheckpoint)
         RETURN_NULL();
     }
 
-    RETVAL_BOOL(IsPlayerInCheckpoint(playerid));
+    RETVAL_BOOL(sampgdk_IsPlayerInCheckpoint(playerid));
 }
 
 PHP_FUNCTION(IsPlayerInRaceCheckpoint)
@@ -1725,7 +1726,7 @@ PHP_FUNCTION(IsPlayerInRaceCheckpoint)
         RETURN_NULL();
     }
 
-    RETVAL_BOOL(IsPlayerInRaceCheckpoint(playerid));
+    RETVAL_BOOL(sampgdk_IsPlayerInRaceCheckpoint(playerid));
 }
 
 PHP_FUNCTION(SetPlayerVirtualWorld)
@@ -1738,7 +1739,7 @@ PHP_FUNCTION(SetPlayerVirtualWorld)
         RETURN_NULL();
     }
 
-    SetPlayerVirtualWorld(playerid, worldid);
+    sampgdk_SetPlayerVirtualWorld(playerid, worldid);
 }
 
 PHP_FUNCTION(GetPlayerVirtualWorld)
@@ -1751,7 +1752,7 @@ PHP_FUNCTION(GetPlayerVirtualWorld)
         RETURN_NULL();
     }
 
-    RETVAL_LONG(GetPlayerVirtualWorld(playerid));
+    RETVAL_LONG(sampgdk_GetPlayerVirtualWorld(playerid));
 }
 
 // Spectating
@@ -1765,7 +1766,7 @@ PHP_FUNCTION(TogglePlayerSpectating)
         RETURN_NULL();
     }
 
-    TogglePlayerSpectating(playerid, toggle);
+    sampgdk_TogglePlayerSpectating(playerid, toggle);
 }
 
 PHP_FUNCTION(PlayerSpectatePlayer)
@@ -1778,7 +1779,7 @@ PHP_FUNCTION(PlayerSpectatePlayer)
         RETURN_NULL();
     }
 
-    PlayerSpectatePlayer(playerid, targetplayerid, mode);
+    sampgdk_PlayerSpectatePlayer(playerid, targetplayerid, mode);
 }
 
 PHP_FUNCTION(PlayerSpectateVehicle)
@@ -1791,7 +1792,7 @@ PHP_FUNCTION(PlayerSpectateVehicle)
         RETURN_NULL();
     }
 
-    PlayerSpectateVehicle(playerid, targetvehicleid, mode);
+    sampgdk_PlayerSpectateVehicle(playerid, targetvehicleid, mode);
 }
 
 // Recording for NPC playback
@@ -1806,7 +1807,7 @@ PHP_FUNCTION(StartRecordingPlayerData)
         RETURN_NULL();
     }
 
-    StartRecordingPlayerData(playerid, recordtype, recordname);
+    sampgdk_StartRecordingPlayerData(playerid, recordtype, recordname);
 }
 
 PHP_FUNCTION(StopRecordingPlayerData)
@@ -1819,7 +1820,7 @@ PHP_FUNCTION(StopRecordingPlayerData)
         RETURN_NULL();
     }
 
-    StopRecordingPlayerData(playerid);
+    sampgdk_StopRecordingPlayerData(playerid);
 }
 
 // Mouse control
@@ -1833,7 +1834,7 @@ PHP_FUNCTION(SelectTextDraw)
         RETURN_NULL();
     }
 
-    SelectTextDraw(playerid, hovercolor);
+    sampgdk_SelectTextDraw(playerid, hovercolor);
 }
 
 PHP_FUNCTION(CancelSelectTextDraw)
@@ -1846,5 +1847,192 @@ PHP_FUNCTION(CancelSelectTextDraw)
         RETURN_NULL();
     }
 
-    CancelSelectTextDraw(playerid);
+    sampgdk_CancelSelectTextDraw(playerid);
 }
+
+PHP_FUNCTION(NetStats_GetConnectedTime)
+{
+    int playerid;
+    
+    if(zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC,
+                        "l", &playerid) == FAILURE)
+    {
+        RETURN_NULL();
+    }
+
+    RETVAL_LONG(sampgdk_NetStats_GetConnectedTime(playerid));
+}
+
+PHP_FUNCTION(NetStats_MessagesReceived)
+{
+    int playerid;
+    
+    if(zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC,
+                        "l", &playerid) == FAILURE)
+    {
+        RETURN_NULL();
+    }
+
+    RETVAL_LONG(sampgdk_NetStats_MessagesReceived(playerid));
+}
+
+PHP_FUNCTION(NetStats_BytesReceived)
+{
+    int playerid;
+    
+    if(zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC,
+                        "l", &playerid) == FAILURE)
+    {
+        RETURN_NULL();
+    }
+
+    RETVAL_LONG(sampgdk_NetStats_BytesReceived(playerid));
+}
+
+PHP_FUNCTION(NetStats_MessagesSent)
+{
+    int playerid;
+    
+    if(zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC,
+                        "l", &playerid) == FAILURE)
+    {
+        RETURN_NULL();
+    }
+
+    RETVAL_LONG(sampgdk_NetStats_MessagesSent(playerid));
+}
+
+PHP_FUNCTION(NetStats_BytesSent)
+{
+    int playerid;
+    
+    if(zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC,
+                        "l", &playerid) == FAILURE)
+    {
+        RETURN_NULL();
+    }
+
+    RETVAL_LONG(sampgdk_NetStats_BytesSent(playerid));
+}
+
+PHP_FUNCTION(NetStats_MessagesRecvPerSecond)
+{
+    int playerid;
+    
+    if(zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC,
+                        "l", &playerid) == FAILURE)
+    {
+        RETURN_NULL();
+    }
+
+    RETVAL_LONG(sampgdk_NetStats_MessagesRecvPerSecond(playerid));
+}
+
+PHP_FUNCTION(NetStats_ConnectionStatus)
+{
+    int playerid;
+    
+    if(zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC,
+                        "l", &playerid) == FAILURE)
+    {
+        RETURN_NULL();
+    }
+
+    RETVAL_LONG(sampgdk_NetStats_ConnectionStatus(playerid));
+}
+
+PHP_FUNCTION(GetPlayerLastShotVectors)
+{
+    int playerid;
+    float x, y, z, x2, y2, z2;
+    
+    if(zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC,
+                        "l", &playerid) == FAILURE)
+    {
+        RETURN_NULL();
+    }
+
+    sampgdk_GetPlayerLastShotVectors(playerid, &x, &y, &z, &x2, &y2, &z2);
+
+    array_init(return_value);
+    add_assoc_double(return_value, "originX", x);
+    add_assoc_double(return_value, "originY", y);
+    add_assoc_double(return_value, "originZ", z);
+    add_assoc_double(return_value, "hitX", x2);
+    add_assoc_double(return_value, "hitY", y2);
+    add_assoc_double(return_value, "hitZ", z2);
+}
+
+
+PHP_FUNCTION(GetPlayerCameraAspectRatio)
+{
+    int playerid;
+    
+    if(zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC,
+                        "l", &playerid) == FAILURE)
+    {
+        RETURN_NULL();
+    }
+
+    RETVAL_DOUBLE(sampgdk_GetPlayerCameraAspectRatio(playerid));
+}
+
+
+PHP_FUNCTION(GetPlayerCameraZoom)
+{
+    int playerid;
+    
+    if(zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC,
+                        "l", &playerid) == FAILURE)
+    {
+        RETURN_NULL();
+    }
+
+    RETVAL_DOUBLE(sampgdk_GetPlayerCameraZoom(playerid));
+}
+
+PHP_FUNCTION(NetStats_PacketLossPercent)
+{
+    int playerid;
+    
+    if(zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC,
+                        "l", &playerid) == FAILURE)
+    {
+        RETURN_NULL();
+    }
+
+    RETVAL_DOUBLE(sampgdk_NetStats_PacketLossPercent(playerid));
+}
+
+PHP_FUNCTION(SendDeathMessageToPlayer)
+{
+    int playerid, killer, killee, weapon;
+    
+    if(zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC,
+                        "llll", &playerid, &killer, &killee, &weapon) == FAILURE)
+    {
+        RETURN_NULL();
+    }
+
+    sampgdk_SendDeathMessageToPlayer(playerid, killer, killee, weapon);
+}
+
+PHP_FUNCTION(NetStats_GetIpPort)
+{
+    int playerid;
+    
+    if(zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC,
+                        "l", &playerid) == FAILURE)
+    {
+        RETURN_NULL();
+    }
+
+
+    const int buffer_len = 24;
+    char buffer[buffer_len];
+
+    sampgdk_NetStats_GetIpPort(playerid, buffer, buffer_len);
+
+    RETVAL_STRING(buffer, buffer_len);
+}
+

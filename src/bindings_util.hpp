@@ -11,7 +11,7 @@ PHP_FUNCTION(SendClientMessage)
         RETURN_NULL();
     }
 
-    SendClientMessage(playerId, color, message);
+    sampgdk_SendClientMessage(playerId, color, message);
 }
 
 PHP_FUNCTION(SendClientMessageToAll)
@@ -25,7 +25,7 @@ PHP_FUNCTION(SendClientMessageToAll)
         RETURN_NULL();
     }
 
-    SendClientMessageToAll(color, message);
+    sampgdk_SendClientMessageToAll(color, message);
 }
 
 PHP_FUNCTION(SendPlayerMessageToPlayer)
@@ -39,7 +39,7 @@ PHP_FUNCTION(SendPlayerMessageToPlayer)
         RETURN_NULL();
     }
 
-    SendPlayerMessageToPlayer(playerid, senderid, message);
+    sampgdk_SendPlayerMessageToPlayer(playerid, senderid, message);
 }
 
 PHP_FUNCTION(SendPlayerMessageToAll)
@@ -53,7 +53,7 @@ PHP_FUNCTION(SendPlayerMessageToAll)
         RETURN_NULL();
     }
 
-    SendPlayerMessageToAll(senderid, message);
+    sampgdk_SendPlayerMessageToAll(senderid, message);
 }
 
 PHP_FUNCTION(SendDeathMessage)
@@ -66,7 +66,7 @@ PHP_FUNCTION(SendDeathMessage)
         RETURN_NULL();
     }
 
-    SendDeathMessage(killerId, victimId, weapon);
+    sampgdk_SendDeathMessage(killerId, victimId, weapon);
 }
 
 PHP_FUNCTION(GameTextForAll)
@@ -80,7 +80,7 @@ PHP_FUNCTION(GameTextForAll)
         RETURN_NULL();
     }
 
-    GameTextForAll(string, time, style);
+    sampgdk_GameTextForAll(string, time, style);
 }
 
 PHP_FUNCTION(GameTextForPlayer)
@@ -94,7 +94,7 @@ PHP_FUNCTION(GameTextForPlayer)
         RETURN_NULL();
     }
 
-    GameTextForPlayer(playerid, message, time, style);
+    sampgdk_GameTextForPlayer(playerid, message, time, style);
 }
 
 struct TimerParams
@@ -176,7 +176,7 @@ PHP_FUNCTION(SetTimer)
     params->callable = callable;
     
 	
-	int ret = SetTimer(interval, repeating, executeTimedCallback, (void*) params);
+	int ret = sampgdk_SetTimer(interval, repeating, executeTimedCallback, (void*) params);
 	
     RETVAL_LONG(ret);
 
@@ -192,17 +192,17 @@ PHP_FUNCTION(KillTimer)
         RETURN_NULL();
     }
 
-    KillTimer(timerId);
+    sampgdk_KillTimer(timerId);
 }
 
 PHP_FUNCTION(GetTickCount)
 {
-	int count = GetTickCount();
+	int count = sampgdk_GetTickCount();
 
     RETVAL_LONG(count);
 }
 
 PHP_FUNCTION(GetMaxPlayers)
 {
-    RETVAL_LONG(GetMaxPlayers());
+    RETVAL_LONG(sampgdk_GetMaxPlayers());
 }

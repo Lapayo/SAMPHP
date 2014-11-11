@@ -9,7 +9,7 @@ PHP_FUNCTION(CreateVehicle)
         RETURN_NULL();
     }
 
-	RETVAL_LONG(CreateVehicle(vehicletype, x, y, z, rotation, color1, color2, respawn_delay));
+	RETVAL_LONG(sampgdk_CreateVehicle(vehicletype, x, y, z, rotation, color1, color2, respawn_delay));
 }
 
 PHP_FUNCTION(DestroyVehicle)
@@ -22,7 +22,7 @@ PHP_FUNCTION(DestroyVehicle)
         RETURN_NULL();
     }
 
-	DestroyVehicle(vehicleid);
+	sampgdk_DestroyVehicle(vehicleid);
 }
 
 PHP_FUNCTION(IsVehicleStreamedIn)
@@ -35,7 +35,7 @@ PHP_FUNCTION(IsVehicleStreamedIn)
         RETURN_NULL();
     }
 
-	RETVAL_BOOL(IsVehicleStreamedIn(vehicleid, forplayerid));
+	RETVAL_BOOL(sampgdk_IsVehicleStreamedIn(vehicleid, forplayerid));
 }
 
 PHP_FUNCTION(GetVehiclePos)
@@ -49,7 +49,7 @@ PHP_FUNCTION(GetVehiclePos)
         RETURN_NULL();
     }
 
-	GetVehiclePos(vehicleid, &x, &y, &z);
+	sampgdk_GetVehiclePos(vehicleid, &x, &y, &z);
 
     array_init(return_value);
     add_assoc_double(return_value, "x", x);
@@ -68,7 +68,7 @@ PHP_FUNCTION(SetVehiclePos)
         RETURN_NULL();
     }
 
-	SetVehiclePos(vehicleid, x, y, z);
+	sampgdk_SetVehiclePos(vehicleid, x, y, z);
 }
 
 PHP_FUNCTION(GetVehicleZAngle)
@@ -82,7 +82,7 @@ PHP_FUNCTION(GetVehicleZAngle)
         RETURN_NULL();
     }
 
-	GetVehicleZAngle(vehicleid, &z_angle);
+	sampgdk_GetVehicleZAngle(vehicleid, &z_angle);
 
 	RETVAL_DOUBLE(z_angle);
 }
@@ -98,7 +98,7 @@ PHP_FUNCTION(GetVehicleRotationQuat)
         RETURN_NULL();
     }
 
-	GetVehicleRotationQuat(vehicleid, &w, &x, &y, &z);
+	sampgdk_GetVehicleRotationQuat(vehicleid, &w, &x, &y, &z);
 
 	// return array
 
@@ -120,7 +120,7 @@ PHP_FUNCTION(GetVehicleDistanceFromPoint)
         RETURN_NULL();
     }
 
-	RETVAL_DOUBLE(GetVehicleDistanceFromPoint(vehicleid, X, Y, Z));
+	RETVAL_DOUBLE(sampgdk_GetVehicleDistanceFromPoint(vehicleid, X, Y, Z));
 }
 
 PHP_FUNCTION(SetVehicleZAngle)
@@ -134,7 +134,7 @@ PHP_FUNCTION(SetVehicleZAngle)
         RETURN_NULL();
     }
 
-	SetVehicleZAngle(vehicleid, z_angle);
+	sampgdk_SetVehicleZAngle(vehicleid, z_angle);
 }
 
 PHP_FUNCTION(SetVehicleParamsForPlayer)
@@ -147,13 +147,13 @@ PHP_FUNCTION(SetVehicleParamsForPlayer)
         RETURN_NULL();
     }
 
-	SetVehicleParamsForPlayer(vehicleid, playerid, objective, doorslocked);
+	sampgdk_SetVehicleParamsForPlayer(vehicleid, playerid, objective, doorslocked);
 }
 
 PHP_FUNCTION(ManualVehicleEngineAndLights)
 {
 	
-	RETVAL_LONG(ManualVehicleEngineAndLights());
+	RETVAL_LONG(sampgdk_ManualVehicleEngineAndLights());
 }
 
 PHP_FUNCTION(SetVehicleParamsEx)
@@ -166,7 +166,7 @@ PHP_FUNCTION(SetVehicleParamsEx)
         RETURN_NULL();
     }
 
-	SetVehicleParamsEx(vehicleid, engine, lights, alarm, doors, bonnet, boot, objective);
+	sampgdk_SetVehicleParamsEx(vehicleid, engine, lights, alarm, doors, bonnet, boot, objective);
 }
 
 PHP_FUNCTION(GetVehicleParamsEx)
@@ -180,7 +180,7 @@ PHP_FUNCTION(GetVehicleParamsEx)
         RETURN_NULL();
     }
 
-	GetVehicleParamsEx(vehicleid, &engine, &lights, &alarm, &doors, &bonnet, &boot, &objective);
+	sampgdk_GetVehicleParamsEx(vehicleid, &engine, &lights, &alarm, &doors, &bonnet, &boot, &objective);
 
 	array_init(return_value);
     add_assoc_bool(return_value, "engine", engine);
@@ -202,7 +202,7 @@ PHP_FUNCTION(SetVehicleToRespawn)
         RETURN_NULL();
     }
 
-	SetVehicleToRespawn(vehicleid);
+	sampgdk_SetVehicleToRespawn(vehicleid);
 }
 
 PHP_FUNCTION(LinkVehicleToInterior)
@@ -215,7 +215,7 @@ PHP_FUNCTION(LinkVehicleToInterior)
         RETURN_NULL();
     }
 
-	LinkVehicleToInterior(vehicleid, interiorid);
+	sampgdk_LinkVehicleToInterior(vehicleid, interiorid);
 }
 
 PHP_FUNCTION(AddVehicleComponent)
@@ -228,7 +228,7 @@ PHP_FUNCTION(AddVehicleComponent)
         RETURN_NULL();
     }
 
-	AddVehicleComponent(vehicleid, componentid);
+	sampgdk_AddVehicleComponent(vehicleid, componentid);
 }
 
 PHP_FUNCTION(RemoveVehicleComponent)
@@ -241,7 +241,7 @@ PHP_FUNCTION(RemoveVehicleComponent)
         RETURN_NULL();
     }
 
-	RemoveVehicleComponent(vehicleid, componentid);
+	sampgdk_RemoveVehicleComponent(vehicleid, componentid);
 }
 
 PHP_FUNCTION(ChangeVehicleColor)
@@ -254,7 +254,7 @@ PHP_FUNCTION(ChangeVehicleColor)
         RETURN_NULL();
     }
 
-	ChangeVehicleColor(vehicleid, color1, color2);
+	sampgdk_ChangeVehicleColor(vehicleid, color1, color2);
 }
 
 PHP_FUNCTION(ChangeVehiclePaintjob)
@@ -267,7 +267,7 @@ PHP_FUNCTION(ChangeVehiclePaintjob)
         RETURN_NULL();
     }
 
-	ChangeVehiclePaintjob(vehicleid, paintjobid);
+	sampgdk_ChangeVehiclePaintjob(vehicleid, paintjobid);
 }
 
 PHP_FUNCTION(SetVehicleHealth)
@@ -281,7 +281,7 @@ PHP_FUNCTION(SetVehicleHealth)
         RETURN_NULL();
     }
 
-	SetVehicleHealth(vehicleid, health);
+	sampgdk_SetVehicleHealth(vehicleid, health);
 }
 
 PHP_FUNCTION(GetVehicleHealth)
@@ -295,7 +295,7 @@ PHP_FUNCTION(GetVehicleHealth)
         RETURN_NULL();
     }
 
-	GetVehicleHealth(vehicleid, &health);
+	sampgdk_GetVehicleHealth(vehicleid, &health);
 
 	RETVAL_DOUBLE(health);
 }
@@ -310,7 +310,7 @@ PHP_FUNCTION(AttachTrailerToVehicle)
         RETURN_NULL();
     }
 
-	AttachTrailerToVehicle(trailerid, vehicleid);
+	sampgdk_AttachTrailerToVehicle(trailerid, vehicleid);
 }
 
 PHP_FUNCTION(DetachTrailerFromVehicle)
@@ -323,7 +323,7 @@ PHP_FUNCTION(DetachTrailerFromVehicle)
         RETURN_NULL();
     }
 
-	DetachTrailerFromVehicle(vehicleid);
+	sampgdk_DetachTrailerFromVehicle(vehicleid);
 }
 
 PHP_FUNCTION(IsTrailerAttachedToVehicle)
@@ -336,7 +336,7 @@ PHP_FUNCTION(IsTrailerAttachedToVehicle)
         RETURN_NULL();
     }
 
-	RETVAL_BOOL(IsTrailerAttachedToVehicle(vehicleid));
+	RETVAL_BOOL(sampgdk_IsTrailerAttachedToVehicle(vehicleid));
 }
 
 PHP_FUNCTION(GetVehicleTrailer)
@@ -349,7 +349,7 @@ PHP_FUNCTION(GetVehicleTrailer)
         RETURN_NULL();
     }
 
-	RETVAL_LONG(GetVehicleTrailer(vehicleid));
+	RETVAL_LONG(sampgdk_GetVehicleTrailer(vehicleid));
 }
 
 PHP_FUNCTION(SetVehicleNumberPlate)
@@ -363,7 +363,7 @@ PHP_FUNCTION(SetVehicleNumberPlate)
         RETURN_NULL();
     }
 
-	SetVehicleNumberPlate(vehicleid, numberplate);
+	sampgdk_SetVehicleNumberPlate(vehicleid, numberplate);
 }
 
 PHP_FUNCTION(GetVehicleModel)
@@ -376,7 +376,7 @@ PHP_FUNCTION(GetVehicleModel)
         RETURN_NULL();
     }
 
-	RETVAL_LONG(GetVehicleModel(vehicleid));
+	RETVAL_LONG(sampgdk_GetVehicleModel(vehicleid));
 }
 
 PHP_FUNCTION(GetVehicleComponentInSlot)
@@ -389,7 +389,7 @@ PHP_FUNCTION(GetVehicleComponentInSlot)
         RETURN_NULL();
     }
 
-	RETVAL_LONG(GetVehicleComponentInSlot(vehicleid, slot));
+	RETVAL_LONG(sampgdk_GetVehicleComponentInSlot(vehicleid, slot));
 }
 
 PHP_FUNCTION(GetVehicleComponentType)
@@ -402,7 +402,7 @@ PHP_FUNCTION(GetVehicleComponentType)
         RETURN_NULL();
     }
 
-	RETVAL_LONG(GetVehicleComponentType(component));
+	RETVAL_LONG(sampgdk_GetVehicleComponentType(component));
 }
 
 PHP_FUNCTION(RepairVehicle)
@@ -415,7 +415,7 @@ PHP_FUNCTION(RepairVehicle)
         RETURN_NULL();
     }
 
-	RepairVehicle(vehicleid);
+	sampgdk_RepairVehicle(vehicleid);
 }
 
 PHP_FUNCTION(GetVehicleVelocity)
@@ -429,7 +429,7 @@ PHP_FUNCTION(GetVehicleVelocity)
         RETURN_NULL();
     }
 
-	GetVehicleVelocity(vehicleid, &x, &y, &z);
+	sampgdk_GetVehicleVelocity(vehicleid, &x, &y, &z);
 
 
     array_init(return_value);
@@ -449,7 +449,7 @@ PHP_FUNCTION(SetVehicleVelocity)
         RETURN_NULL();
     }
 
-	SetVehicleVelocity(vehicleid, x, y, z);
+	sampgdk_SetVehicleVelocity(vehicleid, x, y, z);
 }
 
 PHP_FUNCTION(SetVehicleAngularVelocity)
@@ -463,7 +463,7 @@ PHP_FUNCTION(SetVehicleAngularVelocity)
         RETURN_NULL();
     }
 
-	SetVehicleAngularVelocity(vehicleid, X, Y, Z);
+	sampgdk_SetVehicleAngularVelocity(vehicleid, X, Y, Z);
 }
 
 PHP_FUNCTION(GetVehicleDamageStatus)
@@ -476,7 +476,7 @@ PHP_FUNCTION(GetVehicleDamageStatus)
         RETURN_NULL();
     }
 
-	GetVehicleDamageStatus(vehicleid, &panels, &doors, &lights, &tires);
+	sampgdk_GetVehicleDamageStatus(vehicleid, &panels, &doors, &lights, &tires);
 
 	array_init(return_value);
     add_assoc_double(return_value, "panels", panels);
@@ -495,7 +495,7 @@ PHP_FUNCTION(UpdateVehicleDamageStatus)
         RETURN_NULL();
     }
 
-	UpdateVehicleDamageStatus(vehicleid, panels, doors, lights, tires);
+	sampgdk_UpdateVehicleDamageStatus(vehicleid, panels, doors, lights, tires);
 }
 
 PHP_FUNCTION(GetVehicleModelInfo)
@@ -509,7 +509,7 @@ PHP_FUNCTION(GetVehicleModelInfo)
         RETURN_NULL();
     }
 
-	GetVehicleModelInfo(vehiclemodel, infotype, &x, &y, &z);
+	sampgdk_GetVehicleModelInfo(vehiclemodel, infotype, &x, &y, &z);
 
 	array_init(return_value);
     add_assoc_double(return_value, "x", x);
@@ -527,7 +527,7 @@ PHP_FUNCTION(SetVehicleVirtualWorld)
         RETURN_NULL();
     }
 
-	SetVehicleVirtualWorld(vehicleid, worldid);
+	sampgdk_SetVehicleVirtualWorld(vehicleid, worldid);
 }
 
 PHP_FUNCTION(GetVehicleVirtualWorld)
@@ -540,5 +540,5 @@ PHP_FUNCTION(GetVehicleVirtualWorld)
         RETURN_NULL();
     }
 
-	RETVAL_LONG(GetVehicleVirtualWorld(vehicleid));
+	RETVAL_LONG(sampgdk_GetVehicleVirtualWorld(vehicleid));
 }

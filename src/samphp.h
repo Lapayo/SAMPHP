@@ -11,9 +11,7 @@
 #include <sampgdk/a_vehicles.h>
 #include <sampgdk/a_objects.h>
 #include <sampgdk/core.h>
-#include <sampgdk/plugin.h>
-#include <sapi/embed/php_embed.h>
-
+#include <sampgdk/sdk.h>
 
 #define SUCCESS 0
 #define FAIL 1

@@ -9,7 +9,7 @@ PHP_FUNCTION(CreateObject)
         RETURN_NULL();
     }
 
-	RETVAL_LONG(CreateObject(modelid, X, Y, Z, rX, rY, rZ, DrawDistance));
+	RETVAL_LONG(sampgdk_CreateObject(modelid, X, Y, Z, rX, rY, rZ, DrawDistance));
 }
 
 PHP_FUNCTION(AttachObjectToVehicle)
@@ -23,7 +23,7 @@ PHP_FUNCTION(AttachObjectToVehicle)
         RETURN_NULL();
     }
 
-	AttachObjectToVehicle(objectid, vehicleid, OffsetX, OffsetY, OffsetZ, RotX, RotY, RotZ);
+	sampgdk_AttachObjectToVehicle(objectid, vehicleid, OffsetX, OffsetY, OffsetZ, RotX, RotY, RotZ);
 }
 
 PHP_FUNCTION(AttachObjectToObject)
@@ -37,7 +37,7 @@ PHP_FUNCTION(AttachObjectToObject)
         RETURN_NULL();
     }
 
-	AttachObjectToObject(objectid, attachtoid, OffsetX, OffsetY, OffsetZ, RotX, RotY, RotZ, SyncRotation);
+	sampgdk_AttachObjectToObject(objectid, attachtoid, OffsetX, OffsetY, OffsetZ, RotX, RotY, RotZ, SyncRotation);
 }
 
 PHP_FUNCTION(AttachObjectToPlayer)
@@ -51,7 +51,7 @@ PHP_FUNCTION(AttachObjectToPlayer)
         RETURN_NULL();
     }
 
-	AttachObjectToPlayer(objectid, playerid, OffsetX, OffsetY, OffsetZ, RotX, RotY, RotZ);
+	sampgdk_AttachObjectToPlayer(objectid, playerid, OffsetX, OffsetY, OffsetZ, RotX, RotY, RotZ);
 }
 
 PHP_FUNCTION(SetObjectPos)
@@ -65,7 +65,7 @@ PHP_FUNCTION(SetObjectPos)
         RETURN_NULL();
     }
 
-	SetObjectPos(objectid, X, Y, Z);
+	sampgdk_SetObjectPos(objectid, X, Y, Z);
 }
 
 PHP_FUNCTION(GetObjectPos)
@@ -79,7 +79,7 @@ PHP_FUNCTION(GetObjectPos)
         RETURN_NULL();
     }
 
-	GetObjectPos(objectid, &x, &y, &z);
+	sampgdk_GetObjectPos(objectid, &x, &y, &z);
 
 
     array_init(return_value);
@@ -99,7 +99,7 @@ PHP_FUNCTION(SetObjectRot)
         RETURN_NULL();
     }
 
-	SetObjectRot(objectid, RotX, RotY, RotZ);
+	sampgdk_SetObjectRot(objectid, RotX, RotY, RotZ);
 }
 
 PHP_FUNCTION(GetObjectRot)
@@ -113,7 +113,7 @@ PHP_FUNCTION(GetObjectRot)
         RETURN_NULL();
     }
 
-	GetObjectRot(objectid, &x, &y, &z);
+	sampgdk_GetObjectRot(objectid, &x, &y, &z);
 
     array_init(return_value);
     add_assoc_double(return_value, "x", x);
@@ -131,7 +131,7 @@ PHP_FUNCTION(IsValidObject)
         RETURN_NULL();
     }
 
-	RETVAL_BOOL(IsValidObject(objectid));
+	RETVAL_BOOL(sampgdk_IsValidObject(objectid));
 }
 
 PHP_FUNCTION(DestroyObject)
@@ -144,7 +144,7 @@ PHP_FUNCTION(DestroyObject)
         RETURN_NULL();
     }
 
-	DestroyObject(objectid);
+	sampgdk_DestroyObject(objectid);
 }
 
 PHP_FUNCTION(MoveObject)
@@ -158,7 +158,7 @@ PHP_FUNCTION(MoveObject)
         RETURN_NULL();
     }
 
-	MoveObject(objectid, X, Y, Z, Speed, RotX, RotY, RotZ);
+	sampgdk_MoveObject(objectid, X, Y, Z, Speed, RotX, RotY, RotZ);
 }
 
 PHP_FUNCTION(StopObject)
@@ -171,7 +171,7 @@ PHP_FUNCTION(StopObject)
         RETURN_NULL();
     }
 
-	StopObject(objectid);
+	sampgdk_StopObject(objectid);
 }
 
 PHP_FUNCTION(IsObjectMoving)
@@ -184,7 +184,7 @@ PHP_FUNCTION(IsObjectMoving)
         RETURN_NULL();
     }
 
-	RETVAL_BOOL(IsObjectMoving(objectid));
+	RETVAL_BOOL(sampgdk_IsObjectMoving(objectid));
 }
 
 PHP_FUNCTION(EditObject)
@@ -197,7 +197,7 @@ PHP_FUNCTION(EditObject)
         RETURN_NULL();
     }
 
-	EditObject(playerid, objectid);
+	sampgdk_EditObject(playerid, objectid);
 }
 
 PHP_FUNCTION(EditPlayerObject)
@@ -210,7 +210,7 @@ PHP_FUNCTION(EditPlayerObject)
         RETURN_NULL();
     }
 
-	EditPlayerObject(playerid, objectid);
+	sampgdk_EditPlayerObject(playerid, objectid);
 }
 
 PHP_FUNCTION(SelectObject)
@@ -223,7 +223,7 @@ PHP_FUNCTION(SelectObject)
         RETURN_NULL();
     }
 
-	SelectObject(playerid);
+	sampgdk_SelectObject(playerid);
 }
 
 PHP_FUNCTION(CancelEdit)
@@ -236,7 +236,7 @@ PHP_FUNCTION(CancelEdit)
         RETURN_NULL();
     }
 
-	CancelEdit(playerid);
+	sampgdk_CancelEdit(playerid);
 }
 
 PHP_FUNCTION(CreatePlayerObject)
@@ -250,7 +250,7 @@ PHP_FUNCTION(CreatePlayerObject)
         RETURN_NULL();
     }
 
-	RETVAL_LONG(CreatePlayerObject(playerid, modelid, X, Y, Z, rX, rY, rZ, DrawDistance));
+	RETVAL_LONG(sampgdk_CreatePlayerObject(playerid, modelid, X, Y, Z, rX, rY, rZ, DrawDistance));
 }
 
 PHP_FUNCTION(AttachPlayerObjectToVehicle)
@@ -264,7 +264,7 @@ PHP_FUNCTION(AttachPlayerObjectToVehicle)
         RETURN_NULL();
     }
 
-	AttachPlayerObjectToVehicle(playerid, objectid, vehicleid, fOffsetX, fOffsetY, fOffsetZ, fRotX, fRotY, RotZ);
+	sampgdk_AttachPlayerObjectToVehicle(playerid, objectid, vehicleid, fOffsetX, fOffsetY, fOffsetZ, fRotX, fRotY, RotZ);
 }
 
 PHP_FUNCTION(SetPlayerObjectPos)
@@ -278,7 +278,7 @@ PHP_FUNCTION(SetPlayerObjectPos)
         RETURN_NULL();
     }
 
-	SetPlayerObjectPos(playerid, objectid, X, Y, Z);
+	sampgdk_SetPlayerObjectPos(playerid, objectid, X, Y, Z);
 }
 
 PHP_FUNCTION(GetPlayerObjectPos)
@@ -292,7 +292,7 @@ PHP_FUNCTION(GetPlayerObjectPos)
         RETURN_NULL();
     }
 
-	GetPlayerObjectPos(playerid, objectid, &x, &y, &z);
+	sampgdk_GetPlayerObjectPos(playerid, objectid, &x, &y, &z);
 
 	array_init(return_value);
     add_assoc_double(return_value, "x", x);
@@ -311,7 +311,7 @@ PHP_FUNCTION(SetPlayerObjectRot)
         RETURN_NULL();
     }
 
-	SetPlayerObjectRot(playerid, objectid, RotX, RotY, RotZ);
+	sampgdk_SetPlayerObjectRot(playerid, objectid, RotX, RotY, RotZ);
 }
 
 PHP_FUNCTION(GetPlayerObjectRot)
@@ -325,7 +325,7 @@ PHP_FUNCTION(GetPlayerObjectRot)
         RETURN_NULL();
     }
 
-	GetPlayerObjectRot(playerid, objectid, &x, &y, &z);
+	sampgdk_GetPlayerObjectRot(playerid, objectid, &x, &y, &z);
 
 	array_init(return_value);
     add_assoc_double(return_value, "x", x);
@@ -343,7 +343,7 @@ PHP_FUNCTION(IsValidPlayerObject)
         RETURN_NULL();
     }
 
-	RETVAL_BOOL(IsValidPlayerObject(playerid, objectid));
+	RETVAL_BOOL(sampgdk_IsValidPlayerObject(playerid, objectid));
 }
 
 PHP_FUNCTION(DestroyPlayerObject)
@@ -356,7 +356,7 @@ PHP_FUNCTION(DestroyPlayerObject)
         RETURN_NULL();
     }
 
-	DestroyPlayerObject(playerid, objectid);
+	sampgdk_DestroyPlayerObject(playerid, objectid);
 }
 
 PHP_FUNCTION(MovePlayerObject)
@@ -370,7 +370,7 @@ PHP_FUNCTION(MovePlayerObject)
         RETURN_NULL();
     }
 
-	MovePlayerObject(playerid, objectid, X, Y, Z, Speed, RotX, RotY, RotZ);
+	sampgdk_MovePlayerObject(playerid, objectid, X, Y, Z, Speed, RotX, RotY, RotZ);
 }
 
 PHP_FUNCTION(StopPlayerObject)
@@ -383,7 +383,7 @@ PHP_FUNCTION(StopPlayerObject)
         RETURN_NULL();
     }
 
-	StopPlayerObject(playerid, objectid);
+	sampgdk_StopPlayerObject(playerid, objectid);
 }
 
 PHP_FUNCTION(IsPlayerObjectMoving)
@@ -396,7 +396,7 @@ PHP_FUNCTION(IsPlayerObjectMoving)
         RETURN_NULL();
     }
 
-	RETVAL_BOOL(IsPlayerObjectMoving(playerid, objectid));
+	RETVAL_BOOL(sampgdk_IsPlayerObjectMoving(playerid, objectid));
 }
 
 PHP_FUNCTION(AttachPlayerObjectToPlayer)
@@ -410,7 +410,7 @@ PHP_FUNCTION(AttachPlayerObjectToPlayer)
         RETURN_NULL();
     }
 
-	AttachPlayerObjectToPlayer(objectplayer, objectid, attachplayer, OffsetX, OffsetY, OffsetZ, rX, rY, rZ);
+	sampgdk_AttachPlayerObjectToPlayer(objectplayer, objectid, attachplayer, OffsetX, OffsetY, OffsetZ, rX, rY, rZ);
 }
 
 PHP_FUNCTION(SetObjectMaterial)
@@ -424,7 +424,7 @@ PHP_FUNCTION(SetObjectMaterial)
         RETURN_NULL();
     }
 
-	SetObjectMaterial(objectid, materialindex, modelid, txdname, texturename, materialcolor);
+	sampgdk_SetObjectMaterial(objectid, materialindex, modelid, txdname, texturename, materialcolor);
 }
 
 PHP_FUNCTION(SetPlayerObjectMaterial)
@@ -438,7 +438,7 @@ PHP_FUNCTION(SetPlayerObjectMaterial)
         RETURN_NULL();
     }
 
-	SetPlayerObjectMaterial(playerid, objectid, materialindex, modelid, txdname, texturename, materialcolor);
+	sampgdk_SetPlayerObjectMaterial(playerid, objectid, materialindex, modelid, txdname, texturename, materialcolor);
 }
 
 PHP_FUNCTION(SetObjectMaterialText)
@@ -452,7 +452,7 @@ PHP_FUNCTION(SetObjectMaterialText)
         RETURN_NULL();
     }
 
-	SetObjectMaterialText(objectid, text, materialindex, materialsize, fontface, fontsize, bold, fontcolor, backcolor, textalignment);
+	sampgdk_SetObjectMaterialText(objectid, text, materialindex, materialsize, fontface, fontsize, bold, fontcolor, backcolor, textalignment);
 }
 
 PHP_FUNCTION(SetPlayerObjectMaterialText)
@@ -466,5 +466,5 @@ PHP_FUNCTION(SetPlayerObjectMaterialText)
         RETURN_NULL();
     }
 
-	SetPlayerObjectMaterialText(playerid, objectid, text, materialindex, materialsize, fontface, fontsize, bold, fontcolor, backcolor, textalignment);
+	sampgdk_SetPlayerObjectMaterialText(playerid, objectid, text, materialindex, materialsize, fontface, fontsize, bold, fontcolor, backcolor, textalignment);
 }

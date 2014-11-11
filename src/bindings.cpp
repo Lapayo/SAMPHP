@@ -1,14 +1,10 @@
 #include "bindings.h"
+#include "samphp.h"
+#include "undef.h"
 #include <sstream>
 #include <iostream>
 
-// Callbacks
 #include "bindings_callbacks.hpp"
-
-
-// Functions:
-// Server settings:
-#include "bindings_samphp.hpp"
 #include "bindings_util.hpp"
 #include "bindings_game.hpp"
 #include "bindings_vehicles.hpp"
@@ -23,12 +19,7 @@ ZEND_END_ARG_INFO()
 
 // Export functions to module
 static zend_function_entry php_samphp_functions[] = {
-	// samphp functions
-    PHP_FE(CallAMXNative, AllButFirstThreeArgsByReference)
-    PHP_FE(AMXNativeExists, NULL)
-    PHP_FE(DebugFunction, NULL)
-
-    // Util
+    PHP_FE(SetGameModeText, NULL)
     PHP_FE(SendClientMessage, NULL)
 	PHP_FE(SendClientMessageToAll, NULL)
 	PHP_FE(SendPlayerMessageToPlayer, NULL)
@@ -42,7 +33,7 @@ static zend_function_entry php_samphp_functions[] = {
 	PHP_FE(GetMaxPlayers, NULL)
 
     // Game
-    PHP_FE(SetGameModeText, NULL)
+
     PHP_FE(SetTeamCount, NULL)
     PHP_FE(AddPlayerClass, NULL)
 	PHP_FE(AddPlayerClassEx, NULL)
@@ -73,7 +64,6 @@ static zend_function_entry php_samphp_functions[] = {
 	PHP_FE(LimitPlayerMarkerRadius, NULL)
     PHP_FE(EnableStuntBonusForAll, NULL)
 	PHP_FE(EnableStuntBonusForPlayer, NULL)
-
 	// NPC
     PHP_FE(ConnectNPC, NULL)
 	PHP_FE(IsPlayerNPC, NULL)
@@ -154,6 +144,11 @@ static zend_function_entry php_samphp_functions[] = {
 
 	// GUI Dialog
 	PHP_FE(ShowPlayerDialog, NULL)
+
+	//0.3z server
+	PHP_FE(BlockIpAddress, NULL)
+	PHP_FE(UnBlockIpAddress, NULL)
+	PHP_FE(GetServerTickRate, NULL)
 
 	// Vehicle
 	PHP_FE(CreateVehicle, NULL)
@@ -263,6 +258,18 @@ static zend_function_entry php_samphp_functions[] = {
     PHP_FE(RemovePlayerAttachedObject, NULL)
     PHP_FE(IsPlayerAttachedObjectSlotUsed, NULL)
     PHP_FE(EditAttachedObject, NULL)
+//    PHP_FE(CreateExplosionForPlayer, NULL)
+    PHP_FE(SendDeathMessageToPlayer, NULL)
+    PHP_FE(NetStats_BytesReceived, NULL)
+    PHP_FE(NetStats_BytesSent, NULL)
+    PHP_FE(NetStats_ConnectionStatus, NULL)
+    PHP_FE(NetStats_GetConnectedTime, NULL)
+    PHP_FE(NetStats_GetIpPort, NULL)
+    PHP_FE(NetStats_MessagesReceived, NULL)
+    PHP_FE(NetStats_MessagesRecvPerSecond, NULL)
+    PHP_FE(NetStats_MessagesSent, NULL)
+    PHP_FE(NetStats_PacketLossPercent, NULL)
+    PHP_FE(GetPlayerLastShotVectors, NULL)
 
     // Per-player TextDraws
     PHP_FE(CreatePlayerTextDraw, NULL)
@@ -324,6 +331,8 @@ static zend_function_entry php_samphp_functions[] = {
 	PHP_FE(AttachCameraToPlayerObject, NULL)
 	PHP_FE(InterpolateCameraPos, NULL)
 	PHP_FE(InterpolateCameraLookAt, NULL)
+	PHP_FE(GetPlayerCameraAspectRatio, NULL)
+	PHP_FE(GetPlayerCameraZoom, NULL)
 
 	// Player conditionals
 	PHP_FE(IsPlayerConnected, NULL)
@@ -396,6 +405,7 @@ PHP_MINIT_FUNCTION(samphp_minit)
     return SUCCESS;
 }
 
+
 zend_module_entry  samphp_module_entry = {
     STANDARD_MODULE_HEADER,
     "samphp", /* extension name */
@@ -408,3 +418,5 @@ zend_module_entry  samphp_module_entry = {
     "1.0", /* version */
     STANDARD_MODULE_PROPERTIES
 };
+
+

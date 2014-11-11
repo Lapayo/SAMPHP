@@ -154,9 +154,10 @@ PLUGIN_EXPORT bool PLUGIN_CALL OnVehicleDamageStatusUpdate(int vehicleid, int pl
 	return samphp::instance->callBool("OnVehicleDamageStatusUpdate", "ll", vehicleid, playerid);
 }
 
-PLUGIN_EXPORT bool PLUGIN_CALL OnUnoccupiedVehicleUpdate(int vehicleid, int playerid, int passenger)
+PLUGIN_EXPORT bool PLUGIN_CALL OnUnoccupiedVehicleUpdate(int vehicleid, int playerid, int passenger, float new_x, float new_y, float new_z, 
+	float vel_x, float vel_y, float vel_z)
 {
-	return samphp::instance->callBool("OnUnoccupiedVehicleUpdate", "lll", vehicleid, playerid, passenger);
+	return samphp::instance->callBool("OnUnoccupiedVehicleUpdate", "llldddddd", vehicleid, playerid, passenger, new_x, new_y, new_z, vel_x, vel_y, vel_z);
 }
 
 PLUGIN_EXPORT bool PLUGIN_CALL OnPlayerSelectedMenuRow(int playerid, int row)
@@ -214,14 +215,14 @@ PLUGIN_EXPORT bool PLUGIN_CALL OnDialogResponse(int playerid, int dialogid, int 
 	return samphp::instance->callBool("OnDialogResponse", "lllls", playerid, dialogid, response, listitem, inputtext);
 }
 
-PLUGIN_EXPORT bool PLUGIN_CALL OnPlayerTakeDamage(int playerid, int issuerid, float amount, int weaponid)
+PLUGIN_EXPORT bool PLUGIN_CALL OnPlayerTakeDamage(int playerid, int issuerid, float amount, int weaponid, int bodypart)
 {
-	return samphp::instance->callBool("OnPlayerTakeDamage", "lldl", playerid, issuerid, amount, weaponid);
+	return samphp::instance->callBool("OnPlayerTakeDamage", "lldll", playerid, issuerid, amount, weaponid, bodypart);
 }
 
-PLUGIN_EXPORT bool PLUGIN_CALL OnPlayerGiveDamage(int playerid, int damagedid, float amount, int weaponid)
+PLUGIN_EXPORT bool PLUGIN_CALL OnPlayerGiveDamage(int playerid, int damagedid, float amount, int weaponid, int bodypart)
 {
-	return samphp::instance->callBool("OnPlayerGiveDamage", "lldl", playerid, damagedid, amount, weaponid);
+	return samphp::instance->callBool("OnPlayerGiveDamage", "lldll", playerid, damagedid, amount, weaponid, bodypart);
 }
 
 PLUGIN_EXPORT bool PLUGIN_CALL OnPlayerClickMap(int playerid, float fX, float fY, float fZ)
@@ -257,4 +258,12 @@ PLUGIN_EXPORT bool PLUGIN_CALL OnPlayerClickTextDraw(int playerid, int clickedid
 PLUGIN_EXPORT bool PLUGIN_CALL OnPlayerClickPlayerTextDraw(int playerid, int playertextid)
 {
 	return samphp::instance->callBool("OnPlayerClickPlayerTextDraw", "ll", playerid, playertextid);
+}
+
+PLUGIN_EXPORT bool PLUGIN_CALL OnIncomingConnection(int playerid, const char* ip, int port) {
+	return samphp::instance->callBool("OnIncomingConnection", "lsl", playerid, ip, port);
+}
+
+PLUGIN_EXPORT bool PLUGIN_CALL OnTrailerUpdate(int playerid, int vehicleid) {
+	return samphp::instance->callBool("OnTrailerUpdate", "ll", playerid, vehicleid);
 }

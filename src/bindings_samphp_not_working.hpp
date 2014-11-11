@@ -1,3 +1,5 @@
+/****** TODO: PUT THE CODE BELOW WORKING *********
+
 #include <fakeamx.h>
 #include <cstring>
 
@@ -251,3 +253,6 @@ AMX_NATIVE FindNative(const char *name)
 
     return 0;
 }
+
+
+*****************************************************/
