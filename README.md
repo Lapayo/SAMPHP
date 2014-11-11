@@ -50,6 +50,18 @@ Event::on('PlayerConnect', function($player)
     return true;
 });
 ```
+It's easy to create commands too! 
+The code below should show how easy it is to create a command:
+```php
+Command::register("name", function($player, $params) {
+    $player->sendClientMessage(0xFF9900, "Your Player name is: ".$player->getName()."!");
+});
+
+CMD::register("info", function($player, $params) {
+    $player->sendClientMessage(0xFF9900, "Your name is ".$player->getName().", and you're connect to our server");
+    $player->sendClientMessage(0xFF9900, "with the player id ".$player->id."!";
+});
+```
 
 Installation
 ===
