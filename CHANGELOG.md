@@ -1,5 +1,9 @@
 Changelog
 =========
+2014/11/18:
+- Updated the PHP Version for 5.6.3
+- Added support for MySQLI and PDO.
+
 2014/11/11:
 - Removed AMXNativeExists, RegisterAMXNative and CallAMXNative temporarly.
 - Updated the PLUGIN to support SAMPGDK 4.(samp 0.3z r4)

@@ -1,9 +1,9 @@
 set -e
-SRCDIR=${HOME}/php5.4-source
+SRCDIR=${HOME}/php5.6-source
 DISTDIR=${HOME}/dist
 rm -rf $SRCDIR
 
-PHP5="php-5.6.2"
+PHP5="php-5.6.3"
 
 PHPFEATURES="--disable-cli --disable-cgi --enable-embed=shared --disable-zts --with-sqlite3 --enable-pdo --with-pdo-mysql --with-pdo-sqlite --with-mysqli --enable-mbstring \
 "
