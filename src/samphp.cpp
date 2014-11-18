@@ -4,7 +4,15 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
-
+//-----
+#ifdef WINDOWS
+	#include <direct.h>
+	#define GetCurrentDir _getcwd
+#else
+	#include <unistd.h>
+	#define GetCurrentDir getcwd
+#endif
+//-----
 int php_set_ini_entry(char *entry, char *value, int stage)
 {
 	return zend_alter_ini_entry(entry, strlen(entry)+1, value, strlen(value)+1, PHP_INI_USER, stage);
@@ -24,11 +32,16 @@ samphp::samphp(bool typeError)
 	php_embed_module.log_message = samphp_error_handler;
 	php_embed_init(argc, argv PTSRMLS_CC);
 
+	char directory[FILENAME_MAX];
+	GetCurrentDir(directory, sizeof(directory));
+	std::strcat(directory, "\\php\\ext");
+
+	zend_alter_ini_entry("extension_dir", 14, directory, std::strlen(directory), PHP_INI_SYSTEM, PHP_INI_STAGE_ACTIVATE);
 	zend_alter_ini_entry("html_errors", 12, "0", 1, PHP_INI_SYSTEM, PHP_INI_STAGE_ACTIVATE);
 	zend_alter_ini_entry("implicit_flush", 15, "1", 1, PHP_INI_SYSTEM, PHP_INI_STAGE_ACTIVATE);
 	zend_alter_ini_entry("max_execution_time", 19, "0", 1, PHP_INI_SYSTEM, PHP_INI_STAGE_ACTIVATE);
 	zend_alter_ini_entry("variables_order", 16, "S", 1, PHP_INI_SYSTEM, PHP_INI_STAGE_ACTIVATE);
-	
+
 	SG(options) |= SAPI_OPTION_NO_CHDIR;
 	SG(headers_sent) = 1;
 	SG(request_info).no_headers = 1;
@@ -38,7 +51,7 @@ samphp::samphp(bool typeError)
 	zend_unset_timeout(TSRMLS_C);
 
 	php_set_ini_entry("variables_order", "S", PHP_INI_STAGE_ACTIVATE);
-	
+
 	#ifdef ZEND_WIN32
 		php_set_ini_entry("include_path", ".;./php", PHP_INI_SYSTEM);
 	#else
@@ -82,7 +95,7 @@ bool samphp::loadGamemode()
 	zend_first_try {
 		char *filename = (char *) gamemode.c_str();
 		char *include_script;
-		spprintf(&include_script, 0, "require '%s';", filename);
+		spprintf(&include_script, 0, "@$try = include '%s';if(!$try) SendRconCommand(\"exit\");", filename);
 		zend_eval_string(include_script, NULL, filename TSRMLS_CC);
 		efree(include_script);
 	} zend_end_try();

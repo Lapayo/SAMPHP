@@ -8,16 +8,22 @@
 #include "samphp.h"
 
 PLUGIN_EXPORT unsigned int PLUGIN_CALL Supports() {
-  return sampgdk::Supports() | SUPPORTS_PROCESS_TICK;
+	sampgdk::logprintf("  *****************************************************");
+	sampgdk::logprintf("  *          SAMPHP Plugin revision 2.0B              *");
+	sampgdk::logprintf("  *             WITHOUT: AMX Handlers                 *");
+	sampgdk::logprintf("  * For updates, check out our GitHub repository at : *");
+	sampgdk::logprintf("  *     https ://github.com/Lapayo/SAMPHP             *");
+	sampgdk::logprintf("  *****************************************************");
+	return sampgdk::Supports() | SUPPORTS_PROCESS_TICK;
 }
 
 PLUGIN_EXPORT bool PLUGIN_CALL Load(void **ppData) {
-  return sampgdk::Load(ppData);
+	return sampgdk::Load(ppData);
 }
 
 PLUGIN_EXPORT void PLUGIN_CALL Unload() {
-  samphp::unload();
-  sampgdk::Unload();
+	samphp::unload();
+	sampgdk::Unload();
 }
 
 PLUGIN_EXPORT void PLUGIN_CALL ProcessTick() {
