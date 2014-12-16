@@ -107,7 +107,7 @@ class Vehicle
 
 	public function getRotationQuat()
 	{
-		return (object) GetRotationQuat($this->id);
+		return (object) GetVehicleRotationQuat($this->id); 
 	}
 
 	public function getDistanceFromPoint($x, $y, $z)
